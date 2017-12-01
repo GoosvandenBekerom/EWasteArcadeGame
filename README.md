@@ -1,4 +1,4 @@
-# EWasteArcadeGame
+# E-Waste Arcade Game
 
 Recycling game created for E-Waste Arcades
 
