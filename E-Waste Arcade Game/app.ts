@@ -19,8 +19,8 @@
 
             // Spritesheets
             //this.game.load.atlasXML("CHAR_IDLE", "Graphics/char_idle.png", "Graphics/char_idle.xml");
-            //this.game.load.atlasXML("CHAR_RUNNING", "Graphics/char_running.png", "Graphics/char_running.xml");
-            //this.game.load.atlasXML("CHAR_JUMPING", "Graphics/char_jumping.png", "Graphics/char_jumping.xml");
+            //this.game.load.atlasXML("CHAR_MOVE_UP", "Graphics/char_move_up.png", "Graphics/char_move_up.xml");
+            //this.game.load.atlasXML("CHAR_MOVE_DOWN", "Graphics/char_move_down.png", "Graphics/char_move_down.xml");
 
             // Audio
             this.game.load.audio("BackgoundLoop",

@@ -22,7 +22,6 @@
             this.game.add.existing(this.player);
 
             this.game.world.setBounds(0, 0, widthBounds, this.scene.height);
-            this.game.camera.follow(this.player);
 
             this.ESC = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
             this.ESC.onDown.add(EWasteGameStates.MainState.prototype.GameOver, this);
