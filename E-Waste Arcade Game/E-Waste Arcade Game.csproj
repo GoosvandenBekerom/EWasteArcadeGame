@@ -24,6 +24,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="Graphics\background.png" />
+    <Content Include="Graphics\GameOverScreen.jpg" />
+    <Content Include="Graphics\TitleScreen.jpg" />
     <Content Include="index.html" />
     <Content Include="Lib\phaser.js" />
     <Content Include="web.config" />
@@ -31,9 +34,11 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="GameObjects\Player.ts" />
+    <TypeScriptCompile Include="GameObjects\Scene.ts" />
     <TypeScriptCompile Include="Lib\p2.d.ts" />
     <TypeScriptCompile Include="Lib\phaser.d.ts" />
     <TypeScriptCompile Include="Lib\pixi.d.ts" />
+    <TypeScriptCompile Include="States\GameOverState.ts" />
     <TypeScriptCompile Include="States\MainState.ts" />
     <TypeScriptCompile Include="States\TitleScreenState.ts" />
   </ItemGroup>
@@ -47,7 +52,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Graphics\" />
     <Folder Include="Sounds\" />
   </ItemGroup>
   <PropertyGroup>

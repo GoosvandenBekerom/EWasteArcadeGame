@@ -7,33 +7,54 @@
 
         UP_ARROW: Phaser.Key;
         DOWN_ARROW: Phaser.Key;
-        ESC: Phaser.Key;
 
+        backgroundWidth: number;
         speed: number;
         animationSpeed: number;
+        verticalMoveOffset: number;
 
-        constructor(game: Phaser.Game, x: number, y: number) {
+        constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number) {
             super(game, x, y, "CHAR_RUNNING", 0);
 
             this.game = game;
-            this.speed = 0;
+            this.speed = 1;
+            this.backgroundWidth = backgroundWidth;
             this.animationSpeed = 0;
+            this.verticalMoveOffset = 100;
 
             this.UP_ARROW = this.game.input.keyboard.addKey(Phaser.Keyboard.UP);
+            this.UP_ARROW.onDown.add(Player.prototype.movePlayerUp, this);
+
             this.DOWN_ARROW = this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+            this.DOWN_ARROW.onDown.add(Player.prototype.movePlayerDown, this);
+
             this.anchor.set(0.0, 1.0);
         }
 
-        moveLeft() {
-            //TODO
+        update() {
+            this.x += this.speed * (60 / this.game.time.elapsedMS);
+
+            if (this.x > this.backgroundWidth * .75) {
+                this.x = this.backgroundWidth * .25
+            }
         }
 
-        moveRight() {
-            //TODO
+        movePlayerUp() {
+            //TODO: animation stuff
+            if (this.y - this.verticalMoveOffset >= 0) {
+                this.y -= this.verticalMoveOffset;
+            }
         }
 
-        jump() {
-            //TODO
+        movePlayerDown() {
+            //TODO: animation stuff
+            if (this.y + this.verticalMoveOffset <= this.game.height) {
+                this.y += this.verticalMoveOffset;
+            }
+        }
+
+        startJump() {
+            //TODO: animation stuff and adding upwards force
         }
 
         private startIdle() {
