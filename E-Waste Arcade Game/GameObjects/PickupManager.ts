@@ -34,17 +34,17 @@
                 pickup = "can";
             }
 
-            var spawnedObject = this.state.add.sprite(this.player.position.x + this.game.width, (Math.random() * this.game.height) - 100, pickup, this);
+            var spawnedObject = this.state.add.sprite(this.player.position.x + this.game.width, (Math.random() * (this.game.height - 100)), pickup, this);
+            spawnedObject.scale.setTo(0.3, 0.3);
             this.spawnedPickups.add(spawnedObject);
-            spawnedObject.inCamera
-            this.despawnOutOfScreen();
+            this.despawnPreviousItems();
             this.spawning = false;
         }
 
-        despawnOutOfScreen() {
+        despawnPreviousItems() {
             for (var i = 0; i < this.spawnedPickups.total; i++) {
                 var pulledObj = this.spawnedPickups.next;
-                if (!pulledObj.inCamera) {
+                if (pulledObj.position.x + 50 <= this.player.position.x) {
                     pulledObj.destroy();
                     this.spawnedPickups.remove(pulledObj);
                 }
