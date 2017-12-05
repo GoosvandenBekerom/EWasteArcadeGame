@@ -16,6 +16,9 @@
             this.game.load.image("title", "Graphics/TitleScreen.jpg");
             this.game.load.image("scene", "Graphics/background.png");
             this.game.load.image("gameover", "Graphics/GameOverScreen.jpg");
+            this.game.load.image("apple", "Graphics/Apple.png");
+            this.game.load.image("can", "Graphics/Can.png");
+            this.game.load.image("phone", "Graphics/Phone.png");
 
             // Spritesheets
             //this.game.load.atlasXML("CHAR_IDLE", "Graphics/char_idle.png", "Graphics/char_idle.xml");

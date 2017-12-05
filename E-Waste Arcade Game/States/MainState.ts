@@ -5,6 +5,7 @@
         music: Phaser.Sound;
         player: EwasteGameObjects.Player;
         scene: EwasteGameObjects.Scene;
+        pickupManager: EwasteGameObjects.PickupManager;
 
         ESC: Phaser.Key;
 
@@ -12,14 +13,15 @@
         
         create() {
             this.scene = new EwasteGameObjects.Scene(this.game, 0, 0);
-
             var widthBounds = this.scene.width * 2;
 
             this.player = new EwasteGameObjects.Player(
                 this.game, this.startOffset, this.game.height / 2, widthBounds);
+            this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
 
             this.game.add.existing(this.scene);
             this.game.add.existing(this.player);
+            this.game.add.existing(this.pickupManager);
 
             this.game.world.setBounds(0, 0, widthBounds, this.scene.height);
             this.game.camera.follow(this.player);
