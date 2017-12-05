@@ -9,6 +9,7 @@
         // inputs
         UP_ARROW: Phaser.Key;
         DOWN_ARROW: Phaser.Key;
+        SHUFFLE_BTN: Phaser.Key;
         
         // camera follow variables
         middleOfScreen: number;
@@ -37,8 +38,8 @@
             this.botBounds = this.game.height;
 
             this.UP_ARROW = this.game.input.keyboard.addKey(Phaser.Keyboard.UP);
-
             this.DOWN_ARROW = this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+            this.SHUFFLE_BTN = this.game.input.keyboard.addKey(Phaser.Keyboard.Z);
 
             this.anchor.set(0.0, 1.0);
         }
@@ -46,12 +47,7 @@
         update() {
             // move forward
             this.x += this.speed * (60 / this.game.time.elapsedMS);
-
-            // make background seem endless
-            if (this.x > this.backgroundWidth * .75) {
-                this.x = this.backgroundWidth * .25
-            }
-
+            
             // move up or down
             var move = 0;
             if (this.UP_ARROW.isDown) {
