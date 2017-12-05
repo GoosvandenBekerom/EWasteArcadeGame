@@ -9,12 +9,12 @@
         ESC: Phaser.Key;
 
         startOffset = 100;
+        amountOfBackgroundRepeats = 10000;
         
         create() {
-            this.scene = new EwasteGameObjects.Scene(this.game, 0, 0);
-
-            var widthBounds = this.scene.width * 2;
-
+            var widthBounds = this.game.width * this.amountOfBackgroundRepeats;
+            this.scene = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds);
+            
             this.player = new EwasteGameObjects.Player(
                 this.game, this.startOffset, this.game.height / 2, widthBounds);
 
