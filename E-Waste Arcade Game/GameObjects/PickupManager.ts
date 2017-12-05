@@ -11,8 +11,8 @@
             this.game = game;
             this.state = state;
             this.player = player;
+            this.spawnedPickups = new Phaser.LinkedList;
             this.spawning = false;
-            this.spawnedPickups = new Phaser.LinkedList();
         }
         
         update() {
@@ -34,18 +34,19 @@
                 pickup = "can";
             }
 
-            var spawnedObject = this.state.add.sprite(this.player.position.x + 500, Math.random() * this.game.height, pickup, this);
+            var spawnedObject = this.state.add.sprite(this.player.position.x + this.game.width, (Math.random() * this.game.height) - 100, pickup, this);
             this.spawnedPickups.add(spawnedObject);
+            spawnedObject.inCamera
+            this.despawnOutOfScreen();
             this.spawning = false;
-
-            this.checkDespawn();
         }
 
-        checkDespawn() {
+        despawnOutOfScreen() {
             for (var i = 0; i < this.spawnedPickups.total; i++) {
-                var pulledObject = this.spawnedPickups.next;
-                if (pulledObject.position.x + (this.game.width / 4) <= this.player.position.x) {
-                    pulledObject.destroy();
+                var pulledObj = this.spawnedPickups.next;
+                if (!pulledObj.inCamera) {
+                    pulledObj.destroy();
+                    this.spawnedPickups.remove(pulledObj);
                 }
             }
         }
