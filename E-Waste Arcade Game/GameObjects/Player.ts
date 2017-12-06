@@ -18,7 +18,7 @@
         // move variables
         verticalMoveOffset: number;
         speed = 1;
-        speedIncrease = 0.001;
+        speedIncrease = 0.0005;
         animationSpeed = 20;
         topBounds: number;
         botBounds: number;
@@ -28,6 +28,7 @@
 
             /*this.height *= 0.1;
             this.width *= 0.1;*/
+
 
             this.game = game;
             this.backgroundWidth = backgroundWidth;
