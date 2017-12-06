@@ -1,4 +1,4 @@
-﻿module EwasteGameObjects {
+﻿    module EwasteGameObjects {
     export enum PlayerState { IDLE, MOVING_UP, MOVING_DOWN }
 
     export class Player extends Phaser.Sprite {

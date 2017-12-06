@@ -1,21 +1,29 @@
 ﻿module EwasteGameObjects {
     export class GUI extends Phaser.Group{
         game: Phaser.Game;
-        bmpText: Phaser.BitmapText;
-
-        constructor(game: Phaser.Game) {
-            super(game)
+        bmpText: EwasteGameObjects.UIText;
+        isDrawn: boolean;
+        player: EwasteGameObjects.Player;
+        
+        constructor(game: Phaser.Game, player: EwasteGameObjects.Player) {
+            super(game);
             this.game = game;
-        }
-
-        Create()
-        {
-            this.bmpText = this.game.add.bitmapText(200, 100, 'desyrel', 'Phaser & Pixi\nrocking!', 64);
+            this.player = player;
         }
 
         update()
         {
-            //this.bmpText.text = Math.round(this.game.time.now).toString();
+            if (!this.isDrawn)
+            {
+                this.bmpText = new EwasteGameObjects.UIText(this.game, "0", 20, 10);
+                this.bmpText.fixedToCamera = true;
+                this.game.add.existing(this.bmpText);
+                this.isDrawn = true;
+            }
+            else
+            {
+               this.bmpText.updateUIText(Math.round(this.player.x/10).toString());
+            }
         }
     }
 }0

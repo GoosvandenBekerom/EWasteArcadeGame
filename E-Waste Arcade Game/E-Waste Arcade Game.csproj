@@ -40,6 +40,7 @@
     <TypeScriptCompile Include="GameObjects\PickupManager.ts" />
     <TypeScriptCompile Include="GameObjects\Player.ts" />
     <TypeScriptCompile Include="GameObjects\Scene.ts" />
+    <TypeScriptCompile Include="GameObjects\UIText.ts" />
     <TypeScriptCompile Include="Lib\p2.d.ts" />
     <TypeScriptCompile Include="Lib\phaser.d.ts" />
     <TypeScriptCompile Include="Lib\pixi.d.ts" />
