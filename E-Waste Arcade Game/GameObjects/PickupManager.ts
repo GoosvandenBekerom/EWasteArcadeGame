@@ -24,19 +24,21 @@
         
         spawnPickup() {
             var pickup = "";
-            var randomNumber = Math.random();
+            var randomNumber = this.game.rnd.integerInRange(1, 3);
 
-            if (randomNumber <= 0.33) {
+            if (randomNumber == 1) {
                 pickup = "apple";
-            } else if (randomNumber <= 0.66) {
+            } else if (randomNumber == 2) {
                 pickup = "phone";
             } else {
                 pickup = "can";
             }
 
-            var spawnedObject = this.state.add.sprite(this.player.position.x + this.game.width, (Math.random() * this.game.height) - 100, pickup, this);
+            var spawnedObject = this.state.add.sprite(this.player.position.x + this.game.width,
+                this.game.rnd.integerInRange(100, this.game.height - 100), pickup, this);
+            
             this.spawnedPickups.add(spawnedObject);
-            spawnedObject.inCamera
+
             this.despawnOutOfScreen();
             this.spawning = false;
         }
