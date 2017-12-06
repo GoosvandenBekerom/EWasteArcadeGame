@@ -1,9 +1,11 @@
 ﻿module EwasteGameObjects {
     export enum PlayerState { IDLE, RUNNING, JUMPING }
+    export enum WasteType { WASTE_1, WASTE_2, WASTE_3 }
 
     export class Player extends Phaser.Sprite {
         game: Phaser.Game;
         playerState: PlayerState;
+        collectBinState: WasteType;
         backgroundWidth: number;
 
         // inputs
@@ -24,6 +26,8 @@
         constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number) {
             super(game, x, y, "CHAR_RUNNING", 0);
             
+            this.collectBinState = WasteType.WASTE_1;
+
             this.game = game;
             this.backgroundWidth = backgroundWidth;
 
@@ -40,6 +44,8 @@
                 Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT,
                 Phaser.Keyboard.Z, Phaser.Keyboard.X
             );
+
+            this.joystick.YELLOW.onDown.add(Player.prototype.changeCollectorBin, this);
 
             this.anchor.set(0.0, 1.0);
             this.startRunning();
@@ -77,6 +83,29 @@
             this.loadTexture("CHAR_RUNNING", 0);
             this.animations.add("running");
             this.animations.play("running", this.animationSpeed, true);
+        }
+
+        private changeCollectorBin()
+        {
+            switch (this.collectBinState) {
+                case WasteType.WASTE_1: {
+                    this.collectBinState = WasteType.WASTE_2;
+                    //TODO SWITCH SPRITE
+                    break;
+                }
+                case WasteType.WASTE_2:   {
+                    this.collectBinState = WasteType.WASTE_3;
+                    //TODO SWITCH SPRITE
+
+                    break;
+                }
+                case WasteType.WASTE_3:   {
+                    this.collectBinState = WasteType.WASTE_1; 
+                    //TODO SWITCH SPRITE
+
+                    break;
+                }
+            } 
         }
     }
 }
