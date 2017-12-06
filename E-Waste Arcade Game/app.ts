@@ -22,6 +22,9 @@
             //this.game.load.atlasXML("CHAR_RUNNING", "Graphics/char_running.png", "Graphics/char_running.xml");
             //this.game.load.atlasXML("CHAR_JUMPING", "Graphics/char_jumping.png", "Graphics/char_jumping.xml");
 
+            // Fonts
+            this.game.load.bitmapFont('desyrel', 'Graphics/desyrel.png', 'Graphics/desyrel.xml');
+
             // Audio
             this.game.load.audio("BackgoundLoop",
                 [

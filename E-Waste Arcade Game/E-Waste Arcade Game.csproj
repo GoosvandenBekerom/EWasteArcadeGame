@@ -33,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="GameObjects\GUI.ts" />
     <TypeScriptCompile Include="GameObjects\Player.ts" />
     <TypeScriptCompile Include="GameObjects\Scene.ts" />
     <TypeScriptCompile Include="Lib\p2.d.ts" />
