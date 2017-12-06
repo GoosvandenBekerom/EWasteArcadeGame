@@ -31,7 +31,7 @@
             this.music = this.game.add.audio("BackgoundLoop");
             this.music.volume = 0.4;
             this.music.loop = true;
-            this.music.play();
+            //this.music.play();
         }
 
         GameOver() {

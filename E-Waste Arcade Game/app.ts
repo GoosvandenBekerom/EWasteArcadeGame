@@ -20,11 +20,9 @@
             this.game.load.image("can", "Graphics/Can.png");
             this.game.load.image("phone", "Graphics/Phone.png");
 
-            // Spritesheets
-            // TODO: check what we need as of animations
-            //this.game.load.atlasXML("CHAR_IDLE", "Graphics/char_idle.png", "Graphics/char_idle.xml");
-            //this.game.load.atlasXML("CHAR_MOVE_UP", "Graphics/char_move_up.png", "Graphics/char_move_up.xml");
-            //this.game.load.atlasXML("CHAR_MOVE_DOWN", "Graphics/char_move_down.png", "Graphics/char_move_down.xml");
+            // Spritesheets / Animations
+            this.game.load.atlasJSONArray("CHAR_RUNNING",
+                "Graphics/Player/run.png", "Graphics/Player/run.json");
 
             // Fonts
             this.game.load.bitmapFont('desyrel', 'Graphics/desyrel.png', 'Graphics/desyrel.xml');

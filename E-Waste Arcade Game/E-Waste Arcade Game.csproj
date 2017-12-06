@@ -29,6 +29,7 @@
     <Content Include="Graphics\Can.png" />
     <Content Include="Graphics\GameOverScreen.jpg" />
     <Content Include="Graphics\Phone.png" />
+    <Content Include="Graphics\Player\run.png" />
     <Content Include="Graphics\TitleScreen.jpg" />
     <Content Include="index.html" />
     <Content Include="Lib\phaser.js" />
@@ -53,6 +54,7 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="Sounds\BackgroundLoop.ogg" />
+    <Content Include="Graphics\Player\run.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
