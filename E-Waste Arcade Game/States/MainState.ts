@@ -6,6 +6,7 @@
         player: EwasteGameObjects.Player;
         scene: EwasteGameObjects.Scene;
         pickupManager: EwasteGameObjects.PickupManager;
+        canvas: EwasteGameObjects.GUI;
 
         ESC: Phaser.Key;
 
@@ -18,10 +19,12 @@
             this.player = new EwasteGameObjects.Player(
                 this.game, this.startOffset, this.game.height / 2, widthBounds);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
+            this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
 
             this.game.add.existing(this.scene);
             this.game.add.existing(this.player);
             this.game.add.existing(this.pickupManager);
+            this.game.add.existing(this.canvas);
 
             this.game.world.setBounds(0, 0, widthBounds, this.scene.height);
 
@@ -29,7 +32,7 @@
             this.ESC.onDown.add(EWasteGameStates.MainState.prototype.GameOver, this);
 
             this.music = this.game.add.audio("BackgoundLoop");
-            this.music.volume = 0.4;
+            this.music.volume = 0.1;
             this.music.loop = true;
             this.music.play();
         }
