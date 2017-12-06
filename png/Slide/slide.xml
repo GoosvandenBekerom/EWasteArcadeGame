@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:8bed460e34385f62c335d0e6e3571317:927744909ac44963a0529da13d199101:4fc51a5fc50ed4e746abafdd1947964c$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="slide.png" width="3969" height="1668">
+    <sprite n="Jump (1).png" x="0" y="0" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Jump (2).png" x="567" y="0" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Jump (3).png" x="1134" y="0" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Jump (4).png" x="1701" y="0" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Jump (5).png" x="2268" y="0" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Jump (6).png" x="2835" y="0" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Jump (7).png" x="3402" y="0" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Jump (8).png" x="0" y="556" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Jump (9).png" x="567" y="556" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Jump (10).png" x="1134" y="556" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Slide (1).png" x="1701" y="556" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Slide (2).png" x="2268" y="556" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Slide (3).png" x="2835" y="556" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Slide (4).png" x="3402" y="556" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Slide (5).png" x="0" y="1112" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Slide (6).png" x="567" y="1112" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Slide (7).png" x="1134" y="1112" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Slide (8).png" x="1701" y="1112" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Slide (9).png" x="2268" y="1112" w="567" h="556" pX="0.5" pY="0.5"/>
+    <sprite n="Slide (10).png" x="2835" y="1112" w="567" h="556" pX="0.5" pY="0.5"/>
+</TextureAtlas>
