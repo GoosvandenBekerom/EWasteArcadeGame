@@ -29,6 +29,8 @@
     <Content Include="Graphics\TitleScreen.jpg" />
     <Content Include="index.html" />
     <Content Include="Lib\phaser.js" />
+    <Content Include="Sounds\BackgroundLoop.mp3" />
+    <Content Include="Sounds\BackgroundLoop.wav" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -41,9 +43,11 @@
     <TypeScriptCompile Include="States\GameOverState.ts" />
     <TypeScriptCompile Include="States\MainState.ts" />
     <TypeScriptCompile Include="States\TitleScreenState.ts" />
+    <TypeScriptCompile Include="Utils\JoystickInput.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="Sounds\BackgroundLoop.ogg" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -51,9 +55,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sounds\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

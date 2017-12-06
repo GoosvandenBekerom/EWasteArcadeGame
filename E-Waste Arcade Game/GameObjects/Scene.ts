@@ -5,8 +5,6 @@
 
         constructor(game: Phaser.Game, x: number, y: number, widthBounds: number) {
             super(game, x, y, widthBounds, game.height,"scene", 0);
-            //this.nextFrame = new Phaser.Sprite(this.game, this.width, 0, "scene", 0);
-            //this.game.add.existing(this.nextFrame);
         }
     }
 }

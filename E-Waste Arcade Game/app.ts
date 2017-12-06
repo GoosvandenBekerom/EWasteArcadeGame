@@ -18,6 +18,7 @@
             this.game.load.image("gameover", "Graphics/GameOverScreen.jpg");
 
             // Spritesheets
+            // TODO: check what we need as of animations
             //this.game.load.atlasXML("CHAR_IDLE", "Graphics/char_idle.png", "Graphics/char_idle.xml");
             //this.game.load.atlasXML("CHAR_MOVE_UP", "Graphics/char_move_up.png", "Graphics/char_move_up.xml");
             //this.game.load.atlasXML("CHAR_MOVE_DOWN", "Graphics/char_move_down.png", "Graphics/char_move_down.xml");
