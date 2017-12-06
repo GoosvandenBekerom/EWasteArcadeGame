@@ -24,8 +24,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="Graphics\Apple.png" />
     <Content Include="Graphics\background.png" />
+    <Content Include="Graphics\Can.png" />
     <Content Include="Graphics\GameOverScreen.jpg" />
+    <Content Include="Graphics\Phone.png" />
     <Content Include="Graphics\TitleScreen.jpg" />
     <Content Include="index.html" />
     <Content Include="Lib\phaser.js" />
@@ -35,6 +38,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="GameObjects\GUI.ts" />
+    <TypeScriptCompile Include="GameObjects\PickupManager.ts" />
     <TypeScriptCompile Include="GameObjects\Player.ts" />
     <TypeScriptCompile Include="GameObjects\Scene.ts" />
     <TypeScriptCompile Include="Lib\p2.d.ts" />
