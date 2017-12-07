@@ -22,7 +22,7 @@
             }
         }
         
-        spawnPickup() {
+        spawnPickup(x: number, y: number) {
             var tag = "";
             var type: WasteType;
             var randomNumber = this.game.rnd.integerInRange(1, 3);
@@ -39,10 +39,10 @@
             }
 
             // TODO: create some kind of spawngrid
-            var xPos = this.player.position.x + this.game.width;
-            var yPos = this.game.rnd.integerInRange(100, this.game.height - 200);
+            //var xPos = this.player.position.x + this.game.width;
+            //var yPos = this.game.rnd.integerInRange(100, this.game.height - 200);
             
-            var pickup = new EwasteGameObjects.Pickup(this.game, type, xPos, yPos, tag);
+            var pickup = new EwasteGameObjects.Pickup(this.game, type, x, y, tag);
 
             this.add(pickup);
             this.state.add.existing(pickup);

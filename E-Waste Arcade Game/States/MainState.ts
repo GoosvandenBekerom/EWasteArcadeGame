@@ -6,6 +6,7 @@
         player: EwasteGameObjects.Player;
         scene: EwasteGameObjects.Scene;
         pickupManager: EwasteGameObjects.PickupManager;
+        spawnGrid: EwasteGameObjects.SpawnGrid;
         canvas: EwasteGameObjects.GUI;
 
         ESC: Phaser.Key;
@@ -19,6 +20,8 @@
             this.player = new EwasteGameObjects.Player(
                 this.game, this.startOffset, this.game.height / 2, widthBounds);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
+            var spawnLanes = [this.game.height / 5 * 2, this.game.height / 5 * 3, this.game.height / 5 * 4];
+            this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
 
             this.game.add.existing(this.scene);

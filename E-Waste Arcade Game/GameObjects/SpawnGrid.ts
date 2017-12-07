@@ -4,10 +4,12 @@
     export class SpawnGrid {
         game: Phaser.Game;
         gridLanes: Array<number>; // y-positions for spawns
+        pickupManager: PickupManager;
 
-        constructor(game: Phaser.Game, gridLanes: Array<number>) {
+        constructor(game: Phaser.Game, gridLanes: Array<number>, pickupManager: PickupManager) {
             this.game = game;
             this.gridLanes = gridLanes;
+            this.pickupManager = pickupManager;
         }
 
         generateNext(template: SpawnTemplate, startPosX: number) {
@@ -20,8 +22,10 @@
                     break;
                 }
                 case SpawnTemplate.Pickups: {
-                    for (let i = 0; i < amountOfSpawns; i++) {
-
+                    for (let i = 1; i < amountOfSpawns + 1; i++) {
+                        var y = this.game.rnd.pick(this.gridLanes);
+                        var x = i * distBetweenSpawns;
+                        this.pickupManager.spawnPickup(x, y);
                     }
                     break;
                 }
