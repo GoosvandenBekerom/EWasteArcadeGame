@@ -23,21 +23,30 @@
         }
         
         spawnPickup() {
-            var pickup = "";
+            var tag = "";
+            var type: WasteType;
             var randomNumber = this.game.rnd.integerInRange(1, 3);
 
             if (randomNumber == 1) {
-                pickup = "apple";
+                tag = "apple";
+                type = WasteType.WASTE_1;
             } else if (randomNumber == 2) {
-                pickup = "phone";
+                tag = "phone";
+                type = WasteType.WASTE_2;
             } else {
-                pickup = "can";
+                tag = "can";
+                type = WasteType.WASTE_3;
             }
 
-            var spawnedObject = this.state.add.sprite(this.player.position.x + this.game.width,
-                this.game.rnd.integerInRange(100, this.game.height - 100), pickup, this);
+            // TODO: create some kind of spawngrid
+            var xPos = this.player.position.x + this.game.width;
+            var yPos = this.game.rnd.integerInRange(100, this.game.height - 200);
             
-            this.spawnedPickups.add(spawnedObject);
+            var pickup = new EwasteGameObjects.Pickup(this.game, type, xPos, yPos, tag);
+
+            this.add(pickup);
+            this.state.add.existing(pickup);
+            this.spawnedPickups.add(pickup);
 
             this.despawnOutOfScreen();
             this.spawning = false;
