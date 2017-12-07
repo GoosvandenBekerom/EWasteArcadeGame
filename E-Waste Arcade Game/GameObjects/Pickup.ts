@@ -8,7 +8,6 @@
 
             this.game = game;
             this.wasteType = type;
-            this.scale.setTo(this.scale.x * .5, this.scale.y * .5);
         }
     }
 }
