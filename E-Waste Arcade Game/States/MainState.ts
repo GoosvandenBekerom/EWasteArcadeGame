@@ -7,6 +7,7 @@
         scene: EwasteGameObjects.Scene;
         pickupManager: EwasteGameObjects.PickupManager;
         spawnGrid: EwasteGameObjects.SpawnGrid;
+        obstacleManager: EwasteGameObjects.ObstacleManager;
         canvas: EwasteGameObjects.GUI;
 
         ESC: Phaser.Key;
@@ -20,11 +21,13 @@
             this.player = new EwasteGameObjects.Player(
                 this.game, this.startOffset, this.game.height / 2, widthBounds);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
+            this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this, this.player);
             var spawnLanes = [this.game.height / 5 * 2, this.game.height / 5 * 3, this.game.height / 5 * 4];
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
 
             this.game.add.existing(this.scene);
+            this.game.add.existing(this.obstacleManager);
             this.game.add.existing(this.player);
             this.game.add.existing(this.pickupManager);
             this.game.add.existing(this.canvas);
@@ -38,6 +41,18 @@
             this.music.volume = 0.1;
             this.music.loop = true;
             //this.music.play();
+
+            this.game.physics.startSystem(Phaser.Physics.ARCADE);
+            this.game.physics.arcade.enable(this.player);
+            this.obstacleManager.enableBody = true;
+        }
+
+        update() {
+            this.game.physics.arcade.overlap(this.obstacleManager, this.player, this.Collision, null, this);
+        }
+
+        private Collision(player, obstacle) {
+            console.log("obstacle collision");  
         }
 
         GameOver() {

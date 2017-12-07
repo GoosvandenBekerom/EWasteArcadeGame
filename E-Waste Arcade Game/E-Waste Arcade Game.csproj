@@ -28,6 +28,7 @@
     <Content Include="Graphics\background.png" />
     <Content Include="Graphics\Can.png" />
     <Content Include="Graphics\GameOverScreen.jpg" />
+    <Content Include="Graphics\Obstacle1.png" />
     <Content Include="Graphics\Phone.png" />
     <Content Include="Graphics\Player\run.png" />
     <Content Include="Graphics\TitleScreen.jpg" />
@@ -40,6 +41,8 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="GameObjects\Bin.ts" />
+    <TypeScriptCompile Include="GameObjects\ObstacleManager.ts" />
+    <TypeScriptCompile Include="GameObjects\Obstacle.ts" />
     <TypeScriptCompile Include="GameObjects\GUI.ts" />
     <TypeScriptCompile Include="GameObjects\Pickup.ts" />
     <TypeScriptCompile Include="GameObjects\PickupManager.ts" />
