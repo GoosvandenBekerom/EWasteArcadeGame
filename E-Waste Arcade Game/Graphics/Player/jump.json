@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "Jump (1).png",
+	"frame": {"x":393,"y":130,"w":78,"h":125},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":41,"y":16,"w":78,"h":125},
+	"sourceSize": {"w":150,"h":147}
+},
+{
+	"filename": "Jump (2).png",
+	"frame": {"x":192,"y":1,"w":89,"h":130},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":14,"w":89,"h":130},
+	"sourceSize": {"w":150,"h":147}
+},
+{
+	"filename": "Jump (3).png",
+	"frame": {"x":203,"y":133,"w":93,"h":121},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":14,"w":93,"h":121},
+	"sourceSize": {"w":150,"h":147}
+},
+{
+	"filename": "Jump (4).png",
+	"frame": {"x":298,"y":131,"w":93,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":14,"w":93,"h":120},
+	"sourceSize": {"w":150,"h":147}
+},
+{
+	"filename": "Jump (5).png",
+	"frame": {"x":1,"y":136,"w":95,"h":116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":14,"w":95,"h":116},
+	"sourceSize": {"w":150,"h":147}
+},
+{
+	"filename": "Jump (6).png",
+	"frame": {"x":98,"y":136,"w":103,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":14,"w":103,"h":111},
+	"sourceSize": {"w":150,"h":147}
+},
+{
+	"filename": "Jump (7).png",
+	"frame": {"x":283,"y":1,"w":105,"h":128},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":14,"w":105,"h":128},
+	"sourceSize": {"w":150,"h":147}
+},
+{
+	"filename": "Jump (8).png",
+	"frame": {"x":390,"y":1,"w":104,"h":127},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":14,"w":104,"h":127},
+	"sourceSize": {"w":150,"h":147}
+},
+{
+	"filename": "Jump (9).png",
+	"frame": {"x":1,"y":1,"w":97,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":14,"w":97,"h":133},
+	"sourceSize": {"w":150,"h":147}
+},
+{
+	"filename": "Jump (10).png",
+	"frame": {"x":100,"y":1,"w":90,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":15,"w":90,"h":132},
+	"sourceSize": {"w":150,"h":147}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "jumpsheet.png",
+	"format": "RGBA8888",
+	"size": {"w":495,"h":256},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:90f46efeb123973e93f36ab695427cdf:d9790f05c818790d771407821457b99a:a7bda806aa50b093b9ee8ba80db65eae$"
+}
+}
