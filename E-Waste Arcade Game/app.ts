@@ -24,6 +24,8 @@
             this.game.load.image("bin2", "Graphics/playerBRG.png");
             this.game.load.image("bin3", "Graphics/playerGBR.png");
 
+            this.game.load.image("obstacle1", "Graphics/Obstacle1.png");
+
             // Spritesheets / Animations
             this.game.load.atlasJSONArray("CHAR_RUNNING",
                 "Graphics/Player/run.png", "Graphics/Player/run.json");

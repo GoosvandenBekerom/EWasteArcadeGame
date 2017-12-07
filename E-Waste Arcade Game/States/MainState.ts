@@ -6,6 +6,7 @@
         player: EwasteGameObjects.Player;
         scene: EwasteGameObjects.Scene;
         pickupManager: EwasteGameObjects.PickupManager;
+        obstacleManager: EwasteGameObjects.ObstacleManager;
         canvas: EwasteGameObjects.GUI;
 
         ESC: Phaser.Key;
@@ -19,11 +20,13 @@
             this.player = new EwasteGameObjects.Player(
                 this.game, this.startOffset, this.game.height / 2, widthBounds);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
+            this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this, this.player);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
 
             this.game.add.existing(this.scene);
             this.game.add.existing(this.player);
             this.game.add.existing(this.pickupManager);
+            this.game.add.existing(this.obstacleManager);
             this.game.add.existing(this.canvas);
 
             this.game.world.setBounds(0, 0, widthBounds, this.scene.height);
