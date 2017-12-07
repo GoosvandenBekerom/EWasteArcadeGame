@@ -19,23 +19,26 @@
 
             switch (template) {
                 case SpawnTemplate.Empty: {
+                    console.log("empty template spawned");
                     break;
                 }
                 case SpawnTemplate.Pickups: {
                     for (let i = 1; i < amountOfSpawns + 1; i++) {
                         var y = this.game.rnd.pick(this.gridLanes);
-                        var x = i * distBetweenSpawns;
+                        var x = (i * distBetweenSpawns) + startPosX;
                         this.pickupManager.spawnPickup(x, y);
                     }
                     break;
                 }
                 case SpawnTemplate.Obstacles: {
+                    console.log("obstacles template not implemented yet");
                     for (let i = 0; i < amountOfSpawns; i++) {
 
                     }
                     break;
                 }
                 case SpawnTemplate.PickupObstacles: {
+                    console.log("pickup/obstacles template not implemented yet");
                     for (let i = 0; i < amountOfSpawns; i++) {
 
                     }
