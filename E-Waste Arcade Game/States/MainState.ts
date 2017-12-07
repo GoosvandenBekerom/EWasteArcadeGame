@@ -23,8 +23,8 @@
             this.player = new EwasteGameObjects.Player(this.game, this.startOffset, this.game.height / 2, widthBounds);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
             this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this, this.player);
-            var spawnLanes = [150, 300, 450];
-            this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager);
+            let spawnLanes = [150, 300, 450];
+            this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.obstacleManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
 
             this.game.add.existing(this.scene);
@@ -48,6 +48,8 @@
 
             this.obstacleManager.enableBody = true;
             this.obstacleManager.physicsBodyType = Phaser.Physics.ARCADE;
+
+            this.spawnTriggerPosition = this.game.width;
         }
 
         update() {
@@ -55,11 +57,9 @@
             this.game.debug.body(this.player, 'rgba(255,0,0,0.5)');
 
             if (this.player.x >= this.spawnTriggerPosition) {
-                this.spawnTriggerPosition += this.game.width;
-                this.spawnGrid.generateNext(EwasteGameObjects.SpawnTemplate.Pickups, this.spawnTriggerPosition);
+                this.spawnTriggerPosition = this.player.x + this.game.width;
+                this.spawnGrid.generateNext(this.spawnGrid.getRandomTemplateType(), this.spawnTriggerPosition);
             }
-
-            this.spawnTriggerPosition = this.game.width;
         }
 
         private Collision(player, obstacle) {

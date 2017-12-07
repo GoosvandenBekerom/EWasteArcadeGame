@@ -1,11 +1,13 @@
 ﻿module EwasteGameObjects {
-    export class Obstacle extends Phaser.Sprite {
+    export class Obstacle extends Phaser.TileSprite {
         game: Phaser.Game;
 
-        constructor(game: Phaser.Game, x: number, y: number, obstacleTag: string) {
-            super(game, x, y, obstacleTag);
+        // tODO: consider renaming to Platform
+        constructor(game: Phaser.Game, x: number, y: number, width: number, height: number, obstacleTag: string) {
+            super(game, x, y, width, height, obstacleTag);
 
             this.game = game;
+            this.anchor.set(0, 0);
         }
     }
 }

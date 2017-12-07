@@ -15,22 +15,9 @@
             this.spawning = false;
         }
 
-        update() {
-            if (!this.spawning) {
-                this.spawning = true;
-                this.game.time.events.add(Phaser.Timer.SECOND * 4, this.spawnObstacle, this);
-            }
-        }
-
-        spawnObstacle() {
-            var tag = "obstacle1";
-            var randomNumber = this.game.rnd.integerInRange(1, 3);
-            
-            var xPos = this.player.position.x + this.game.width;
-            var yPos = this.game.rnd.integerInRange(100, this.game.height - 200);
-
-            var obstacle = new EwasteGameObjects.Obstacle(this.game, xPos, yPos, tag);
-            this.game.physics.arcade.enable(obstacle);
+        spawnObstacle(x: number, y: number, width: number) {
+            var height = 38; // height of current obstacle texture
+            var obstacle = new EwasteGameObjects.Obstacle(this.game, x, y, width, height, "obstacle1");
 
             this.add(obstacle);
             this.state.add.existing(obstacle);
