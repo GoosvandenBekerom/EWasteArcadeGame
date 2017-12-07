@@ -9,6 +9,7 @@
         spawnGrid: EwasteGameObjects.SpawnGrid;
         obstacleManager: EwasteGameObjects.ObstacleManager;
         canvas: EwasteGameObjects.GUI;
+        floor: Phaser.Sprite;
 
         spawnTriggerPosition: number;
 
@@ -20,7 +21,9 @@
         create() {
             var widthBounds = this.game.width * this.amountOfBackgroundRepeats;
             this.scene = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds);
-            this.player = new EwasteGameObjects.Player(this.game, this.startOffset, this.game.height / 2, widthBounds);
+            this.floor = new Phaser.Sprite(this.game, 0, 500);
+            this.player = new EwasteGameObjects.Player(
+                this.game, this.startOffset, this.game.height / 2, widthBounds, this.floor);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
             this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this, this.player);
             var spawnLanes = [150, 300, 450];
@@ -32,6 +35,7 @@
             this.game.add.existing(this.pickupManager);
             this.game.add.existing(this.obstacleManager);
             this.game.add.existing(this.canvas);
+            this.game.add.existing(this.floor);
 
             this.game.world.setBounds(0, 0, widthBounds, this.scene.height);
 
