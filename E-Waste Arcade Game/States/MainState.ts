@@ -71,6 +71,7 @@
         }
 
         GameOver() {
+            EWasteUtils.Highscore.addScore(parseInt(this.player.x/10+""));
             this.music.stop();
             this.game.state.start("GameOverState");
         }

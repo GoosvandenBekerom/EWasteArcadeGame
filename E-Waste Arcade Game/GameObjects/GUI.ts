@@ -15,7 +15,7 @@
         {
             if (!this.isDrawn)
             {
-                this.bmpText = new EwasteGameObjects.UIText(this.game, "0", 20, 10);
+                this.bmpText = new EwasteGameObjects.UIText(this.game, "0", 20, 10, 48);
                 this.bmpText.fixedToCamera = true;
                 this.game.add.existing(this.bmpText);
                 this.isDrawn = true;
