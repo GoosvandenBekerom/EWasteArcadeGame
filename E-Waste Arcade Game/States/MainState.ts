@@ -17,7 +17,7 @@
         create() {
             var widthBounds = this.game.width * this.amountOfBackgroundRepeats;
             this.scene = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds);
-            this.floor = new Phaser.Sprite(this.game, 0, 500, "can");
+            this.floor = new Phaser.Sprite(this.game, 0, 500);
             this.player = new EwasteGameObjects.Player(
                 this.game, this.startOffset, this.game.height / 2, widthBounds, this.floor);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);

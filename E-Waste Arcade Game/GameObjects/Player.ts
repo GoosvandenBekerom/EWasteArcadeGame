@@ -58,37 +58,37 @@
 
             this.floor = floor;
             this.game.physics.enable(this.floor, Phaser.Physics.ARCADE);
-            this.floor.scale.x = this.game.width;
-            this.floor.height = 1;
-            this.floor.body.allowGravity = false;
+            this.floor.scale.x = 500;
+            this.floor.height = 80;
+            this.floor.body.immovable = true;
+            this.floor.fixedToCamera = true;
 
             this.startRunning();
         }
 
         update() {
+            // update camera
+            this.game.camera.focusOnXY(this.x + this.horizontalOffset, this.middleOfScreen);
+
+            //Collision
+            this.game.physics.arcade.collide(this, this.floor)
+
             // increase speed
             this.speed += this.speedIncrease;
 
             // move forward
             this.body.velocity.x = this.speed * (60 / this.game.time.elapsedMS);
-            this.floor.x = this.x;
 
             // move up or down
             var move = 0;
-            if (this.joystick.UP.isDown) {
+            if (this.joystick.UP.isDown && this.body.touching.down) {
                 this.body.velocity.y = -600;
                 this.jumpTimer = this.game.time.now + 750;
             }
+
             if (this.joystick.DOWN.isDown) {
                 //TODO: crouch/duck
             }
-
-            if (this.game.physics.arcade.collide(this, this.floor)) {
-                console.log("coll");
-            }
-            
-            // update camera
-            this.game.camera.focusOnXY(this.x + this.horizontalOffset, this.middleOfScreen);
         }
 
         private clampVerticleMove(move: number) {
