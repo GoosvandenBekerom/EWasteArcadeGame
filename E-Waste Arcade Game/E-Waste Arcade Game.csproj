@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="GameObjects\Bin.ts" />
     <TypeScriptCompile Include="GameObjects\GUI.ts" />
     <TypeScriptCompile Include="GameObjects\Pickup.ts" />
     <TypeScriptCompile Include="GameObjects\PickupManager.ts" />

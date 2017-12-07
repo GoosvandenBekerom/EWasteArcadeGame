@@ -20,6 +20,10 @@
             this.game.load.image("can", "Graphics/Can.png");
             this.game.load.image("phone", "Graphics/Phone.png");
 
+            this.game.load.image("bin1", "Graphics/playerRGB.png");
+            this.game.load.image("bin2", "Graphics/playerBRG.png");
+            this.game.load.image("bin3", "Graphics/playerGBR.png");
+
             // Spritesheets / Animations
             this.game.load.atlasJSONArray("CHAR_RUNNING",
                 "Graphics/Player/run.png", "Graphics/Player/run.json");

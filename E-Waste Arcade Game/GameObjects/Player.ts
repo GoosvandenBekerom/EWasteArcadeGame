@@ -5,7 +5,7 @@
     export class Player extends Phaser.Sprite {
         game: Phaser.Game;
         playerState: PlayerState;
-        collectBinState: WasteType;
+        bin: Bin;
         backgroundWidth: number;
 
         // inputs
@@ -25,8 +25,10 @@
 
         constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number) {
             super(game, x, y, "CHAR_RUNNING", 0);
-            
-            this.collectBinState = WasteType.WASTE_1;
+
+            /*this.height *= 0.1;
+            this.width *= 0.1;*/
+
 
             this.game = game;
             this.backgroundWidth = backgroundWidth;
@@ -45,7 +47,9 @@
                 Phaser.Keyboard.Z, Phaser.Keyboard.X
             );
 
-            this.joystick.YELLOW.onDown.add(Player.prototype.changeCollectorBin, this);
+            this.bin = new Bin(this.game, 125 , -120);
+            this.addChild(this.bin);
+            this.joystick.YELLOW.onDown.add(Bin.prototype.changeCollectorBin, this.bin);
 
             this.anchor.set(0.0, 1.0);
             this.startRunning();
@@ -83,29 +87,6 @@
             this.loadTexture("CHAR_RUNNING", 0);
             this.animations.add("running");
             this.animations.play("running", this.animationSpeed, true);
-        }
-
-        private changeCollectorBin()
-        {
-            switch (this.collectBinState) {
-                case WasteType.WASTE_1: {
-                    this.collectBinState = WasteType.WASTE_2;
-                    //TODO SWITCH SPRITE
-                    break;
-                }
-                case WasteType.WASTE_2:   {
-                    this.collectBinState = WasteType.WASTE_3;
-                    //TODO SWITCH SPRITE
-
-                    break;
-                }
-                case WasteType.WASTE_3:   {
-                    this.collectBinState = WasteType.WASTE_1; 
-                    //TODO SWITCH SPRITE
-
-                    break;
-                }
-            } 
         }
     }
 }
