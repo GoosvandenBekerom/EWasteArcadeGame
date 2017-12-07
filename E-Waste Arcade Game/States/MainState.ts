@@ -24,9 +24,9 @@
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
 
             this.game.add.existing(this.scene);
-            this.game.add.existing(this.obstacleManager);
             this.game.add.existing(this.player);
             this.game.add.existing(this.pickupManager);
+            this.game.add.existing(this.obstacleManager);
             this.game.add.existing(this.canvas);
 
             this.game.world.setBounds(0, 0, widthBounds, this.scene.height);
@@ -41,11 +41,15 @@
 
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.game.physics.arcade.enable(this.player);
+
             this.obstacleManager.enableBody = true;
+            this.obstacleManager.physicsBodyType = Phaser.Physics.ARCADE;
         }
 
         update() {
-            this.game.physics.arcade.overlap(this.obstacleManager, this.player, this.Collision, null, this);
+            this.game.physics.arcade.overlap(this.player, this.obstacleManager, this.Collision, null, this);
+
+            this.game.debug.body(this.player, 'rgba(255,0,0,0.5)');
         }
 
         private Collision(player, obstacle) {
