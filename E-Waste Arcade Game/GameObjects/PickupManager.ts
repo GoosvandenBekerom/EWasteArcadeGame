@@ -15,14 +15,7 @@
             this.spawning = false;
         }
         
-        update() {
-            if (!this.spawning) {
-                this.spawning = true;
-                this.game.time.events.add(Phaser.Timer.SECOND * 4, this.spawnPickup, this);
-            }
-        }
-        
-        spawnPickup() {
+        spawnPickup(x: number, y: number) {
             var tag = "";
             var type: WasteType;
             var randomNumber = this.game.rnd.integerInRange(1, 3);
@@ -37,19 +30,15 @@
                 tag = "can";
                 type = WasteType.WASTE_3;
             }
-
-            // TODO: create some kind of spawngrid
-            var xPos = this.player.position.x + this.game.width;
-            var yPos = this.game.rnd.integerInRange(100, this.game.height - 200);
             
-            var pickup = new EwasteGameObjects.Pickup(this.game, type, xPos, yPos, tag);
+            var pickup = new EwasteGameObjects.Pickup(this.game, type, x, y, tag);
+            console.log("spawning at: " + x + " - " + y);
 
             this.add(pickup);
             this.state.add.existing(pickup);
             this.spawnedPickups.add(pickup);
 
             this.despawnOutOfScreen();
-            this.spawning = false;
         }
 
         despawnOutOfScreen() {

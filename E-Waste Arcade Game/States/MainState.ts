@@ -6,8 +6,11 @@
         player: EwasteGameObjects.Player;
         scene: EwasteGameObjects.Scene;
         pickupManager: EwasteGameObjects.PickupManager;
+        spawnGrid: EwasteGameObjects.SpawnGrid;
         obstacleManager: EwasteGameObjects.ObstacleManager;
         canvas: EwasteGameObjects.GUI;
+
+        spawnTriggerPosition: number;
 
         ESC: Phaser.Key;
 
@@ -17,10 +20,11 @@
         create() {
             var widthBounds = this.game.width * this.amountOfBackgroundRepeats;
             this.scene = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds);
-            this.player = new EwasteGameObjects.Player(
-                this.game, this.startOffset, this.game.height / 2, widthBounds);
+            this.player = new EwasteGameObjects.Player(this.game, this.startOffset, this.game.height / 2, widthBounds);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
             this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this, this.player);
+            var spawnLanes = [150, 300, 450];
+            this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
 
             this.game.add.existing(this.scene);
@@ -47,9 +51,15 @@
         }
 
         update() {
-            this.game.physics.arcade.overlap(this.player, this.obstacleManager, this.Collision, null, this);
-
+            this.game.physics.arcade.overlap(this.obstacleManager, this.player, this.Collision, null, this);
             this.game.debug.body(this.player, 'rgba(255,0,0,0.5)');
+
+            if (this.player.x >= this.spawnTriggerPosition) {
+                this.spawnTriggerPosition += this.game.width;
+                this.spawnGrid.generateNext(EwasteGameObjects.SpawnTemplate.Pickups, this.spawnTriggerPosition);
+            }
+
+            this.spawnTriggerPosition = this.game.width;
         }
 
         private Collision(player, obstacle) {
