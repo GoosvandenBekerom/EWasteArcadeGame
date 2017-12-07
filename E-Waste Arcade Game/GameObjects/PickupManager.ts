@@ -15,13 +15,6 @@
             this.spawning = false;
         }
         
-        /*update() {
-            if (!this.spawning) {
-                this.spawning = true;
-                this.game.time.events.add(Phaser.Timer.SECOND * 4, this.spawnPickup, this);
-            }
-        }*/
-        
         spawnPickup(x: number, y: number) {
             var tag = "";
             var type: WasteType;
@@ -46,7 +39,6 @@
             this.spawnedPickups.add(pickup);
 
             this.despawnOutOfScreen();
-            //this.spawning = false;
         }
 
         despawnOutOfScreen() {
