@@ -18,23 +18,25 @@
         update() {
             if (!this.spawning) {
                 this.spawning = true;
-                this.game.time.events.add(Phaser.Timer.SECOND * 4, this.spawnPickup, this);
+                this.game.time.events.add(Phaser.Timer.SECOND * 4, this.spawnObstacle, this);
             }
         }
 
-        spawnPickup() {
+        spawnObstacle() {
             var tag = "obstacle1";
             var randomNumber = this.game.rnd.integerInRange(1, 3);
-
-            // TODO: create some kind of spawngrid
+            
             var xPos = this.player.position.x + this.game.width;
             var yPos = this.game.rnd.integerInRange(100, this.game.height - 200);
 
             var obstacle = new EwasteGameObjects.Obstacle(this.game, xPos, yPos, tag);
+            this.game.physics.arcade.enable(obstacle);
 
             this.add(obstacle);
             this.state.add.existing(obstacle);
-            this.spawnedObstacles.add(obstacle); 
+            this.spawnedObstacles.add(obstacle);
+
+            this.game.world.bringToTop(this.player);
 
             this.despawnOutOfScreen();
             this.spawning = false;
