@@ -17,20 +17,23 @@
 
         // move variables
         verticalMoveOffset: number;
-        speed = 1;
-        speedIncrease = 0.0005;
+        speed = 50;
+        speedIncrease = 0.05;
         animationSpeed = 20;
         topBounds: number;
         botBounds: number;
+        jumpTimer = 0;
+        floor: Phaser.Sprite;
 
-        constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number) {
+        constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number, floor: Phaser.Sprite) {
             super(game, x, y, "CHAR_RUNNING", 0);
-
-            /*this.height *= 0.1;
-            this.width *= 0.1;*/
-
-
             this.game = game;
+            this.game.physics.startSystem(Phaser.Physics.ARCADE);
+            this.game.physics.enable(this, Phaser.Physics.ARCADE);
+            this.body.collideWorldBounds = true;
+            this.body.bounce.y = 0;
+            this.body.gravity.y = 500;
+
             this.backgroundWidth = backgroundWidth;
 
             this.middleOfScreen = this.game.height / 2;
@@ -52,6 +55,13 @@
             this.joystick.YELLOW.onDown.add(Bin.prototype.changeCollectorBin, this.bin);
 
             this.anchor.set(0.0, 1.0);
+
+            this.floor = floor;
+            this.game.physics.enable(this.floor, Phaser.Physics.ARCADE);
+            this.floor.scale.x = this.game.width;
+            this.floor.height = 1;
+            this.floor.body.allowGravity = false;
+
             this.startRunning();
         }
 
@@ -60,17 +70,22 @@
             this.speed += this.speedIncrease;
 
             // move forward
-            this.x += this.speed * (60 / this.game.time.elapsedMS);
-            
+            this.body.velocity.x = this.speed * (60 / this.game.time.elapsedMS);
+            this.floor.x = this.x;
+
             // move up or down
             var move = 0;
             if (this.joystick.UP.isDown) {
-                move -= this.verticalMoveOffset;
+                this.body.velocity.y = -600;
+                this.jumpTimer = this.game.time.now + 750;
             }
             if (this.joystick.DOWN.isDown) {
-                move += this.verticalMoveOffset;
+                //TODO: crouch/duck
             }
-            this.y = this.clampVerticleMove(this.y + move);
+
+            if (this.game.physics.arcade.collide(this, this.floor)) {
+                console.log("coll");
+            }
             
             // update camera
             this.game.camera.focusOnXY(this.x + this.horizontalOffset, this.middleOfScreen);
