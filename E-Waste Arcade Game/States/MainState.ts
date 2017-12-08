@@ -24,13 +24,13 @@
             this.scene = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds);
             this.floor = new Phaser.Sprite(this.game, 0, 500);
             this.player = new EwasteGameObjects.Player(
-                this.game, this.startOffset, this.game.height / 2, widthBounds, this.floor);
+                this.game, this.startOffset, this.game.height / 2, widthBounds, this.floor, this);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
             this.platformManager = new EwasteGameObjects.PlatformManager(this.game, this, this.player);
-            this.scoremanager = new EwasteGameObjects.ScoreManager(this.game);
             let spawnLanes = [150, 300, 450];
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.platformManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
+            this.scoremanager = new EwasteGameObjects.ScoreManager(this.game, this.canvas, this);
 
             this.game.add.existing(this.scene);
             this.game.add.existing(this.player);
@@ -42,7 +42,7 @@
             this.game.world.setBounds(0, 0, widthBounds, this.scene.height);
 
             this.ESC = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
-            this.ESC.onDown.add(EWasteGameStates.MainState.prototype.GameOver, this);
+            this.ESC.onDown.add(EWasteGameStates.MainState.prototype.gameOver, this);
 
             this.music = this.game.add.audio("BackgoundLoop");
             this.music.volume = 0.1;
@@ -71,9 +71,9 @@
             console.log("obstacle collision");  
         }
 
-        GameOver() {
+        gameOver() {
             this.music.stop();
-            EWasteUtils.Highscore.addScore(this.scoremanager.distanceScore);
+            EWasteUtils.Highscore.addScore(this.scoremanager.getDistanceScore());
             this.game.state.start("GameOverState");
         }
     }

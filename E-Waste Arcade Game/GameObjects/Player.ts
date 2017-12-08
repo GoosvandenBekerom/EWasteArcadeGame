@@ -4,12 +4,10 @@
 
     export class Player extends Phaser.Sprite {
         game: Phaser.Game;
+        state: EWasteGameStates.MainState;
         playerState: PlayerState;
         bin: Bin;
         backgroundWidth: number;
-
-        // Score
-        scoreManager: ScoreManager;
 
         // inputs
         joystick: EWasteUtils.JoystickInput;
@@ -30,9 +28,10 @@
         jumpTimer = 0;
         floor: Phaser.Sprite;
 
-        constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number, floor: Phaser.Sprite) {
+        constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number, floor: Phaser.Sprite, state: EWasteGameStates.MainState) {
             super(game, x, y, "CHAR_RUNNING", 0);
             this.game = game;
+            this.state = state;
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.game.physics.enable(this, Phaser.Physics.ARCADE);
             this.body.collideWorldBounds = true;
@@ -40,7 +39,6 @@
             this.body.gravity.y = 500;
 
             this.backgroundWidth = backgroundWidth;
-            this.scoreManager = new ScoreManager(this.game);
 
             this.middleOfScreen = this.game.height / 2;
             this.horizontalOffset = this.game.width / 2 - this.x;
@@ -59,6 +57,9 @@
             this.bin = new Bin(this.game, 125 , -120);
             this.addChild(this.bin);
             this.joystick.YELLOW.onDown.add(Bin.prototype.changeCollectorBin, this.bin);
+            this.joystick.GREEN.onDown.add(() => {
+                this.state.scoremanager.loseLife(); // TODO move this to some oncollision function
+            }, this);
 
             this.anchor.set(0.0, 1.0);
 
@@ -94,17 +95,13 @@
                 this.jumping = true;
             }
 
-            if (this.joystick.DOWN.isDown) {
-                //TODO: crouch/duck
-            }
-
             if (this.body.touching.down && this.jumping && this.y == 500) {
                 this.startRunning();
                 this.jumping = false;
             }
 
             // update score
-            this.scoreManager.distanceScore = this.x;
+            this.state.scoremanager.updateDistance(this.x);
         }
 
         private clampVerticleMove(move: number) {
