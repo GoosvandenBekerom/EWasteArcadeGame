@@ -1,25 +1,28 @@
 ﻿module EwasteGameObjects {
-    export enum SpawnTemplate { Empty, Pickups, Obstacles, PickupObstacles }
+    export enum SpawnTemplate { Empty, Pickups, Platforms, Obstacles, PickupPlatforms, PickupObstacles, PickupPlatformObstacles }
 
     export class SpawnGrid {
         game: Phaser.Game;
         gridLanes: Array<number>; // y-positions for spawns
         pickupManager: PickupManager;
-        obstacleManager: PlatformManager;
+        platformManager: PlatformManager;
 
         constructor(game: Phaser.Game, gridLanes: Array<number>, pickupManager: PickupManager, obstacleManager: PlatformManager) {
             this.game = game;
             this.gridLanes = gridLanes;
             this.pickupManager = pickupManager;
-            this.obstacleManager = obstacleManager;
+            this.platformManager = obstacleManager;
         }
 
         getRandomTemplateType() {
-            switch (this.game.rnd.integerInRange(1, 3)) { // todo make 4
+            switch (this.game.rnd.integerInRange(1, 3)) { // todo make equal to length of enum
                 case 1: return SpawnTemplate.Empty;
                 case 2: return SpawnTemplate.Pickups
-                case 3: return SpawnTemplate.Obstacles;
-                case 4: return SpawnTemplate.PickupObstacles;
+                case 3: return SpawnTemplate.Platforms;
+                case 4: return SpawnTemplate.Obstacles;
+                case 5: return SpawnTemplate.PickupPlatforms;
+                case 6: return SpawnTemplate.PickupObstacles;
+                case 7: return SpawnTemplate.PickupPlatformObstacles;
             }
         }
 
@@ -42,17 +45,26 @@
                     }
                     break;
                 }
-                case SpawnTemplate.Obstacles: {
-                    console.log("obstacle template spawned");
+                case SpawnTemplate.Platforms: {
+                    console.log("platform template spawned");
                     var y = this.gridLanes[1]; // make this more dynamic
-                    this.obstacleManager.spawnPlatform(startPosX, y, this.game.width);
+                    this.platformManager.spawnPlatform(startPosX, y, this.game.width);
+                    break;
+                }
+                case SpawnTemplate.Obstacles: {
+                    console.log("obstacle template not implemented yet");
+                    break;
+                }
+                case SpawnTemplate.PickupPlatforms: {
+                    console.log("pickup/platforms template not implemented yet");
                     break;
                 }
                 case SpawnTemplate.PickupObstacles: {
                     console.log("pickup/obstacles template not implemented yet");
-                    for (let i = 0; i < amountOfSpawns; i++) {
-
-                    }
+                    break;
+                }
+                case SpawnTemplate.PickupPlatformObstacles: {
+                    console.log("pickup/platforms/obstacles template not implemented yet");
                     break;
                 }
             }

@@ -32,7 +32,6 @@
             }
             
             var pickup = new EwasteGameObjects.Pickup(this.game, type, x, y, tag);
-            console.log("spawning at: " + x + " - " + y);
 
             this.add(pickup);
             this.state.add.existing(pickup);

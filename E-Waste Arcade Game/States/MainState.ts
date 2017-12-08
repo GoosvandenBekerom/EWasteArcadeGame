@@ -7,7 +7,8 @@
         scene: EwasteGameObjects.Scene;
         pickupManager: EwasteGameObjects.PickupManager;
         spawnGrid: EwasteGameObjects.SpawnGrid;
-        obstacleManager: EwasteGameObjects.PlatformManager;
+        platformManager: EwasteGameObjects.PlatformManager;
+        scoremanager: EwasteGameObjects.ScoreManager;
         canvas: EwasteGameObjects.GUI;
         floor: Phaser.Sprite;
 
@@ -25,15 +26,16 @@
             this.player = new EwasteGameObjects.Player(
                 this.game, this.startOffset, this.game.height / 2, widthBounds, this.floor);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
-            this.obstacleManager = new EwasteGameObjects.PlatformManager(this.game, this, this.player);
+            this.platformManager = new EwasteGameObjects.PlatformManager(this.game, this, this.player);
+            this.scoremanager = new EwasteGameObjects.ScoreManager(this.game);
             let spawnLanes = [150, 300, 450];
-            this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.obstacleManager);
+            this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.platformManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
 
             this.game.add.existing(this.scene);
             this.game.add.existing(this.player);
             this.game.add.existing(this.pickupManager);
-            this.game.add.existing(this.obstacleManager);
+            this.game.add.existing(this.platformManager);
             this.game.add.existing(this.canvas);
             this.game.add.existing(this.floor);
 
@@ -50,14 +52,14 @@
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.game.physics.arcade.enable(this.player);
 
-            this.obstacleManager.enableBody = true;
-            this.obstacleManager.physicsBodyType = Phaser.Physics.ARCADE;
+            this.platformManager.enableBody = true;
+            this.platformManager.physicsBodyType = Phaser.Physics.ARCADE;
 
             this.spawnTriggerPosition = this.game.width;
         }
 
         update() {
-            this.game.physics.arcade.overlap(this.obstacleManager, this.player, this.Collision, null, this);
+            this.game.physics.arcade.overlap(this.platformManager, this.player, this.Collision, null, this);
 
             if (this.player.x >= this.spawnTriggerPosition) {
                 this.spawnTriggerPosition = this.player.x + this.game.width;
@@ -70,8 +72,8 @@
         }
 
         GameOver() {
-            EWasteUtils.Highscore.addScore(parseInt(this.player.x/10+""));
             this.music.stop();
+            EWasteUtils.Highscore.addScore(this.scoremanager.distanceScore);
             this.game.state.start("GameOverState");
         }
     }

@@ -8,6 +8,9 @@
         bin: Bin;
         backgroundWidth: number;
 
+        // Score
+        scoreManager: ScoreManager;
+
         // inputs
         joystick: EWasteUtils.JoystickInput;
         
@@ -37,6 +40,7 @@
             this.body.gravity.y = 500;
 
             this.backgroundWidth = backgroundWidth;
+            this.scoreManager = new ScoreManager(this.game);
 
             this.middleOfScreen = this.game.height / 2;
             this.horizontalOffset = this.game.width / 2 - this.x;
@@ -98,6 +102,9 @@
                 this.startRunning();
                 this.jumping = false;
             }
+
+            // update score
+            this.scoreManager.distanceScore = this.x;
         }
 
         private clampVerticleMove(move: number) {
