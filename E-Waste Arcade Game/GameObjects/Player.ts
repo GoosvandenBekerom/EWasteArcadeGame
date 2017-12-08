@@ -20,6 +20,8 @@
         speed = 80;
         speedIncrease = 0.005;
         animationSpeed = 20;
+        animationSpeedJumping = 4;
+        jumping: boolean = false;
         topBounds: number;
         botBounds: number;
         jumpTimer = 0;
@@ -84,10 +86,17 @@
             if (this.joystick.UP.isDown && this.body.touching.down) {
                 this.body.velocity.y = -450;
                 this.jumpTimer = this.game.time.now + 750;
+                this.startJumping();
+                this.jumping = true;
             }
 
             if (this.joystick.DOWN.isDown) {
                 //TODO: crouch/duck
+            }
+
+            if (this.body.touching.down && this.jumping && this.y == 500) {
+                this.startRunning();
+                this.jumping = false;
             }
         }
 
@@ -102,6 +111,13 @@
             this.loadTexture("CHAR_RUNNING", 0);
             this.animations.add("running");
             this.animations.play("running", this.animationSpeed, true);
+        }
+
+        private startJumping() {
+            this.playerState = PlayerState.JUMPING;
+            this.loadTexture("CHAR_JUMPING", 0);
+            this.animations.add("jumping");
+            this.animations.play("jumping", this.animationSpeedJumping, true);
         }
     }
 }
