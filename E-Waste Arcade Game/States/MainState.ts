@@ -49,25 +49,14 @@
 
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.game.physics.arcade.enable(this.player);
-
-            this.obstacleManager.enableBody = true;
-            this.obstacleManager.physicsBodyType = Phaser.Physics.ARCADE;
-
             this.spawnTriggerPosition = this.game.width;
         }
 
         update() {
-            this.game.physics.arcade.overlap(this.obstacleManager, this.player, this.Collision, null, this);
-            this.game.debug.body(this.player, 'rgba(255,0,0,0.5)');
-
             if (this.player.x >= this.spawnTriggerPosition) {
                 this.spawnTriggerPosition = this.player.x + this.game.width;
                 this.spawnGrid.generateNext(this.spawnGrid.getRandomTemplateType(), this.spawnTriggerPosition);
             }
-        }
-
-        private Collision(player, obstacle) {
-            console.log("obstacle collision");  
         }
 
         GameOver() {

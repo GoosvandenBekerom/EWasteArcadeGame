@@ -24,6 +24,8 @@
             this.spawnedObstacles.add(obstacle);
 
             this.game.world.bringToTop(this.player);
+            this.game.physics.enable(obstacle, Phaser.Physics.ARCADE);
+            obstacle.body.immovable = true;
 
             this.despawnOutOfScreen();
             this.spawning = false;
@@ -32,11 +34,27 @@
         despawnOutOfScreen() {
             for (var i = 0; i < this.spawnedObstacles.total; i++) {
                 var pulledObj = this.spawnedObstacles.next;
-                if (!pulledObj.inCamera) {
+                if (!pulledObj.inCamera && this.player.x > pulledObj.x) {
+                    console.log("DELETE");
                     pulledObj.destroy();
                     this.spawnedObstacles.remove(pulledObj);
                 }
             }
+        }
+
+        update() {
+            this.forEach(function (child) {
+                this.game.debug.body(child, "rgba (255,0,0,0.8)");
+                this.game.physics.arcade.collide(child, this.player);
+            }, null);
+
+            /*
+            for (let i = 0; i < this.spawnedObstacles.total; i++) {
+                var obstacle = this.spawnedObstacles.next;
+                this.game.debug.body(obstacle, "rgba (255,0,0,0.8)");
+                this.game.physics.arcade.collide(obstacle, this.player);
+            }
+            */
         }
     }
 

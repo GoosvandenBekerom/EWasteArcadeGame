@@ -35,7 +35,7 @@
                 }
                 case SpawnTemplate.Pickups: {
                     console.log("pickups template spawned");
-                    for (let i = 1; i < amountOfSpawns + 1; i++) {
+                    for (let i = 0; i < amountOfSpawns; i++) {
                         var x = (i * distBetweenSpawns) + startPosX;
                         var y = this.game.rnd.pick(this.gridLanes);
                         this.pickupManager.spawnPickup(x, y);

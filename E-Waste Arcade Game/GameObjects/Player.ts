@@ -73,7 +73,8 @@
             this.game.camera.focusOnXY(this.x + this.horizontalOffset, this.middleOfScreen);
 
             //Collision
-            this.game.physics.arcade.collide(this, this.floor)
+            this.game.physics.arcade.collide(this, this.floor);
+            
 
             // increase speed
             this.speed += this.speedIncrease;
@@ -81,23 +82,18 @@
             // move forward
             this.body.velocity.x = this.speed * (60 / this.game.time.elapsedMS);
 
+            if (this.body.touching.down && this.playerState == PlayerState.JUMPING) {
+                this.startRunning();
+            }
+
             // move up or down
             var move = 0;
-            if (this.joystick.UP.isDown && this.body.touching.down) {
-                this.y = 499.99999;
-                this.body.velocity.y = -600;
-                this.jumpTimer = this.game.time.now + 750;
+            if (this.joystick.UP.isDown && this.body.touching.down == PlayerState.RUNNING) {                
                 this.startJumping();
-                this.jumping = true;
             }
 
             if (this.joystick.DOWN.isDown) {
                 //TODO: crouch/duck
-            }
-
-            if (this.body.touching.down && this.jumping && this.y == 500) {
-                this.startRunning();
-                this.jumping = false;
             }
         }
 
@@ -119,6 +115,8 @@
             this.loadTexture("CHAR_JUMPING", 0);
             this.animations.add("jumping");
             this.animations.play("jumping", this.animationSpeedJumping, true);
+            this.body.velocity.y = -600;
+            this.jumpTimer = this.game.time.now + 750;
         }
     }
 }
