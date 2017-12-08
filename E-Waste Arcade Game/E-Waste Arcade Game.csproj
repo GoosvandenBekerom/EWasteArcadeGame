@@ -28,6 +28,7 @@
     <Content Include="Graphics\background.png" />
     <Content Include="Graphics\Can.png" />
     <Content Include="Graphics\GameOverScreen.jpg" />
+    <Content Include="Graphics\heart.png" />
     <Content Include="Graphics\Obstacle1.png" />
     <Content Include="Graphics\Phone.png" />
     <Content Include="Graphics\Player\jump.png" />
@@ -42,6 +43,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="GameObjects\Bin.ts" />
+    <TypeScriptCompile Include="GameObjects\Heart.ts" />
     <TypeScriptCompile Include="GameObjects\PlatformManager.ts" />
     <TypeScriptCompile Include="GameObjects\Platform.ts" />
     <TypeScriptCompile Include="GameObjects\GUI.ts" />
