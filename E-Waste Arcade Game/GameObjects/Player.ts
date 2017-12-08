@@ -109,7 +109,9 @@
         }
 
         pickupCollisionHandler(player, pickup) {
-            console.log(pickup);
+            if (player.bin.collectWasteTypeState == pickup.wasteType) {
+                player.state.scoremanager.addToWasteScore(pickup.wasteType);
+            }
             pickup.kill();
         }
 

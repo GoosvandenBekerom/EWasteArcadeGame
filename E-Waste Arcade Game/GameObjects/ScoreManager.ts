@@ -5,9 +5,9 @@
         ui: GUI;
 
         private distanceScore: number;
-        private waste1Score: number;
-        private waste2Score: number;
-        private waste3Score: number;
+        private waste1Score = 0;
+        private waste2Score = 0;
+        private waste3Score = 0;
 
         private lives: number;
 
@@ -28,10 +28,20 @@
         }
 
         addToWasteScore(type: WasteType, amount: number = 1) {
+            console.log(type);
             switch (type) {
-                case WasteType.WASTE_1: this.waste1Score += amount;
-                case WasteType.WASTE_2: this.waste2Score += amount;
-                case WasteType.WASTE_3: this.waste3Score += amount;
+                case WasteType.WASTE_1: {
+                    this.waste1Score += amount;
+                    break;
+                }
+                case WasteType.WASTE_2: {
+                    this.waste2Score += amount;
+                    break;
+                }
+                case WasteType.WASTE_3: {
+                    this.waste3Score += amount;
+                    break;
+                }
             }
         }
 
