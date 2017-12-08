@@ -24,6 +24,8 @@
             this.game.load.image("bin2", "Graphics/playerBRG.png");
             this.game.load.image("bin3", "Graphics/playerGBR.png");
 
+            this.game.load.image("heart", "Graphics/robothead.png");
+
             this.game.load.image("platform", "Graphics/Obstacle1.png");
 
             // Spritesheets / Animations
