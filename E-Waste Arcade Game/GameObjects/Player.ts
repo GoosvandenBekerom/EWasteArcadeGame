@@ -17,8 +17,8 @@
 
         // move variables
         verticalMoveOffset: number;
-        speed = 50;
-        speedIncrease = 0.05;
+        speed = 80;
+        speedIncrease = 0.005;
         animationSpeed = 20;
         topBounds: number;
         botBounds: number;
@@ -79,10 +79,10 @@
             // move forward
             this.body.velocity.x = this.speed * (60 / this.game.time.elapsedMS);
 
-            // move up or down
+            // jump
             var move = 0;
             if (this.joystick.UP.isDown && this.body.touching.down) {
-                this.body.velocity.y = -600;
+                this.body.velocity.y = -450;
                 this.jumpTimer = this.game.time.now + 750;
             }
 

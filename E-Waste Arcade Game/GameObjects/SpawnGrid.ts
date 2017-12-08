@@ -5,9 +5,9 @@
         game: Phaser.Game;
         gridLanes: Array<number>; // y-positions for spawns
         pickupManager: PickupManager;
-        obstacleManager: ObstacleManager;
+        obstacleManager: PlatformManager;
 
-        constructor(game: Phaser.Game, gridLanes: Array<number>, pickupManager: PickupManager, obstacleManager: ObstacleManager) {
+        constructor(game: Phaser.Game, gridLanes: Array<number>, pickupManager: PickupManager, obstacleManager: PlatformManager) {
             this.game = game;
             this.gridLanes = gridLanes;
             this.pickupManager = pickupManager;
@@ -45,7 +45,7 @@
                 case SpawnTemplate.Obstacles: {
                     console.log("obstacle template spawned");
                     var y = this.gridLanes[1]; // make this more dynamic
-                    this.obstacleManager.spawnObstacle(startPosX, y, this.game.width);
+                    this.obstacleManager.spawnPlatform(startPosX, y, this.game.width);
                     break;
                 }
                 case SpawnTemplate.PickupObstacles: {

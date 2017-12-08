@@ -7,7 +7,7 @@
         scene: EwasteGameObjects.Scene;
         pickupManager: EwasteGameObjects.PickupManager;
         spawnGrid: EwasteGameObjects.SpawnGrid;
-        obstacleManager: EwasteGameObjects.ObstacleManager;
+        obstacleManager: EwasteGameObjects.PlatformManager;
         canvas: EwasteGameObjects.GUI;
         floor: Phaser.Sprite;
 
@@ -25,7 +25,7 @@
             this.player = new EwasteGameObjects.Player(
                 this.game, this.startOffset, this.game.height / 2, widthBounds, this.floor);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
-            this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this, this.player);
+            this.obstacleManager = new EwasteGameObjects.PlatformManager(this.game, this, this.player);
             let spawnLanes = [150, 300, 450];
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.obstacleManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
@@ -58,7 +58,6 @@
 
         update() {
             this.game.physics.arcade.overlap(this.obstacleManager, this.player, this.Collision, null, this);
-            this.game.debug.body(this.player, 'rgba(255,0,0,0.5)');
 
             if (this.player.x >= this.spawnTriggerPosition) {
                 this.spawnTriggerPosition = this.player.x + this.game.width;

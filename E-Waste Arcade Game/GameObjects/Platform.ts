@@ -1,5 +1,5 @@
 ﻿module EwasteGameObjects {
-    export class Obstacle extends Phaser.TileSprite {
+    export class Platform extends Phaser.TileSprite {
         game: Phaser.Game;
 
         // tODO: consider renaming to Platform
