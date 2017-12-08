@@ -15,7 +15,7 @@
         }
 
         getRandomTemplateType() {
-            switch (this.game.rnd.integerInRange(1, 3)) { // todo make equal to length of enum
+            switch (this.game.rnd.integerInRange(2, 3)) { // todo make equal to length of enum
                 case 1: return SpawnTemplate.Empty;
                 case 2: return SpawnTemplate.Pickups
                 case 3: return SpawnTemplate.Platforms;

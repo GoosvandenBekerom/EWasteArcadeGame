@@ -6,13 +6,15 @@
         spawning: boolean;
         spawnedPickups: Phaser.LinkedList;
 
-        constructor(game: Phaser.Game, state: Phaser.State, player: EwasteGameObjects.Player) {
+        constructor(game: Phaser.Game, state: Phaser.State) {
             super(game);
             this.game = game;
             this.state = state;
-            this.player = player;
             this.spawnedPickups = new Phaser.LinkedList;
             this.spawning = false;
+            this.enableBody = true;
+            this.physicsBodyType = Phaser.Physics.ARCADE;
+            this.game.physics.arcade.enable(this);
         }
         
         spawnPickup(x: number, y: number) {
@@ -33,10 +35,13 @@
             
             var pickup = new EwasteGameObjects.Pickup(this.game, type, x, y, tag);
 
-            this.add(pickup);
-            this.state.add.existing(pickup);
-            this.spawnedPickups.add(pickup);
+            /*pickup.checkWorldBounds = true;
+            pickup.events.onOutOfBounds(PickupManager.prototype.despawnPickup, this);*/
 
+            this.add(pickup);
+            this.game.world.bringToTop(this);
+
+            this.spawnedPickups.add(pickup);
             this.despawnOutOfScreen();
         }
 
@@ -48,6 +53,11 @@
                     this.spawnedPickups.remove(pulledObj);
                 }
             }
+        }
+
+        despawnPickup(pickup: EwasteGameObjects.Pickup) {
+            pickup.kill();
+            this.spawnedPickups.remove(pickup);
         }
     }
 

@@ -8,6 +8,13 @@
 
             this.game = game;
             this.anchor.set(0, 0);
+
+            this.game.physics.enable(this, Phaser.Physics.ARCADE);
+            this.body.immovable = true;
+            // Disable all but top collider
+            this.body.checkCollision.left = false;
+            this.body.checkCollision.right = false;
+            this.body.checkCollision.down = false;
         }
     }
 }

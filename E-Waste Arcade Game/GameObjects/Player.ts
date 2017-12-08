@@ -32,7 +32,6 @@
             super(game, x, y, "CHAR_RUNNING", 0);
             this.game = game;
             this.state = state;
-            this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.game.physics.enable(this, Phaser.Physics.ARCADE);
             this.body.collideWorldBounds = true;
             this.body.bounce.y = 0;
@@ -78,7 +77,17 @@
             this.game.camera.focusOnXY(this.x + this.horizontalOffset, this.middleOfScreen);
 
             //Collision
-            this.game.physics.arcade.collide(this, this.floor)
+            this.game.physics.arcade.collide(this, this.floor, () => {
+                if (this.playerState == PlayerState.RUNNING) return;
+                this.startRunning();
+            });
+            this.game.physics.arcade.collide(this, this.state.platformManager, () => {
+                if (this.playerState == PlayerState.RUNNING) return;
+                this.startRunning();
+            });
+
+            // Triggers
+            this.game.physics.arcade.overlap(this, this.state.pickupManager, this.pickupCollisionHandler);
 
             // increase speed
             this.speed += this.speedIncrease;
@@ -88,20 +97,20 @@
 
             // jump
             var move = 0;
-            if (this.joystick.UP.isDown && this.body.touching.down) {
+            if (this.joystick.UP.isDown && !this.jumping) {
                 this.body.velocity.y = -450;
                 this.jumpTimer = this.game.time.now + 750;
                 this.startJumping();
                 this.jumping = true;
             }
 
-            if (this.body.touching.down && this.jumping && this.y == 500) {
-                this.startRunning();
-                this.jumping = false;
-            }
-
             // update score
-            this.state.scoremanager.updateDistance(this.x);
+            this.state.scoremanager.updateDistance(this.x/10);
+        }
+
+        pickupCollisionHandler(player, pickup) {
+            console.log(pickup);
+            pickup.kill();
         }
 
         private clampVerticleMove(move: number) {
@@ -111,6 +120,7 @@
         }
         
         private startRunning() {
+            this.jumping = false;
             this.playerState = PlayerState.RUNNING;
             this.loadTexture("CHAR_RUNNING", 0);
             this.animations.add("running");

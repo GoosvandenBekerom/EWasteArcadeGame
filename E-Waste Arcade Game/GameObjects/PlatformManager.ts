@@ -20,7 +20,8 @@
             var obstacle = new EwasteGameObjects.Platform(this.game, x, y, width, height, "platform");
 
             this.add(obstacle);
-            this.state.add.existing(obstacle);
+            this.game.world.bringToTop(this);
+
             this.spawnedPlatforms.add(obstacle);
 
             this.game.world.bringToTop(this.player);

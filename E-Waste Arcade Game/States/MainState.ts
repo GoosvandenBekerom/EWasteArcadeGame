@@ -23,9 +23,9 @@
             var widthBounds = this.game.width * this.amountOfBackgroundRepeats;
             this.scene = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds);
             this.floor = new Phaser.Sprite(this.game, 0, 500);
+            this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this);
             this.player = new EwasteGameObjects.Player(
-                this.game, this.startOffset, this.game.height / 2, widthBounds, this.floor, this);
-            this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this, this.player);
+                this.game, this.startOffset, 450, widthBounds, this.floor, this);
             this.platformManager = new EwasteGameObjects.PlatformManager(this.game, this, this.player);
             let spawnLanes = [150, 300, 450];
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.platformManager);
@@ -33,8 +33,8 @@
             this.scoremanager = new EwasteGameObjects.ScoreManager(this.game, this.canvas, this);
 
             this.game.add.existing(this.scene);
-            this.game.add.existing(this.player);
             this.game.add.existing(this.pickupManager);
+            this.game.add.existing(this.player);
             this.game.add.existing(this.platformManager);
             this.game.add.existing(this.canvas);
             this.game.add.existing(this.floor);
@@ -50,7 +50,6 @@
             //this.music.play();
 
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
-            this.game.physics.arcade.enable(this.player);
 
             this.platformManager.enableBody = true;
             this.platformManager.physicsBodyType = Phaser.Physics.ARCADE;
@@ -59,16 +58,10 @@
         }
 
         update() {
-            this.game.physics.arcade.overlap(this.platformManager, this.player, this.Collision, null, this);
-
             if (this.player.x >= this.spawnTriggerPosition) {
                 this.spawnTriggerPosition = this.player.x + this.game.width;
                 this.spawnGrid.generateNext(this.spawnGrid.getRandomTemplateType(), this.spawnTriggerPosition);
             }
-        }
-
-        private Collision(player, obstacle) {
-            console.log("obstacle collision");  
         }
 
         gameOver() {
