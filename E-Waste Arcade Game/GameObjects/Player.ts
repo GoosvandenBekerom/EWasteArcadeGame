@@ -21,12 +21,15 @@
         speed = 80;
         speedIncrease = 0.005;
         animationSpeed = 20;
-        animationSpeedJumping = 4;
+        animationSpeedJumping = 5;
         jumping: boolean = false;
+        platformCollisionLastFrame: boolean = false;
         topBounds: number;
         botBounds: number;
         jumpTimer = 0;
         floor: Phaser.Sprite;
+
+        private currentPlatform: Phaser.Sprite;
 
         constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number, floor: Phaser.Sprite, state: EWasteGameStates.MainState) {
             super(game, x, y, "CHAR_RUNNING", 0);
@@ -80,11 +83,31 @@
             this.game.physics.arcade.collide(this, this.floor, () => {
                 if (this.playerState == PlayerState.RUNNING) return;
                 this.startRunning();
+
+                if (this.currentPlatform && this.currentPlatform.body) { this.currentPlatform.body.enable = true; }
             });
-            this.game.physics.arcade.collide(this, this.state.platformManager, () => {
+
+            if (this.game.physics.arcade.collide(this, this.state.platformManager, (player, platform) => {
                 if (this.playerState == PlayerState.RUNNING) return;
                 this.startRunning();
-            });
+                if (this.currentPlatform && this.currentPlatform.body) { this.currentPlatform.body.enable = true; }
+                this.currentPlatform = platform;
+            })) {
+                this.platformCollisionLastFrame = true;
+
+                if (this.joystick.DOWN.isDown) {
+                    // jump off platform
+                    if (this.currentPlatform && this.currentPlatform.body) { this.currentPlatform.body.enable = false; }
+                }
+            } else {
+                if (this.platformCollisionLastFrame) {
+                    this.platformCollisionLastFrame = false;
+
+                    // player is no longer on platform
+                    this.jumping = true;
+                    this.startFalling();
+                }
+            }
 
             // Triggers
             this.game.physics.arcade.overlap(this, this.state.pickupManager, this.pickupCollisionHandler);
@@ -102,6 +125,10 @@
                 this.jumpTimer = this.game.time.now + 750;
                 this.startJumping();
                 this.jumping = true;
+            }
+
+            if (this.joystick.DOWN.isDown && this.jumping) {
+                this.body.velocity.y = 450;
             }
 
             // update score
@@ -134,6 +161,13 @@
             this.loadTexture("CHAR_JUMPING", 0);
             this.animations.add("jumping");
             this.animations.play("jumping", this.animationSpeedJumping, true);
+        }
+
+        private startFalling() {
+            this.playerState = PlayerState.JUMPING;
+            this.loadTexture("CHAR_JUMPING", 5);
+            this.animations.add("falling");
+            this.animations.play("falling", this.animationSpeedJumping, true);
         }
     }
 }

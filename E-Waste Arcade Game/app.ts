@@ -32,7 +32,7 @@
             this.game.load.atlasJSONArray("CHAR_RUNNING",
                 "Graphics/Player/run.png", "Graphics/Player/run.json");
             this.game.load.atlasJSONArray("CHAR_JUMPING",
-                "Graphics/Player/jump.png", "Graphics/player/jump.json");
+                "Graphics/Player/jump.png", "Graphics/Player/jump.json");
 
             // Fonts
             this.game.load.bitmapFont('desyrel', 'Graphics/desyrel.png', 'Graphics/desyrel.xml');
