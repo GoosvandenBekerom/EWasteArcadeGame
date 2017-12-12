@@ -64,6 +64,10 @@
             }
         }
 
+        render() {
+            this.game.debug.body(this.player);
+        }
+
         gameOver() {
             this.soundManager.stopMusic();
             EWasteUtils.Highscore.addScore(this.scoremanager.getDistanceScore());

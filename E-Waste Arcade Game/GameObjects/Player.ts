@@ -66,7 +66,7 @@
                 Phaser.Keyboard.Z, Phaser.Keyboard.X
             );
 
-            this.bin = new Bin(this.game, 125 , -120);
+            this.bin = new Bin(this.game, this, 0 , 0);
             this.addChild(this.bin);
             this.joystick.YELLOW.onDown.add(Bin.prototype.changeCollectorBin, this.bin);
             this.joystick.GREEN.onDown.add(() => {
@@ -81,6 +81,9 @@
             this.floor.height = 80;
             this.floor.body.immovable = true;
             this.floor.fixedToCamera = true;
+
+            //Scale body
+            this.body.setSize(80, 120, 33, 20);
 
             this.startRunning();
         }
@@ -156,7 +159,7 @@
             }
 
             // update score
-            this.state.scoremanager.updateDistance(this.x/10);
+            this.state.scoremanager.updateDistance(this.x / 10);
         }
 
         pickupCollisionHandler(player, pickup) {
