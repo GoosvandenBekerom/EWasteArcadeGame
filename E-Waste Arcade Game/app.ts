@@ -44,6 +44,36 @@
                     "Sounds/BackgroundLoop.ogg",
                     "Sounds/BackgroundLoop.wav"
                 ]);
+            this.game.load.audio("damage",
+                [
+                    "Sounds/Damage.mp3",
+                    "Sounds/Damage.ogg",
+                    "Sounds/Damage.wav"
+                ]);
+            this.game.load.audio("landing",
+                [
+                    "Sounds/LandingSound.mp3",
+                    "Sounds/LandingSound.ogg",
+                    "Sounds/LandingSound.wav"
+                ]);
+            this.game.load.audio("pickupBad",
+                [
+                    "Sounds/PickupBad.mp3",
+                    "Sounds/PickupBad.ogg",
+                    "Sounds/PickupBad.wav"
+                ]);
+            this.game.load.audio("pickupBad",
+                [
+                    "Sounds/PickupGood.mp3",
+                    "Sounds/PickupGood.ogg",
+                    "Sounds/PickupGood.wav"
+                ]);
+            this.game.load.audio("walking",
+                [
+                    "Sounds/Walking.mp3",
+                    "Sounds/Walking.ogg",
+                    "Sounds/Walking.wav"
+                ]);
         }
 
         create() {

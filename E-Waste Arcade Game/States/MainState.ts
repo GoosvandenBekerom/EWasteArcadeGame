@@ -2,7 +2,7 @@
 
     export class MainState extends Phaser.State {
         game: Phaser.Game;
-        music: Phaser.Sound;
+        soundManager: EwasteGameObjects.SoundManager;
         player: EwasteGameObjects.Player;
         scene: EwasteGameObjects.Scene;
         pickupManager: EwasteGameObjects.PickupManager;
@@ -31,6 +31,7 @@
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.platformManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
             this.scoremanager = new EwasteGameObjects.ScoreManager(this.game, this.canvas, this);
+            this.soundManager = new EwasteGameObjects.SoundManager(this.game);
 
             this.game.add.existing(this.scene);
             this.game.add.existing(this.pickupManager);
@@ -43,11 +44,6 @@
 
             this.ESC = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
             this.ESC.onDown.add(EWasteGameStates.MainState.prototype.gameOver, this);
-
-            this.music = this.game.add.audio("BackgoundLoop");
-            this.music.volume = 0.1;
-            this.music.loop = true;
-            //this.music.play();
 
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -65,7 +61,7 @@
         }
 
         gameOver() {
-            this.music.stop();
+            this.soundManager.stopMusic();
             EWasteUtils.Highscore.addScore(this.scoremanager.getDistanceScore());
             this.game.state.start("GameOverState");
         }
