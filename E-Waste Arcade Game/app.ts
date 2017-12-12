@@ -36,7 +36,7 @@
                 "Graphics/Player/jump.png", "Graphics/Player/jump.json");
 
             // Fonts
-            this.game.load.bitmapFont('desyrel', 'Graphics/desyrel.png', 'Graphics/desyrel.xml');
+            this.game.load.bitmapFont('font', 'Graphics/font.png', 'Graphics/font.xml');
 
             // Audio
             this.game.load.audio("BackgoundLoop",
