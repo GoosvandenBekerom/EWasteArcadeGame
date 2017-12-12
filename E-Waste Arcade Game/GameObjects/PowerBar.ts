@@ -26,14 +26,12 @@
             this.powerBarSprite.fixedToCamera = true;
 
             this.timer = this.game.time.create(false);
-            this.timer.loop(1000/*speed*/, this.loserPowerOnTime, this);
+            this.timer.loop(500/*speed*/, this.loserPowerOnTime, this);
             this.timer.start();
         }
 
         loserPowerOnTime()
         {
-            this.currentPower = this.currentPower - 2;
-            this.game.add.tween(this.powerBarSprite).to({ width: this.currentPower }, 500, Phaser.Easing.Linear.None, true);
             if (this.currentPower <= 0)
             {
                 this.state.gameOver();
@@ -49,13 +47,11 @@
 
         getPower()
         {
-            this.currentPower = this.currentPower + 5;
             if (this.currentPower > 200)
             {
                 this.currentPower = 200;
             }
         
-            this.game.add.tween(this.powerBarSprite).to({ width: this.currentPower }, 200, Phaser.Easing.Linear.None, true);
         }
     }
 }
