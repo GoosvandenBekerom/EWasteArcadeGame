@@ -6,7 +6,6 @@
         landing: Phaser.Sound;
         pickupBad: Phaser.Sound;
         pickupGood: Phaser.Sound;
-        walking: Phaser.Sound;
 
         constructor(game: Phaser.Game) {
             super(game);
@@ -17,20 +16,14 @@
             this.landing = this.game.add.audio("landing");
             this.pickupBad = this.game.add.audio("pickupBad");
             this.pickupGood = this.game.add.audio("pickupGood");
-            this.walking = this.game.add.audio("walking");
 
-            this.music.volume = 0.1;
+            this.music.volume = 0.3;
             this.music.loop = true;
             this.music.play();
-
-            this.walking.volume = 0.1;
-            this.walking.loop = true;
-            this.walking.play();
         }
 
         public stopMusic() {
             this.music.stop();
-            this.walking.stop();
         }
 
         public playSound(key) {
@@ -42,8 +35,6 @@
                 this.pickupBad.play();
             } else if (key === "pickupGood") {
                 this.pickupGood.play();
-            } else if (key === "walking") {
-                this.walking.play();
             }
         }
     }

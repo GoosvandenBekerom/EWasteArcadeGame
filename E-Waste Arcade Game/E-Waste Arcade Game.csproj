@@ -41,14 +41,10 @@
     <Content Include="Sounds\BackgroundLoop.wav" />
     <Content Include="Sounds\Damage.mp3" />
     <Content Include="Sounds\Damage.wav" />
-    <Content Include="Sounds\LandingSound.mp3" />
-    <Content Include="Sounds\LandingSound.wav" />
     <Content Include="Sounds\PickupBad.mp3" />
     <Content Include="Sounds\PickupBad.wav" />
     <Content Include="Sounds\PickupGood.mp3" />
     <Content Include="Sounds\PickupGood.wav" />
-    <Content Include="Sounds\Walking.mp3" />
-    <Content Include="Sounds\Walking.wav" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,8 +80,6 @@
     <Content Include="Graphics\Player\run.json" />
     <Content Include="Graphics\Player\jump.json" />
     <Content Include="Sounds\Damage.ogg" />
-    <Content Include="Sounds\Walking.ogg" />
-    <Content Include="Sounds\LandingSound.ogg" />
     <Content Include="Sounds\PickupBad.ogg" />
     <Content Include="Sounds\PickupGood.ogg" />
     <None Include="web.Debug.config">

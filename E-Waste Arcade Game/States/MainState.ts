@@ -28,7 +28,7 @@
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this);
             this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this);
             this.player = new EwasteGameObjects.Player(
-                this.game, this.startOffset, 450, widthBounds, this.floor, this);
+                this.game, this.startOffset, 450, widthBounds, this.floor, this, this.soundManager);
             this.platformManager = new EwasteGameObjects.PlatformManager(this.game, this, this.player);
             let spawnLanes = [150, 300, 450];
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.platformManager, this.obstacleManager);
