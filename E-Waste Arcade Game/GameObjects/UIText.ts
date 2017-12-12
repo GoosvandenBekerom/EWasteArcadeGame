@@ -4,7 +4,7 @@
 
         constructor(game: Phaser.Game, text: string, x: number, y: number, size: number)
         {
-            super(game, x, y, 'desyrel', text, size);
+            super(game, x, y, 'font', text, size);
             this.game = game;
         }
 

@@ -35,13 +35,17 @@
         immunityTime: number = 2;
         tweenImmune: Phaser.Tween;
 
+        //sound
+        soundManager: EwasteGameObjects.SoundManager;
+
         private currentPlatform: Phaser.Sprite;
 
-        constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number, floor: Phaser.Sprite, state: EWasteGameStates.MainState) {
+        constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number, floor: Phaser.Sprite, state: EWasteGameStates.MainState, soundManager: EwasteGameObjects.SoundManager) {
             super(game, x, y, "CHAR_RUNNING", 0);
             this.game = game;
             this.state = state;
             this.game.physics.enable(this, Phaser.Physics.ARCADE);
+            this.soundManager = soundManager;
             this.body.collideWorldBounds = true;
             this.body.bounce.y = 0;
             this.body.gravity.y = 500;
@@ -62,11 +66,11 @@
                 Phaser.Keyboard.Z, Phaser.Keyboard.X
             );
 
-            this.bin = new Bin(this.game, 125 , -120);
+            this.bin = new Bin(this.game, this, 0 , 0);
             this.addChild(this.bin);
             this.joystick.YELLOW.onDown.add(Bin.prototype.changeCollectorBin, this.bin);
             this.joystick.GREEN.onDown.add(() => {
-                this.state.scoremanager.loseLife(); // TODO move this to some oncollision function
+                this.state.scoremanager.loseLife(10); // TODO move this to some oncollision function
             }, this);
 
             this.anchor.set(0.0, 1.0);
@@ -77,6 +81,9 @@
             this.floor.height = 80;
             this.floor.body.immovable = true;
             this.floor.fixedToCamera = true;
+
+            //Scale body
+            this.body.setSize(80, 120, 33, 20);
 
             this.startRunning();
         }
@@ -127,7 +134,8 @@
                     this.immune = false;
                     this.tweenImmune.yoyo(false);
                     this.tweenImmune.stop();
-                    this.tweenImmune.to({ alpha: 1 }, 100, "Linear", true, 0, -1)
+                    //this.tweenImmune.to({ alpha: 1 }, 1, "Linear", true, 0, -1)
+                    this.alpha = 1;
                 }
             }
 
@@ -151,19 +159,25 @@
             }
 
             // update score
-            this.state.scoremanager.updateDistance(this.x/10);
+            this.state.scoremanager.updateDistance(this.x / 10);
         }
 
         pickupCollisionHandler(player, pickup) {
             if (player.bin.collectWasteTypeState == pickup.wasteType) {
                 player.state.scoremanager.addToWasteScore(pickup.wasteType);
+                player.soundManager.playSound("pickupGood");
+            } else {
+                player.state.scoremanager.loseLife(10);
+                player.soundManager.playSound("pickupBad");
+
             }
             pickup.kill();
         }
 
         obstacleCollisionHandler(player, obstacle) {
             if (!player.immune) {
-                player.state.scoremanager.loseLife();
+                player.soundManager.playSound("damage");
+                player.state.scoremanager.loseLife(20);
                 player.immune = true;
                 player.startTimeImmunity = player.game.time.time;
                 player.tweenImmune = player.game.add.tween(player).to({ alpha: 0 }, 100, "Linear", true, 0, -1);

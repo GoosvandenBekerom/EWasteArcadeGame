@@ -14,7 +14,7 @@
         preload() {
             // Graphics
             this.game.load.image("title", "Graphics/TitleScreen.jpg");
-            this.game.load.image("scene", "Graphics/background.png");
+            this.game.load.image("scene", "Graphics/BackgroundCity1.png");
             this.game.load.image("gameover", "Graphics/GameOverScreen.jpg");
             this.game.load.image("apple", "Graphics/Apple.png");
             this.game.load.image("can", "Graphics/Can.png");
@@ -36,7 +36,7 @@
                 "Graphics/Player/jump.png", "Graphics/Player/jump.json");
 
             // Fonts
-            this.game.load.bitmapFont('desyrel', 'Graphics/desyrel.png', 'Graphics/desyrel.xml');
+            this.game.load.bitmapFont('font', 'Graphics/font.png', 'Graphics/font.xml');
 
             // Audio
             this.game.load.audio("BackgoundLoop",
@@ -44,6 +44,24 @@
                     "Sounds/BackgroundLoop.mp3",
                     "Sounds/BackgroundLoop.ogg",
                     "Sounds/BackgroundLoop.wav"
+                ]);
+            this.game.load.audio("damage",
+                [
+                    "Sounds/Damage.mp3",
+                    "Sounds/Damage.ogg",
+                    "Sounds/Damage.wav"
+                ]);
+            this.game.load.audio("pickupBad",
+                [
+                    "Sounds/PickupBad.mp3",
+                    "Sounds/PickupBad.ogg",
+                    "Sounds/PickupBad.wav"
+                ]);
+            this.game.load.audio("pickupGood",
+                [
+                    "Sounds/PickupGood.mp3",
+                    "Sounds/PickupGood.ogg",
+                    "Sounds/PickupGood.wav"
                 ]);
         }
 

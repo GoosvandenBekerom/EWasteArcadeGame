@@ -2,7 +2,7 @@
 
     export class MainState extends Phaser.State {
         game: Phaser.Game;
-        music: Phaser.Sound;
+        soundManager: EwasteGameObjects.SoundManager;
         player: EwasteGameObjects.Player;
         scene: EwasteGameObjects.Scene;
         pickupManager: EwasteGameObjects.PickupManager;
@@ -23,17 +23,19 @@
         create() {
             var widthBounds = this.game.width * this.amountOfBackgroundRepeats;
             this.scene = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds);
+            this.soundManager = new EwasteGameObjects.SoundManager(this.game);
             this.floor = new Phaser.Sprite(this.game, 0, 500);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this);
             this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this);
             this.player = new EwasteGameObjects.Player(
-                this.game, this.startOffset, 450, widthBounds, this.floor, this);
+                this.game, this.startOffset, 450, widthBounds, this.floor, this, this.soundManager);
             this.platformManager = new EwasteGameObjects.PlatformManager(this.game, this, this.player);
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, this.pickupManager, this.platformManager, this.obstacleManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
             this.scoremanager = new EwasteGameObjects.ScoreManager(this.game, this.canvas, this);
 
             this.game.add.existing(this.scene);
+            this.game.add.existing(this.soundManager);
             this.game.add.existing(this.pickupManager);
             this.game.add.existing(this.obstacleManager);
             this.game.add.existing(this.player);
@@ -45,11 +47,6 @@
 
             this.ESC = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
             this.ESC.onDown.add(EWasteGameStates.MainState.prototype.gameOver, this);
-
-            this.music = this.game.add.audio("BackgoundLoop");
-            this.music.volume = 0.1;
-            this.music.loop = true;
-            //this.music.play();
 
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -66,8 +63,12 @@
             }
         }
 
+        render() {
+            //this.game.debug.body(this.player);
+        }
+
         gameOver() {
-            this.music.stop();
+            this.soundManager.stopMusic();
             EWasteUtils.Highscore.addScore(this.scoremanager.getDistanceScore());
             this.game.state.start("GameOverState");
         }
