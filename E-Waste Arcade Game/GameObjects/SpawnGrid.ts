@@ -6,16 +6,18 @@
         gridLanes: Array<number>; // y-positions for spawns
         pickupManager: PickupManager;
         platformManager: PlatformManager;
+        obstacleManager: ObstacleManager;
 
-        constructor(game: Phaser.Game, gridLanes: Array<number>, pickupManager: PickupManager, obstacleManager: PlatformManager) {
+        constructor(game: Phaser.Game, gridLanes: Array<number>, pickupManager: PickupManager, platformManager: PlatformManager, obstacleManager: ObstacleManager) {
             this.game = game;
             this.gridLanes = gridLanes;
             this.pickupManager = pickupManager;
-            this.platformManager = obstacleManager;
+            this.platformManager = platformManager;
+            this.obstacleManager = obstacleManager;
         }
 
         getRandomTemplateType() {
-            switch (this.game.rnd.integerInRange(2, 3)) { // todo make equal to length of enum
+            switch (this.game.rnd.integerInRange(2, 4)) { // todo make equal to length of enum
                 case 1: return SpawnTemplate.Empty;
                 case 2: return SpawnTemplate.Pickups
                 case 3: return SpawnTemplate.Platforms;
@@ -52,7 +54,12 @@
                     break;
                 }
                 case SpawnTemplate.Obstacles: {
-                    console.log("obstacle template not implemented yet");
+                    //console.log("obstacle template not implemented yet");
+                    for (let i = 1; i < amountOfSpawns + 1; i++) {
+                        var x = (i * distBetweenSpawns) + startPosX;
+                        var y = this.game.rnd.pick(this.gridLanes);
+                        this.obstacleManager.spawnObstacle(x, y);
+                    }
                     break;
                 }
                 case SpawnTemplate.PickupPlatforms: {

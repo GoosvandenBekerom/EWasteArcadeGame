@@ -27,6 +27,7 @@
     <Content Include="Graphics\Apple.png" />
     <Content Include="Graphics\background.png" />
     <Content Include="Graphics\Can.png" />
+    <Content Include="Graphics\firehydrant.png" />
     <Content Include="Graphics\GameOverScreen.jpg" />
     <Content Include="Graphics\heart.png" />
     <Content Include="Graphics\Obstacle1.png" />
@@ -44,6 +45,8 @@
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="GameObjects\Bin.ts" />
     <TypeScriptCompile Include="GameObjects\PowerBar.ts" />
+    <TypeScriptCompile Include="GameObjects\Obstacle.ts" />
+    <TypeScriptCompile Include="GameObjects\ObstacleManager.ts" />
     <TypeScriptCompile Include="GameObjects\PlatformManager.ts" />
     <TypeScriptCompile Include="GameObjects\Platform.ts" />
     <TypeScriptCompile Include="GameObjects\GUI.ts" />
