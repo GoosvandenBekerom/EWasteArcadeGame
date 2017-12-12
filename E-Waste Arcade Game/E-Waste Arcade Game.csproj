@@ -43,7 +43,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="GameObjects\Bin.ts" />
-    <TypeScriptCompile Include="GameObjects\Heart.ts" />
+    <TypeScriptCompile Include="GameObjects\PowerBar.ts" />
     <TypeScriptCompile Include="GameObjects\PlatformManager.ts" />
     <TypeScriptCompile Include="GameObjects\Platform.ts" />
     <TypeScriptCompile Include="GameObjects\GUI.ts" />

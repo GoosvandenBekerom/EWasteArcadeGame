@@ -139,6 +139,9 @@
             if (player.bin.collectWasteTypeState == pickup.wasteType) {
                 player.state.scoremanager.addToWasteScore(pickup.wasteType);
             }
+            else {
+                player.state.scoremanager.loseLife();
+            }
             pickup.kill();
         }
 
