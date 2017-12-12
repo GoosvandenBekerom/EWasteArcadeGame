@@ -26,12 +26,15 @@
     <Content Include="app.css" />
     <Content Include="Graphics\Apple.png" />
     <Content Include="Graphics\background.png" />
+    <Content Include="Graphics\BackgroundCity1.png" />
+    <Content Include="Graphics\Box.png" />
     <Content Include="Graphics\Can.png" />
     <Content Include="Graphics\firehydrant.png" />
     <Content Include="Graphics\GameOverScreen.jpg" />
     <Content Include="Graphics\heart.png" />
     <Content Include="Graphics\Obstacle1.png" />
     <Content Include="Graphics\Phone.png" />
+    <Content Include="Graphics\PlasticBottle.png" />
     <Content Include="Graphics\Player\jump.png" />
     <Content Include="Graphics\Player\run.png" />
     <Content Include="Graphics\TitleScreen.jpg" />

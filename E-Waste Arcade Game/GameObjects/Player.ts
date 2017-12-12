@@ -70,7 +70,7 @@
             this.addChild(this.bin);
             this.joystick.YELLOW.onDown.add(Bin.prototype.changeCollectorBin, this.bin);
             this.joystick.GREEN.onDown.add(() => {
-                this.state.scoremanager.loseLife(); // TODO move this to some oncollision function
+                this.state.scoremanager.loseLife(10); // TODO move this to some oncollision function
             }, this);
 
             this.anchor.set(0.0, 1.0);
@@ -167,7 +167,7 @@
                 player.state.scoremanager.addToWasteScore(pickup.wasteType);
                 player.soundManager.playSound("pickupGood");
             } else {
-                player.state.scoremanager.loseLife();
+                player.state.scoremanager.loseLife(10);
                 player.soundManager.playSound("pickupBad");
 
             }
@@ -177,7 +177,7 @@
         obstacleCollisionHandler(player, obstacle) {
             if (!player.immune) {
                 player.soundManager.playSound("damage");
-                player.state.scoremanager.loseLife();
+                player.state.scoremanager.loseLife(20);
                 player.immune = true;
                 player.startTimeImmunity = player.game.time.time;
                 player.tweenImmune = player.game.add.tween(player).to({ alpha: 0 }, 100, "Linear", true, 0, -1);

@@ -26,36 +26,41 @@
             this.powerBarSprite.fixedToCamera = true;
 
             this.timer = this.game.time.create(false);
-            this.timer.loop(1000/*speed*/, this.loserPowerOnTime, this);
+            this.timer.loop(500/*speed*/, this.loserPowerOnTime, this);
             this.timer.start();
         }
 
         loserPowerOnTime()
         {
-            this.currentPower = this.currentPower - 2;
-            this.game.add.tween(this.powerBarSprite).to({ width: this.currentPower }, 500, Phaser.Easing.Linear.None, true);
+            this.currentPower = this.currentPower - 1;
+            this.powerBarSprite.width = this.currentPower;
+            this.checkGameOver();
+        }
+
+        losePower(amountOfPower: number)
+        {
+            this.currentPower = this.currentPower - amountOfPower;
+            this.checkGameOver();
+            this.game.add.tween(this.powerBarSprite).to({ width: this.currentPower }, amountOfPower * 10 , Phaser.Easing.Linear.None, true);
+        }
+
+        private checkGameOver()
+        {
             if (this.currentPower <= 0)
             {
                 this.state.gameOver();
             }
         }
 
-        losePower(): number
-        {
-            this.currentPower = this.currentPower - 20;
-            this.game.add.tween(this.powerBarSprite).to({ width: this.currentPower }, 200, Phaser.Easing.Linear.None, true);
-            return this.currentPower;
-        }
-
         getPower()
         {
-            this.currentPower = this.currentPower + 5;
+            this.currentPower = this.currentPower + 10;
             if (this.currentPower > 200)
             {
                 this.currentPower = 200;
             }
         
-            this.game.add.tween(this.powerBarSprite).to({ width: this.currentPower }, 200, Phaser.Easing.Linear.None, true);
+            this.game.add.tween(this.powerBarSprite).to({ width: this.currentPower }, 100, Phaser.Easing.Linear.None, true);
         }
     }
 }

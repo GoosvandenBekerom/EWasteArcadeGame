@@ -17,8 +17,6 @@
         private waste2PickUpPoints = 75;
         private waste3PickUpPoints = 75;
 
-        private lives: number;
-
         constructor(game: Phaser.Game, ui: GUI, state: EWasteGameStates.MainState) {
             this.game = game;
             this.state = state;
@@ -36,7 +34,7 @@
 
         addToWasteScore(type: WasteType, amount: number = 1) {
             console.log(type);
-            this.ui.PowerBarGetPower();
+            this.ui.powerBar.getPower();
             switch (type) {
                 case WasteType.WASTE_1: {
                     this.waste1Amount += amount;
@@ -57,11 +55,8 @@
             this.ui.updateScore(this.waste1Score + this.waste2Score + this.waste3Score);
         }
 
-        loseLife() {
-            if (this.ui.PowerBarlosePower()) {
-                this.state.gameOver();
-            }
-            return this.lives;
+        loseLife(amountOfPower: number) {
+            this.ui.powerBar.losePower(amountOfPower);
         }
     }
 }
