@@ -3,6 +3,7 @@
         game: Phaser.Game;
         state: EWasteGameStates.MainState;
         ui: GUI;
+        soundManager: EwasteGameObjects.SoundManager;
 
         private distanceScore: number;
         private waste1Score = 0;
@@ -11,10 +12,11 @@
 
         private lives: number;
 
-        constructor(game: Phaser.Game, ui: GUI, state: EWasteGameStates.MainState) {
+        constructor(game: Phaser.Game, ui: GUI, state: EWasteGameStates.MainState, soundManager: EwasteGameObjects.SoundManager) {
             this.game = game;
             this.state = state;
-            this.ui = ui;
+            this.ui = ui
+            this.soundManager = soundManager;
             this.lives = 3;
         }
 
@@ -30,15 +32,21 @@
         addToWasteScore(type: WasteType, amount: number = 1) {
             console.log(type);
             switch (type) {
+                //TODO: Determine if the picked up waste was the right one
+                //If right play pickupGood if not play pickupBad
+
                 case WasteType.WASTE_1: {
+                this.soundManager.playSound("pickupGood");
                     this.waste1Score += amount;
                     break;
                 }
                 case WasteType.WASTE_2: {
+                    this.soundManager.playSound("pickupGood");
                     this.waste2Score += amount;
                     break;
                 }
                 case WasteType.WASTE_3: {
+                    this.soundManager.playSound("pickupGood");
                     this.waste3Score += amount;
                     break;
                 }

@@ -22,10 +22,15 @@
             this.music.volume = 0.1;
             this.music.loop = true;
             this.music.play();
+
+            this.walking.volume = 0.1;
+            this.walking.loop = true;
+            this.walking.play();
         }
 
         public stopMusic() {
             this.music.stop();
+            this.walking.stop();
         }
 
         public playSound(key) {

@@ -23,6 +23,7 @@
         create() {
             var widthBounds = this.game.width * this.amountOfBackgroundRepeats;
             this.scene = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds);
+            this.soundManager = new EwasteGameObjects.SoundManager(this.game);
             this.floor = new Phaser.Sprite(this.game, 0, 500);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this);
             this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this);
@@ -32,10 +33,10 @@
             let spawnLanes = [150, 300, 450];
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.platformManager, this.obstacleManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
-            this.scoremanager = new EwasteGameObjects.ScoreManager(this.game, this.canvas, this);
-            this.soundManager = new EwasteGameObjects.SoundManager(this.game);
+            this.scoremanager = new EwasteGameObjects.ScoreManager(this.game, this.canvas, this, this.soundManager);
 
             this.game.add.existing(this.scene);
+            this.game.add.existing(this.soundManager);
             this.game.add.existing(this.pickupManager);
             this.game.add.existing(this.obstacleManager);
             this.game.add.existing(this.player);
