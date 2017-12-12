@@ -50,7 +50,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="GameObjects\Bin.ts" />
-    <TypeScriptCompile Include="GameObjects\Heart.ts" />
+    <TypeScriptCompile Include="GameObjects\PowerBar.ts" />
     <TypeScriptCompile Include="GameObjects\Obstacle.ts" />
     <TypeScriptCompile Include="GameObjects\ObstacleManager.ts" />
     <TypeScriptCompile Include="GameObjects\PlatformManager.ts" />

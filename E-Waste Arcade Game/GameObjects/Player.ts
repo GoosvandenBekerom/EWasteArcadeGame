@@ -164,13 +164,16 @@
                 player.state.scoremanager.addToWasteScore(pickup.wasteType);
                 player.soundManager.playSound("pickupGood");
             } else {
+                player.state.scoremanager.loseLife();
                 player.soundManager.playSound("pickupBad");
+
             }
             pickup.kill();
         }
 
         obstacleCollisionHandler(player, obstacle) {
             if (!player.immune) {
+                player.soundManager.playSound("damage");
                 player.state.scoremanager.loseLife();
                 player.immune = true;
                 player.startTimeImmunity = player.game.time.time;
