@@ -22,7 +22,7 @@
         constructor(game: Phaser.Game, ui: GUI, state: EWasteGameStates.MainState) {
             this.game = game;
             this.state = state;
-            this.ui = ui;
+            this.ui = ui
         }
 
         updateDistance(distance: number) {

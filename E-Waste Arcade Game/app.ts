@@ -45,6 +45,24 @@
                     "Sounds/BackgroundLoop.ogg",
                     "Sounds/BackgroundLoop.wav"
                 ]);
+            this.game.load.audio("damage",
+                [
+                    "Sounds/Damage.mp3",
+                    "Sounds/Damage.ogg",
+                    "Sounds/Damage.wav"
+                ]);
+            this.game.load.audio("pickupBad",
+                [
+                    "Sounds/PickupBad.mp3",
+                    "Sounds/PickupBad.ogg",
+                    "Sounds/PickupBad.wav"
+                ]);
+            this.game.load.audio("pickupGood",
+                [
+                    "Sounds/PickupGood.mp3",
+                    "Sounds/PickupGood.ogg",
+                    "Sounds/PickupGood.wav"
+                ]);
         }
 
         create() {

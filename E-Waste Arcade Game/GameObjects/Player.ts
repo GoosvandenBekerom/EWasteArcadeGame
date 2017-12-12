@@ -35,13 +35,17 @@
         immunityTime: number = 2;
         tweenImmune: Phaser.Tween;
 
+        //sound
+        soundManager: EwasteGameObjects.SoundManager;
+
         private currentPlatform: Phaser.Sprite;
 
-        constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number, floor: Phaser.Sprite, state: EWasteGameStates.MainState) {
+        constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number, floor: Phaser.Sprite, state: EWasteGameStates.MainState, soundManager: EwasteGameObjects.SoundManager) {
             super(game, x, y, "CHAR_RUNNING", 0);
             this.game = game;
             this.state = state;
             this.game.physics.enable(this, Phaser.Physics.ARCADE);
+            this.soundManager = soundManager;
             this.body.collideWorldBounds = true;
             this.body.bounce.y = 0;
             this.body.gravity.y = 500;
@@ -158,15 +162,18 @@
         pickupCollisionHandler(player, pickup) {
             if (player.bin.collectWasteTypeState == pickup.wasteType) {
                 player.state.scoremanager.addToWasteScore(pickup.wasteType);
-            }
-            else {
+                player.soundManager.playSound("pickupGood");
+            } else {
                 player.state.scoremanager.loseLife();
+                player.soundManager.playSound("pickupBad");
+
             }
             pickup.kill();
         }
 
         obstacleCollisionHandler(player, obstacle) {
             if (!player.immune) {
+                player.soundManager.playSound("damage");
                 player.state.scoremanager.loseLife();
                 player.immune = true;
                 player.startTimeImmunity = player.game.time.time;
