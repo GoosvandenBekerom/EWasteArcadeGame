@@ -29,6 +29,12 @@
         jumpTimer = 0;
         floor: Phaser.Sprite;
 
+        //variables for obstacle collision
+        immune: boolean = false;
+        startTimeImmunity: number;
+        immunityTime: number = 2;
+        tweenImmune: Phaser.Tween;
+
         private currentPlatform: Phaser.Sprite;
 
         constructor(game: Phaser.Game, x: number, y: number, backgroundWidth: number, floor: Phaser.Sprite, state: EWasteGameStates.MainState) {
@@ -111,6 +117,19 @@
 
             // Triggers
             this.game.physics.arcade.overlap(this, this.state.pickupManager, this.pickupCollisionHandler);
+            this.game.physics.arcade.overlap(this, this.state.obstacleManager, this.obstacleCollisionHandler);
+
+            //immunity check
+            if (this.immune) {
+                this.tweenImmune.yoyo(true, 0);
+
+                if (this.game.time.elapsedSecondsSince(this.startTimeImmunity) >= this.immunityTime) {
+                    this.immune = false;
+                    this.tweenImmune.yoyo(false);
+                    this.tweenImmune.stop();
+                    this.tweenImmune.to({ alpha: 1 }, 100, "Linear", true, 0, -1)
+                }
+            }
 
             // increase speed
             this.speed += this.speedIncrease;
@@ -140,6 +159,15 @@
                 player.state.scoremanager.addToWasteScore(pickup.wasteType);
             }
             pickup.kill();
+        }
+
+        obstacleCollisionHandler(player, obstacle) {
+            if (!player.immune) {
+                player.state.scoremanager.loseLife();
+                player.immune = true;
+                player.startTimeImmunity = player.game.time.time;
+                player.tweenImmune = player.game.add.tween(player).to({ alpha: 0 }, 100, "Linear", true, 0, -1);
+            }
         }
 
         private clampVerticleMove(move: number) {

@@ -6,6 +6,7 @@
         player: EwasteGameObjects.Player;
         scene: EwasteGameObjects.Scene;
         pickupManager: EwasteGameObjects.PickupManager;
+        obstacleManager: EwasteGameObjects.ObstacleManager;
         spawnGrid: EwasteGameObjects.SpawnGrid;
         platformManager: EwasteGameObjects.PlatformManager;
         scoremanager: EwasteGameObjects.ScoreManager;
@@ -24,16 +25,18 @@
             this.scene = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds);
             this.floor = new Phaser.Sprite(this.game, 0, 500);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this);
+            this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this);
             this.player = new EwasteGameObjects.Player(
                 this.game, this.startOffset, 450, widthBounds, this.floor, this);
             this.platformManager = new EwasteGameObjects.PlatformManager(this.game, this, this.player);
             let spawnLanes = [150, 300, 450];
-            this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.platformManager);
+            this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.platformManager, this.obstacleManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
             this.scoremanager = new EwasteGameObjects.ScoreManager(this.game, this.canvas, this);
 
             this.game.add.existing(this.scene);
             this.game.add.existing(this.pickupManager);
+            this.game.add.existing(this.obstacleManager);
             this.game.add.existing(this.player);
             this.game.add.existing(this.platformManager);
             this.game.add.existing(this.canvas);
