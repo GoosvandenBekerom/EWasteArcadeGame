@@ -10,9 +10,9 @@
                 let scoreIntArray = this.getSortedScore(scoreStringArray, score);
                 let loopAmount = scoreIntArray.length;
 
-                if (loopAmount > 10)
+                if (loopAmount > 5)
                 {
-                    loopAmount = 10;
+                    loopAmount = 5;
                 }
 
                 newScore = scoreIntArray[0].toString()

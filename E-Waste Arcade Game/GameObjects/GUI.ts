@@ -24,22 +24,11 @@
                 this.powerBar = new EwasteGameObjects.PowerBar(this.game, 20, 80, this.player.state);
                 this.isDrawn = true;
             }
-
-
         }
 
         updateScore(score: number)
         {
             this.bmpText.updateUIText(score.toString());
-        }
-
-        PowerBarGetPower() {
-            this.powerBar.getPower();
-        }
-
-        PowerBarlosePower(): boolean
-        {
-            return this.powerBar.losePower() <= 0;
         }
     }
 }
