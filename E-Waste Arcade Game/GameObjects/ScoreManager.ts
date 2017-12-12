@@ -15,7 +15,6 @@
             this.game = game;
             this.state = state;
             this.ui = ui;
-            this.lives = 3;
         }
 
         updateDistance(distance: number) {
@@ -29,6 +28,7 @@
 
         addToWasteScore(type: WasteType, amount: number = 1) {
             console.log(type);
+            this.ui.PowerBarGetPower();
             switch (type) {
                 case WasteType.WASTE_1: {
                     this.waste1Score += amount;
@@ -45,10 +45,8 @@
             }
         }
 
-        loseLife(): number {
-            this.lives--;
-            this.ui.updateLives(this.lives);
-            if (this.lives <= 0) {
+        loseLife() {
+            if (this.ui.PowerBarlosePower()) {
                 this.state.gameOver();
             }
             return this.lives;
