@@ -14,7 +14,7 @@
         preload() {
             // Graphics
             this.game.load.image("title", "Graphics/TitleScreen.jpg");
-            this.game.load.image("scene", "Graphics/background.png");
+            this.game.load.image("scene", "Graphics/BackgroundCity1.png");
             this.game.load.image("gameover", "Graphics/GameOverScreen.jpg");
             this.game.load.image("apple", "Graphics/Apple.png");
             this.game.load.image("can", "Graphics/Can.png");

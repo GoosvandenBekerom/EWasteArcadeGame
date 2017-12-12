@@ -26,6 +26,7 @@
     <Content Include="app.css" />
     <Content Include="Graphics\Apple.png" />
     <Content Include="Graphics\background.png" />
+    <Content Include="Graphics\BackgroundCity1.png" />
     <Content Include="Graphics\Can.png" />
     <Content Include="Graphics\firehydrant.png" />
     <Content Include="Graphics\GameOverScreen.jpg" />
