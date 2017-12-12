@@ -127,7 +127,8 @@
                     this.immune = false;
                     this.tweenImmune.yoyo(false);
                     this.tweenImmune.stop();
-                    this.tweenImmune.to({ alpha: 1 }, 100, "Linear", true, 0, -1)
+                    //this.tweenImmune.to({ alpha: 1 }, 1, "Linear", true, 0, -1)
+                    this.alpha = 1;
                 }
             }
 
