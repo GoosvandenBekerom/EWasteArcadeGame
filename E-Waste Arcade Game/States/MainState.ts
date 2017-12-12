@@ -65,7 +65,7 @@
         }
 
         render() {
-            this.game.debug.body(this.player);
+            //this.game.debug.body(this.player);
         }
 
         gameOver() {
