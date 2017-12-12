@@ -17,23 +17,24 @@
             this.game.physics.arcade.enable(this);
         }
         
-        spawnPickup(x: number, y: number) {
-            var tag = "";
-            var type: WasteType;
-            var randomNumber = this.game.rnd.integerInRange(1, 3);
-
-            if (randomNumber == 1) {
-                tag = "apple";
-                type = WasteType.WASTE_1;
-            } else if (randomNumber == 2) {
-                tag = "phone";
-                type = WasteType.WASTE_2;
-            } else {
-                tag = "can";
-                type = WasteType.WASTE_3;
+        spawnPickup(x: number, y: number, type: WasteType) {
+            let tag = "";
+            switch (type) {
+                case WasteType.WASTE_1: {
+                    tag = "apple";
+                    break;
+                }
+                case WasteType.WASTE_2: {
+                    tag = "phone";
+                    break;
+                }
+                case WasteType.WASTE_3: {
+                    tag = "can";
+                    break;
+                }
             }
             
-            var pickup = new EwasteGameObjects.Pickup(this.game, type, x, y, tag);
+            let pickup = new EwasteGameObjects.Pickup(this.game, type, x, y, tag);
 
             /*pickup.checkWorldBounds = true;
             pickup.events.onOutOfBounds(PickupManager.prototype.despawnPickup, this);*/
@@ -46,8 +47,8 @@
         }
 
         despawnOutOfScreen() {
-            for (var i = 0; i < this.spawnedPickups.total; i++) {
-                var pulledObj = this.spawnedPickups.next;
+            for (let i = 0; i < this.spawnedPickups.total; i++) {
+                let pulledObj = this.spawnedPickups.next;
                 if (!pulledObj.inCamera) {
                     pulledObj.destroy();
                     this.spawnedPickups.remove(pulledObj);

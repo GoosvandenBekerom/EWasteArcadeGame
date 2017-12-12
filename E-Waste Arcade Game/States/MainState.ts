@@ -29,8 +29,7 @@
             this.player = new EwasteGameObjects.Player(
                 this.game, this.startOffset, 450, widthBounds, this.floor, this);
             this.platformManager = new EwasteGameObjects.PlatformManager(this.game, this, this.player);
-            let spawnLanes = [150, 300, 450];
-            this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, spawnLanes, this.pickupManager, this.platformManager, this.obstacleManager);
+            this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, this.pickupManager, this.platformManager, this.obstacleManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
             this.scoremanager = new EwasteGameObjects.ScoreManager(this.game, this.canvas, this);
 
