@@ -3,8 +3,8 @@
         game: Phaser.Game;
         nextFrame: Phaser.Sprite;
 
-        constructor(game: Phaser.Game, x: number, y: number, widthBounds: number) {
-            super(game, x, y, widthBounds, game.height,"scene", 0);
+        constructor(game: Phaser.Game, x: number, y: number, widthBounds: number, key: string = "scene") {
+            super(game, x, y, widthBounds, game.height, key, 0);
         }
     }
 }

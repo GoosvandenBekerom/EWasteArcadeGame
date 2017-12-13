@@ -21,15 +21,15 @@
             let tag = "";
             switch (type) {
                 case WasteType.WASTE_1: {
-                    tag = "apple";
+                    tag = "waste1";
                     break;
                 }
                 case WasteType.WASTE_2: {
-                    tag = "phone";
+                    tag = "waste2";
                     break;
                 }
                 case WasteType.WASTE_3: {
-                    tag = "can";
+                    tag = "waste3";
                     break;
                 }
             }

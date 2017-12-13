@@ -29,9 +29,9 @@
     <Content Include="Graphics\BackgroundCity1.png" />
     <Content Include="Graphics\Box.png" />
     <Content Include="Graphics\Can.png" />
+    <Content Include="Graphics\CityGround.png" />
     <Content Include="Graphics\firehydrant.png" />
     <Content Include="Graphics\GameOverScreen.jpg" />
-    <Content Include="Graphics\heart.png" />
     <Content Include="Graphics\Obstacle1.png" />
     <Content Include="Graphics\Phone.png" />
     <Content Include="Graphics\PlasticBottle.png" />

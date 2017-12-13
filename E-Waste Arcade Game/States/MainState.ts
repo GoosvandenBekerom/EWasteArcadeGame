@@ -5,6 +5,7 @@
         soundManager: EwasteGameObjects.SoundManager;
         player: EwasteGameObjects.Player;
         scene: EwasteGameObjects.Scene;
+        sceneFloor: EwasteGameObjects.Scene;
         pickupManager: EwasteGameObjects.PickupManager;
         obstacleManager: EwasteGameObjects.ObstacleManager;
         spawnGrid: EwasteGameObjects.SpawnGrid;
@@ -23,6 +24,7 @@
         create() {
             var widthBounds = this.game.width * this.amountOfBackgroundRepeats;
             this.scene = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds);
+            this.sceneFloor = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds, "sceneFloor");
             this.soundManager = new EwasteGameObjects.SoundManager(this.game);
             this.floor = new Phaser.Sprite(this.game, 0, 500);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this);
@@ -35,6 +37,7 @@
             this.scoremanager = new EwasteGameObjects.ScoreManager(this.game, this.canvas, this);
 
             this.game.add.existing(this.scene);
+            this.game.add.existing(this.sceneFloor);
             this.game.add.existing(this.soundManager);
             this.game.add.existing(this.pickupManager);
             this.game.add.existing(this.obstacleManager);
@@ -61,6 +64,9 @@
                 this.spawnTriggerPosition = this.player.x + this.game.width;
                 this.spawnGrid.generateNext(this.spawnGrid.getRandomTemplateType(), this.spawnTriggerPosition);
             }
+
+            // Parallax
+            this.scene.position.x += this.player.speed / 200;
         }
 
         render() {

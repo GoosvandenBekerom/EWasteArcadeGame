@@ -14,11 +14,12 @@
         preload() {
             // Graphics
             this.game.load.image("title", "Graphics/TitleScreen.jpg");
-            this.game.load.image("scene", "Graphics/BackgroundCity1.png");
+            this.game.load.image("scene", "Graphics/CitySkyline.png");
+            this.game.load.image("sceneFloor", "Graphics/CityGround.png");
             this.game.load.image("gameover", "Graphics/GameOverScreen.jpg");
-            this.game.load.image("apple", "Graphics/Apple.png");
-            this.game.load.image("can", "Graphics/Can.png");
-            this.game.load.image("phone", "Graphics/Phone.png");
+            this.game.load.image("waste1", "Graphics/box.png");
+            this.game.load.image("waste2", "Graphics/laptop.png");
+            this.game.load.image("waste3", "Graphics/PlasticBottle.png");
 
             this.game.load.image("bin1", "Graphics/playerRGB.png");
             this.game.load.image("bin2", "Graphics/playerBRG.png");
