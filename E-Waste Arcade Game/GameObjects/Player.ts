@@ -147,14 +147,14 @@
             // jump
             var move = 0;
             if (this.joystick.UP.isDown && !this.jumping) {
-                this.body.velocity.y = -450;
+                this.body.velocity.y = -420;
                 this.jumpTimer = this.game.time.now + 750;
                 this.startJumping();
                 this.jumping = true;
             }
 
             if (this.joystick.DOWN.isDown && this.jumping) {
-                this.body.velocity.y = 450;
+                this.body.velocity.y = 500;
             }
 
             // update score
