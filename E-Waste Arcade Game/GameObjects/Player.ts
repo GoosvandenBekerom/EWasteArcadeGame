@@ -69,9 +69,6 @@
             this.bin = new Bin(this.game, this, 0 , 0);
             this.addChild(this.bin);
             this.joystick.YELLOW.onDown.add(Bin.prototype.changeCollectorBin, this.bin);
-            this.joystick.GREEN.onDown.add(() => {
-                this.state.scoremanager.loseLife(10); // TODO move this to some oncollision function
-            }, this);
 
             this.anchor.set(0.0, 1.0);
 
@@ -101,15 +98,17 @@
             });
 
             if (this.game.physics.arcade.collide(this, this.state.platformManager, (player, platform) => {
-                if (this.playerState == PlayerState.RUNNING) return;
-                this.startRunning();
-                if (this.currentPlatform && this.currentPlatform.body) { this.currentPlatform.body.enable = true; }
-                this.currentPlatform = platform;
+                if (player.playerState != PlayerState.RUNNING) {
+                    player.startRunning();
+                }
+
+                if (player.currentPlatform && player.currentPlatform.body && platform != player.currentPlatform) { player.currentPlatform.body.enable = true; }
+                player.currentPlatform = platform;
             })) {
                 this.platformCollisionLastFrame = true;
 
+                // jump off platform
                 if (this.joystick.DOWN.isDown) {
-                    // jump off platform
                     if (this.currentPlatform && this.currentPlatform.body) { this.currentPlatform.body.enable = false; }
                 }
             } else {
