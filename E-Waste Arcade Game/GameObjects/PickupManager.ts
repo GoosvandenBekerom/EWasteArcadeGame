@@ -19,17 +19,18 @@
         
         spawnPickup(x: number, y: number, type: WasteType) {
             let tag = "";
+            let rnd = this.game.rnd.integerInRange(1, 3);
             switch (type) {
                 case WasteType.WASTE_1: {
-                    tag = "waste1";
+                    tag = "waste1_" + rnd;
                     break;
                 }
                 case WasteType.WASTE_2: {
-                    tag = "waste2";
+                    tag = "waste2_" + rnd;
                     break;
                 }
                 case WasteType.WASTE_3: {
-                    tag = "waste3";
+                    tag = "waste3_" + rnd;
                     break;
                 }
             }
