@@ -8,7 +8,7 @@
 
             this.game = game;
             this.wasteType = type;
-            this.anchor.setTo(0.2, 0);
+            this.anchor.setTo(0, 0.5);
 
             this.game.physics.enable(this, Phaser.Physics.ARCADE);
         }

@@ -16,7 +16,7 @@
         }
 
         spawnPlatform(x: number, y: number, width: number) {
-            var height = 38; // height of current platform texture
+            var height = 38; // height of current platform texture TODO: make dynamic
             var obstacle = new EwasteGameObjects.Platform(this.game, x, y, width, height, "platform");
 
             this.add(obstacle);

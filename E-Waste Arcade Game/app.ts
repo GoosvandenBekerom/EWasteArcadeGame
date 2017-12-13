@@ -35,7 +35,7 @@
 
             this.game.load.image("heart", "Graphics/robothead.png");
 
-            this.game.load.image("platform", "Graphics/Obstacle1.png");
+            this.game.load.image("platform", "Graphics/Platform.png");
             this.game.load.image("obstacle", "Graphics/firehydrant.png");
 
             // Spritesheets / Animations
