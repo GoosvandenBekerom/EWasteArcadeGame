@@ -8,6 +8,7 @@
         public static readonly WASTE_1 = 3;
         public static readonly WASTE_2 = 4;
         public static readonly WASTE_3 = 5;
+        public static readonly WASTE_RANDOM = 6;
     }
 
     export class SpawnGrid {
@@ -82,7 +83,7 @@
         }
 
         generateNext(templateLevel: SpawnLevel, startPosX: number) {
-            let templateToSpawn = [
+            let template = [
                 [0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0],
@@ -95,43 +96,43 @@
                     break;
                 }
                 case SpawnLevel.Level_1: {
-                    templateToSpawn = this.game.rnd.pick(this.level1.templates);
+                    template = this.game.rnd.pick(this.level1.templates);
                     break;
                 }
                 case SpawnLevel.Level_2: {
-                    templateToSpawn = this.game.rnd.pick(this.level2.templates);
+                    template = this.game.rnd.pick(this.level2.templates);
                     break;
                 }
                 case SpawnLevel.Level_3: {
-                    templateToSpawn = this.game.rnd.pick(this.level3.templates);
+                    template = this.game.rnd.pick(this.level3.templates);
                     break;
                 }
                 case SpawnLevel.Level_4: {
-                    templateToSpawn = this.game.rnd.pick(this.level4.templates);
+                    template = this.game.rnd.pick(this.level4.templates);
                     break;
                 }
                 case SpawnLevel.Level_5: {
-                    templateToSpawn = this.game.rnd.pick(this.level5.templates);
+                    template = this.game.rnd.pick(this.level5.templates);
                     break;
                 }
                 case SpawnLevel.Level_6: {
-                    templateToSpawn = this.game.rnd.pick(this.level6.templates);
+                    template = this.game.rnd.pick(this.level6.templates);
                     break;
                 }
                 case SpawnLevel.Level_7: {
-                    templateToSpawn = this.game.rnd.pick(this.level7.templates);
+                    template = this.game.rnd.pick(this.level7.templates);
                     break;
                 }
                 case SpawnLevel.Level_8: {
-                    templateToSpawn = this.game.rnd.pick(this.level8.templates);
+                    template = this.game.rnd.pick(this.level8.templates);
                     break;
                 }
                 case SpawnLevel.Level_9: {
-                    templateToSpawn = this.game.rnd.pick(this.level9.templates);
+                    template = this.game.rnd.pick(this.level9.templates);
                     break;
                 }
                 case SpawnLevel.Level_10: {
-                    templateToSpawn = this.game.rnd.pick(this.level10.templates);
+                    template = this.game.rnd.pick(this.level10.templates);
                     break;
                 }
             }
@@ -141,24 +142,32 @@
 
             for (let row = 0; row < this.gridRows.length; row++) {
                 for (let col = 0; col < this.gridColumns; col++) {
-                    var x = ((col + 1) * distBetweenSpawns) + startPosX;
+                    var x = (col * distBetweenSpawns) + startPosX;
                     var y = this.gridRows[row];
 
-                    if (templateToSpawn[row][col] == TemplateValues.WASTE_1) {
+                    var curValue = template[row][col];
+
+                    if (curValue == TemplateValues.NONE) {
+                        continue;
+                    }
+                    else if (curValue == TemplateValues.WASTE_1) {
                         this.pickupManager.spawnPickup(x, y, WasteType.WASTE_1);
                     }
-                    else if (templateToSpawn[row][col] == TemplateValues.WASTE_2) {
+                    else if (curValue == TemplateValues.WASTE_2) {
                         this.pickupManager.spawnPickup(x, y, WasteType.WASTE_2);
                     }
-                    else if (templateToSpawn[row][col] == TemplateValues.WASTE_3) {
+                    else if (curValue == TemplateValues.WASTE_3) {
                         this.pickupManager.spawnPickup(x, y, WasteType.WASTE_3);
                     }
-                    else if (templateToSpawn[row][col] == TemplateValues.PLATFORM) {
-                        if (col == 0 || templateToSpawn[row][col - 1] != TemplateValues.PLATFORM) {
+                    else if (curValue == TemplateValues.WASTE_RANDOM) {
+                        this.pickupManager.spawnPickup(x, y, this.game.rnd.integerInRange(0, 2));
+                    }
+                    else if (curValue == TemplateValues.PLATFORM) {
+                        if (col == 0 || template[row][col - 1] != TemplateValues.PLATFORM) {
 
                             let platformLength = 1;
-                            for (let i = col + 1; i < templateToSpawn[row].length; i++) {
-                                if (templateToSpawn[row][i] == TemplateValues.PLATFORM) {
+                            for (let i = col + 1; i < template[row].length; i++) {
+                                if (template[row][i] == TemplateValues.PLATFORM) {
                                     platformLength++;
                                 } else {
                                     break;
@@ -168,7 +177,7 @@
                             this.platformManager.spawnPlatform(x, y, platformLength * distBetweenSpawns);
                         }
                     }
-                    else if (templateToSpawn[row][col] == TemplateValues.OBSTACLE) {
+                    else if (template[row][col] == TemplateValues.OBSTACLE) {
                         this.obstacleManager.spawnObstacle(x, y);
                     }
                 }
