@@ -68,6 +68,18 @@
                     "Sounds/PickupGood.ogg",
                     "Sounds/PickupGood.wav"
                 ]);
+
+            // Levels
+            this.game.load.json("level1", "Levels/level1.json");
+            this.game.load.json("level2", "Levels/level2.json");
+            this.game.load.json("level3", "Levels/level3.json");
+            this.game.load.json("level4", "Levels/level4.json");
+            this.game.load.json("level5", "Levels/level5.json");
+            this.game.load.json("level6", "Levels/level6.json");
+            this.game.load.json("level7", "Levels/level7.json");
+            this.game.load.json("level8", "Levels/level8.json");
+            this.game.load.json("level9", "Levels/level9.json");
+            this.game.load.json("level10", "Levels/level10.json");
         }
 
         create() {

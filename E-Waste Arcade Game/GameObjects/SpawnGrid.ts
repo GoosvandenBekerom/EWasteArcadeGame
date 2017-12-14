@@ -1,5 +1,6 @@
 ﻿module EwasteGameObjects {
     export enum SpawnLevel { Level_0, Level_1, Level_2, Level_3, Level_4, Level_5, Level_6, Level_7, Level_8, Level_9, Level_10 }
+
     export class TemplateValues {
         public static readonly NONE = 0;
         public static readonly PLATFORM = 1;
@@ -14,6 +15,18 @@
         pickupManager: PickupManager;
         platformManager: PlatformManager;
         obstacleManager: ObstacleManager;
+
+        // Level templates
+        level1: EWasteUtils.LevelTemplate;
+        level2: EWasteUtils.LevelTemplate;
+        level3: EWasteUtils.LevelTemplate;
+        level4: EWasteUtils.LevelTemplate;
+        level5: EWasteUtils.LevelTemplate;
+        level6: EWasteUtils.LevelTemplate;
+        level7: EWasteUtils.LevelTemplate;
+        level8: EWasteUtils.LevelTemplate;
+        level9: EWasteUtils.LevelTemplate;
+        level10: EWasteUtils.LevelTemplate;
 
         gridRows: Array<number>; // y-positions for spawns
         gridColumns: number; // amount of columns per screen/level
@@ -34,10 +47,26 @@
             this.gridRows[4] = distBetween * 5;
 
             this.gridColumns = 5;
+
+            this.loadLevelTemplates();
+        }
+
+        private loadLevelTemplates() {
+            this.level1 = this.game.cache.getJSON("level1");
+            this.level2 = this.game.cache.getJSON("level2");
+            this.level3 = this.game.cache.getJSON("level3");
+            this.level4 = this.game.cache.getJSON("level4");
+            this.level5 = this.game.cache.getJSON("level5");
+            this.level6 = this.game.cache.getJSON("level6");
+            this.level7 = this.game.cache.getJSON("level7");
+            this.level8 = this.game.cache.getJSON("level8");
+            this.level9 = this.game.cache.getJSON("level9");
+            this.level10 = this.game.cache.getJSON("level10");
+            console.log(this.level1);
         }
 
         getRandomTemplateType() {
-            switch (this.game.rnd.integerInRange(1, 11)) {
+            switch (this.game.rnd.integerInRange(2, 2)) {
                 case 1: return SpawnLevel.Level_0;
                 case 2: return SpawnLevel.Level_1;
                 case 3: return SpawnLevel.Level_2;
@@ -52,93 +81,57 @@
             }
         }
 
-        generateNext(templateType: SpawnLevel, startPosX: number) {
-            let template = [
+        generateNext(templateLevel: SpawnLevel, startPosX: number) {
+            let templateToSpawn = [
                 [0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0]
             ];
-            // TODO: get templates from files
-            switch (templateType) {
+            
+            switch (templateLevel) {
                 case SpawnLevel.Level_0: {
                     break;
                 }
                 case SpawnLevel.Level_1: {
-                    template = [
-                        [0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0],
-                        [0, 0, 3, 0, 0],
-                        [0, 3, 0, 4, 0],
-                        [3, 0, 0, 0, 5]
-                    ];
+                    templateToSpawn = this.game.rnd.pick(this.level1.templates);
                     break;
                 }
                 case SpawnLevel.Level_2: {
-                    template = [
-                        [0, 0, 0, 0, 1],
-                        [0, 0, 0, 1, 1],
-                        [0, 0, 0, 0, 3],
-                        [1, 0, 0, 0, 4],
-                        [0, 0, 0, 0, 5]
-                    ];
+                    templateToSpawn = this.game.rnd.pick(this.level2.templates);
                     break;
                 }
                 case SpawnLevel.Level_3: {
-                    template = [
-                        [0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0],
-                        [0, 0, 2, 0, 0]
-                    ];
+                    templateToSpawn = this.game.rnd.pick(this.level3.templates);
                     break;
                 }
                 case SpawnLevel.Level_4: {
-                    template = [
-                        [0, 0, 0, 3, 3],
-                        [0, 0, 1, 1, 1],
-                        [0, 0, 3, 4, 5],
-                        [1, 1, 1, 1, 1],
-                        [0, 0, 5, 5, 0]
-                    ];
+                    templateToSpawn = this.game.rnd.pick(this.level4.templates);
                     break;
                 }
                 case SpawnLevel.Level_5: {
-                    template = [
-                        [0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0],
-                        [0, 0, 3, 0, 0],
-                        [0, 3, 0, 4, 0],
-                        [3, 0, 2, 0, 4]
-                    ];
+                    templateToSpawn = this.game.rnd.pick(this.level5.templates);
                     break;
                 }
                 case SpawnLevel.Level_6: {
-                    template = [
-                        [0, 0, 0, 3, 3],
-                        [0, 0, 1, 1, 0],
-                        [0, 0, 0, 4, 0],
-                        [1, 1, 1, 1, 1],
-                        [0, 2, 5, 5, 5]
-                    ];
+                    templateToSpawn = this.game.rnd.pick(this.level6.templates);
                     break;
                 }
                 case SpawnLevel.Level_7: {
-                    
+                    templateToSpawn = this.game.rnd.pick(this.level7.templates);
                     break;
                 }
                 case SpawnLevel.Level_8: {
-                    
+                    templateToSpawn = this.game.rnd.pick(this.level8.templates);
                     break;
                 }
                 case SpawnLevel.Level_9: {
-                    
+                    templateToSpawn = this.game.rnd.pick(this.level9.templates);
                     break;
                 }
                 case SpawnLevel.Level_10: {
-                    
+                    templateToSpawn = this.game.rnd.pick(this.level10.templates);
                     break;
                 }
             }
@@ -151,21 +144,21 @@
                     var x = ((col + 1) * distBetweenSpawns) + startPosX;
                     var y = this.gridRows[row];
 
-                    if (template[row][col] == TemplateValues.WASTE_1) {
+                    if (templateToSpawn[row][col] == TemplateValues.WASTE_1) {
                         this.pickupManager.spawnPickup(x, y, WasteType.WASTE_1);
                     }
-                    else if (template[row][col] == TemplateValues.WASTE_2) {
+                    else if (templateToSpawn[row][col] == TemplateValues.WASTE_2) {
                         this.pickupManager.spawnPickup(x, y, WasteType.WASTE_2);
                     }
-                    else if (template[row][col] == TemplateValues.WASTE_3) {
+                    else if (templateToSpawn[row][col] == TemplateValues.WASTE_3) {
                         this.pickupManager.spawnPickup(x, y, WasteType.WASTE_3);
                     }
-                    else if (template[row][col] == TemplateValues.PLATFORM) {
-                        if (col == 0 || template[row][col - 1] != TemplateValues.PLATFORM) {
+                    else if (templateToSpawn[row][col] == TemplateValues.PLATFORM) {
+                        if (col == 0 || templateToSpawn[row][col - 1] != TemplateValues.PLATFORM) {
 
                             let platformLength = 1;
-                            for (let i = col + 1; i < template[row].length; i++) {
-                                if (template[row][i] == TemplateValues.PLATFORM) {
+                            for (let i = col + 1; i < templateToSpawn[row].length; i++) {
+                                if (templateToSpawn[row][i] == TemplateValues.PLATFORM) {
                                     platformLength++;
                                 } else {
                                     break;
@@ -175,7 +168,7 @@
                             this.platformManager.spawnPlatform(x, y, platformLength * distBetweenSpawns);
                         }
                     }
-                    else if (template[row][col] == TemplateValues.OBSTACLE) {
+                    else if (templateToSpawn[row][col] == TemplateValues.OBSTACLE) {
                         this.obstacleManager.spawnObstacle(x, y);
                     }
                 }

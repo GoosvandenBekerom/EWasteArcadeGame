@@ -78,6 +78,7 @@
     <TypeScriptCompile Include="Utils\CookieControl.ts" />
     <TypeScriptCompile Include="Utils\Highscore.ts" />
     <TypeScriptCompile Include="Utils\JoystickInput.ts" />
+    <TypeScriptCompile Include="Utils\LevelTemplate.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
@@ -87,6 +88,16 @@
     <Content Include="Sounds\Damage.ogg" />
     <Content Include="Sounds\PickupBad.ogg" />
     <Content Include="Sounds\PickupGood.ogg" />
+    <Content Include="Levels\level1.json" />
+    <Content Include="Levels\level9.json" />
+    <Content Include="Levels\level2.json" />
+    <Content Include="Levels\level3.json" />
+    <Content Include="Levels\level4.json" />
+    <Content Include="Levels\level5.json" />
+    <Content Include="Levels\level6.json" />
+    <Content Include="Levels\level7.json" />
+    <Content Include="Levels\level8.json" />
+    <Content Include="Levels\level10.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
