@@ -36,7 +36,10 @@
             this.game.load.image("heart", "Graphics/robothead.png");
 
             this.game.load.image("platform", "Graphics/Platform.png");
-            this.game.load.image("obstacle", "Graphics/firehydrant.png");
+            this.game.load.image("obstacle1", "Graphics/firehydrant.png");
+
+            this.game.load.image("obstacle_1", "Graphics/taxi.png");
+            this.game.load.image("obstacle_2", "Graphics/police.png");
 
             // Spritesheets / Animations
             this.game.load.atlasJSONArray("CHAR_RUNNING",

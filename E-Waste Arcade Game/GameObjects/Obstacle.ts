@@ -6,9 +6,10 @@
             super(game, x, y, obstacleTag);
 
             this.game = game;
-            this.anchor.setTo(0.5, 0.5);
+            this.anchor.setTo(.5, 0);
 
             this.game.physics.enable(this, Phaser.Physics.ARCADE);
+            this.body.setSize(290, 90, 33, 60);
         }
     }
 }

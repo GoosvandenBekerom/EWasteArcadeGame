@@ -30,6 +30,8 @@
     <Content Include="Graphics\Platform.png" />
     <Content Include="Graphics\Player\jump.png" />
     <Content Include="Graphics\Player\run.png" />
+    <Content Include="Graphics\police.png" />
+    <Content Include="Graphics\taxi.png" />
     <Content Include="Graphics\TitleScreen.jpg" />
     <Content Include="Graphics\waste1_1.png" />
     <Content Include="Graphics\waste1_2.png" />
@@ -107,7 +109,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64317</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
