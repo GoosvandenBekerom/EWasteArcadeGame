@@ -24,12 +24,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="Graphics\battery.png" />
     <Content Include="Graphics\CityGround.png" />
     <Content Include="Graphics\firehydrant.png" />
     <Content Include="Graphics\GameOverScreen.jpg" />
     <Content Include="Graphics\Platform.png" />
     <Content Include="Graphics\Player\jump.png" />
     <Content Include="Graphics\Player\run.png" />
+    <Content Include="Graphics\police.png" />
+    <Content Include="Graphics\taxi.png" />
     <Content Include="Graphics\TitleScreen.jpg" />
     <Content Include="Graphics\waste1_1.png" />
     <Content Include="Graphics\waste1_2.png" />
@@ -75,7 +78,7 @@
     <TypeScriptCompile Include="States\GameOverState.ts" />
     <TypeScriptCompile Include="States\MainState.ts" />
     <TypeScriptCompile Include="States\TitleScreenState.ts" />
-    <TypeScriptCompile Include="Utils\CookieControl.ts" />
+    <TypeScriptCompile Include="Utils\StorageControl.ts" />
     <TypeScriptCompile Include="Utils\Highscore.ts" />
     <TypeScriptCompile Include="Utils\JoystickInput.ts" />
     <TypeScriptCompile Include="Utils\LevelTemplate.ts" />
@@ -118,7 +121,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64317</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

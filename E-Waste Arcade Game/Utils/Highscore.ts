@@ -2,11 +2,11 @@
     export class Highscore {
         static addScore(score: number)
         {
-            let scoreStringArray = CookieControl.getCookie("highscore").split(',');
             let newScore = "";
-
-            if (scoreStringArray[0] != "")
+            if (StorageControl.getStorage("highscore") != null)
             {
+                let scoreStringArray = StorageControl.getStorage("highscore").split(',')
+
                 let scoreIntArray = this.getSortedScore(scoreStringArray, score);
                 let loopAmount = scoreIntArray.length;
 
@@ -28,7 +28,7 @@
                 newScore = score.toString();
             }
 
-            CookieControl.setCookie("highscore", newScore, 1);
+            StorageControl.setStorage("highscore", newScore,);
         }
 
         static getSortedScore(scoreStringArray: string[], newScore: number)

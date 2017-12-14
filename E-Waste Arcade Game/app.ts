@@ -16,7 +16,10 @@
             this.game.load.image("title", "Graphics/TitleScreen.jpg");
             this.game.load.image("scene", "Graphics/CitySkyline.png");
             this.game.load.image("sceneFloor", "Graphics/CityGround.png");
-            this.game.load.image("gameover", "Graphics/GameOverScreen.jpg");
+			this.game.load.image("gameover", "Graphics/GameOverScreen.jpg");
+			this.game.load.image("rgb", "Graphics/rgb.png");
+			this.game.load.image("brg", "Graphics/brg.png");
+			this.game.load.image("gbr", "Graphics/gbr.png");
 
             // Pickups
             this.game.load.image("waste1_1", "Graphics/waste1_1.png");
@@ -31,8 +34,13 @@
             
             this.game.load.image("heart", "Graphics/robothead.png");
 
+            this.game.load.image("battery", "Graphics/battery.png");
+
             this.game.load.image("platform", "Graphics/Platform.png");
-            this.game.load.image("obstacle", "Graphics/firehydrant.png");
+            this.game.load.image("obstacle1", "Graphics/firehydrant.png");
+
+            this.game.load.image("obstacle_1", "Graphics/taxi.png");
+            this.game.load.image("obstacle_2", "Graphics/police.png");
 
             // Spritesheets / Animations
             this.game.load.atlasJSONArray("CHAR_RUNNING",
