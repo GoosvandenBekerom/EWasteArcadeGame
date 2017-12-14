@@ -32,7 +32,7 @@
 
         loserPowerOnTime()
         {
-            this.currentPower = this.currentPower - 1;
+            this.currentPower = this.currentPower - 1 * (this.state.player.speed/100);
             this.powerBarSprite.width = this.currentPower;
             this.checkGameOver();
         }
@@ -40,7 +40,6 @@
         losePower(amountOfPower: number)
         {
             this.currentPower = this.currentPower - amountOfPower;
-            this.checkGameOver();
             this.game.add.tween(this.powerBarSprite).to({ width: this.currentPower }, amountOfPower * 10 , Phaser.Easing.Linear.None, true);
         }
 

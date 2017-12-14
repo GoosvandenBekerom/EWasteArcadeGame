@@ -18,8 +18,8 @@
 
         // move variables
         verticalMoveOffset: number;
-        speed = 80;
-        speedIncrease = 0.005;
+        speed = 100;
+        speedIncrease = 0.01;
         animationSpeed = 20;
         animationSpeedJumping = 5;
         jumping: boolean = false;

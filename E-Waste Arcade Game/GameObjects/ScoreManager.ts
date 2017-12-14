@@ -58,5 +58,10 @@
         loseLife(amountOfPower: number) {
             this.ui.powerBar.losePower(amountOfPower);
         }
+
+        getTotalScore(): number
+        {
+            return this.waste1Score + this.waste2Score + this.waste3Score;
+        }
     }
 }

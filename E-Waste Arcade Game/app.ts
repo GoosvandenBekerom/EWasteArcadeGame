@@ -28,11 +28,7 @@
             this.game.load.image("waste3_1", "Graphics/waste3_1.png");
             this.game.load.image("waste3_2", "Graphics/waste3_2.png");
             this.game.load.image("waste3_3", "Graphics/waste3_3.png");
-
-            this.game.load.image("bin1", "Graphics/playerRGB.png");
-            this.game.load.image("bin2", "Graphics/playerBRG.png");
-            this.game.load.image("bin3", "Graphics/playerGBR.png");
-
+            
             this.game.load.image("heart", "Graphics/robothead.png");
 
             this.game.load.image("platform", "Graphics/Platform.png");
