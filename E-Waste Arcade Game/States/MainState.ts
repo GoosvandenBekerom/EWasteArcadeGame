@@ -75,7 +75,7 @@
 
         gameOver() {
             this.soundManager.stopMusic();
-            EWasteUtils.Highscore.addScore(this.scoremanager.getDistanceScore());
+            EWasteUtils.Highscore.addScore(this.scoremanager.getTotalScore());
             this.game.state.start("GameOverState");
         }
     }
