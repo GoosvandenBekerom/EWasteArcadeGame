@@ -66,7 +66,7 @@
         }
 
         getRandomTemplateType() {
-            switch (this.game.rnd.integerInRange(2, 2)) {
+            switch (this.game.rnd.integerInRange(1, 7)) {
                 case 1: return SpawnLevel.Level_0;
                 case 2: return SpawnLevel.Level_1;
                 case 3: return SpawnLevel.Level_2;
