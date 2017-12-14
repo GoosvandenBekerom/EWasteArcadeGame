@@ -1,5 +1,5 @@
 ﻿module EwasteGameObjects {
-    export enum SpawnTemplate { Empty, Pickups, Platforms, Obstacles, PickupPlatforms, PickupObstacles, PickupPlatformObstacles }
+    export enum SpawnLevel { Level_0, Level_1, Level_2, Level_3, Level_4, Level_5, Level_6, Level_7, Level_8, Level_9, Level_10 }
     export class TemplateValues {
         public static readonly NONE = 0;
         public static readonly PLATFORM = 1;
@@ -37,18 +37,22 @@
         }
 
         getRandomTemplateType() {
-            switch (this.game.rnd.integerInRange(1, 7)) {
-                case 1: return SpawnTemplate.Empty;
-                case 2: return SpawnTemplate.Pickups
-                case 3: return SpawnTemplate.Platforms;
-                case 4: return SpawnTemplate.Obstacles;
-                case 5: return SpawnTemplate.PickupPlatforms;
-                case 6: return SpawnTemplate.PickupObstacles;
-                case 7: return SpawnTemplate.PickupPlatformObstacles;
+            switch (this.game.rnd.integerInRange(1, 11)) {
+                case 1: return SpawnLevel.Level_0;
+                case 2: return SpawnLevel.Level_1;
+                case 3: return SpawnLevel.Level_2;
+                case 4: return SpawnLevel.Level_3;
+                case 5: return SpawnLevel.Level_4;
+                case 6: return SpawnLevel.Level_5;
+                case 7: return SpawnLevel.Level_6;
+                case 8: return SpawnLevel.Level_7;
+                case 9: return SpawnLevel.Level_8;
+                case 10: return SpawnLevel.Level_9;
+                case 11: return SpawnLevel.Level_10;
             }
         }
 
-        generateNext(templateType: SpawnTemplate, startPosX: number) {
+        generateNext(templateType: SpawnLevel, startPosX: number) {
             let template = [
                 [0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0],
@@ -58,10 +62,10 @@
             ];
             // TODO: get templates from files
             switch (templateType) {
-                case SpawnTemplate.Empty: {
+                case SpawnLevel.Level_0: {
                     break;
                 }
-                case SpawnTemplate.Pickups: {
+                case SpawnLevel.Level_1: {
                     template = [
                         [0, 0, 0, 0, 0],
                         [0, 0, 0, 0, 0],
@@ -71,17 +75,17 @@
                     ];
                     break;
                 }
-                case SpawnTemplate.Platforms: {
+                case SpawnLevel.Level_2: {
                     template = [
-                        [0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 1],
                         [0, 0, 0, 1, 1],
-                        [0, 0, 0, 0, 0],
-                        [1, 1, 1, 1, 1],
-                        [0, 0, 0, 0, 0]
+                        [0, 0, 0, 0, 3],
+                        [1, 0, 0, 0, 4],
+                        [0, 0, 0, 0, 5]
                     ];
                     break;
                 }
-                case SpawnTemplate.Obstacles: {
+                case SpawnLevel.Level_3: {
                     template = [
                         [0, 0, 0, 0, 0],
                         [0, 0, 0, 0, 0],
@@ -91,7 +95,7 @@
                     ];
                     break;
                 }
-                case SpawnTemplate.PickupPlatforms: {
+                case SpawnLevel.Level_4: {
                     template = [
                         [0, 0, 0, 3, 3],
                         [0, 0, 1, 1, 1],
@@ -101,7 +105,7 @@
                     ];
                     break;
                 }
-                case SpawnTemplate.PickupObstacles: {
+                case SpawnLevel.Level_5: {
                     template = [
                         [0, 0, 0, 0, 0],
                         [0, 0, 0, 0, 0],
@@ -111,7 +115,7 @@
                     ];
                     break;
                 }
-                case SpawnTemplate.PickupPlatformObstacles: {
+                case SpawnLevel.Level_6: {
                     template = [
                         [0, 0, 0, 3, 3],
                         [0, 0, 1, 1, 0],
@@ -121,7 +125,22 @@
                     ];
                     break;
                 }
-
+                case SpawnLevel.Level_7: {
+                    
+                    break;
+                }
+                case SpawnLevel.Level_8: {
+                    
+                    break;
+                }
+                case SpawnLevel.Level_9: {
+                    
+                    break;
+                }
+                case SpawnLevel.Level_10: {
+                    
+                    break;
+                }
             }
 
             // actually generate the level
@@ -143,6 +162,7 @@
                     }
                     else if (template[row][col] == TemplateValues.PLATFORM) {
                         if (col == 0 || template[row][col - 1] != TemplateValues.PLATFORM) {
+
                             let platformLength = 1;
                             for (let i = col + 1; i < template[row].length; i++) {
                                 if (template[row][i] == TemplateValues.PLATFORM) {
@@ -151,8 +171,8 @@
                                     break;
                                 }
                             }
-                            let widthPerPoint = this.game.width / this.gridColumns;
-                            this.platformManager.spawnPlatform(x, y, platformLength * widthPerPoint);
+                            
+                            this.platformManager.spawnPlatform(x, y, platformLength * distBetweenSpawns);
                         }
                     }
                     else if (template[row][col] == TemplateValues.OBSTACLE) {
