@@ -64,11 +64,9 @@
                 Phaser.Keyboard.UP, Phaser.Keyboard.DOWN,
                 Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT,
                 Phaser.Keyboard.Z, Phaser.Keyboard.X
-            );
+			);
 
-            this.bin = new Bin(this.game, this, 0 , 0);
-            this.addChild(this.bin);
-            this.joystick.YELLOW.onDown.add(Bin.prototype.changeCollectorBin, this.bin);
+            
 
             this.anchor.set(0.0, 1.0);
 
@@ -181,7 +179,12 @@
                 player.startTimeImmunity = player.game.time.time;
                 player.tweenImmune = player.game.add.tween(player).to({ alpha: 0 }, 100, "Linear", true, 0, -1);
             }
-        }
+		}
+
+		public addBin(bin) {
+			this.bin = bin;
+			this.joystick.YELLOW.onDown.add(Bin.prototype.changeCollectorBin, this.bin);
+		}
 
         private clampVerticleMove(move: number) {
             return (move < this.topBounds)

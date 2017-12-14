@@ -4,15 +4,15 @@
         bmpText: EwasteGameObjects.UIText;
         isDrawn: boolean;
         player: EwasteGameObjects.Player;
-        powerBar: EwasteGameObjects.PowerBar;
+		powerBar: EwasteGameObjects.PowerBar;
 
         
         constructor(game: Phaser.Game, player: EwasteGameObjects.Player) {
             super(game);
             this.game = game;
-            this.player = player;
+			this.player = player;
 
-            this.bmpText = new EwasteGameObjects.UIText(this.game, "0", 20, 10, 48);
+			this.bmpText = new EwasteGameObjects.UIText(this.game, "0", 20, 10, 48);
         }
 
         update()
