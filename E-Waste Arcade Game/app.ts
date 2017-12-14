@@ -16,7 +16,10 @@
             this.game.load.image("title", "Graphics/TitleScreen.jpg");
             this.game.load.image("scene", "Graphics/CitySkyline.png");
             this.game.load.image("sceneFloor", "Graphics/CityGround.png");
-            this.game.load.image("gameover", "Graphics/GameOverScreen.jpg");
+			this.game.load.image("gameover", "Graphics/GameOverScreen.jpg");
+			this.game.load.image("rgb", "Graphics/rgb.png");
+			this.game.load.image("brg", "Graphics/brg.png");
+			this.game.load.image("gbr", "Graphics/gbr.png");
 
             // Pickups
             this.game.load.image("waste1_1", "Graphics/waste1_1.png");

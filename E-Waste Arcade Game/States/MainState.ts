@@ -12,7 +12,8 @@
         platformManager: EwasteGameObjects.PlatformManager;
         scoremanager: EwasteGameObjects.ScoreManager;
         canvas: EwasteGameObjects.GUI;
-        floor: Phaser.Sprite;
+		floor: Phaser.Sprite;
+		bin: EwasteGameObjects.Bin;
 
         spawnTriggerPosition: number;
 
@@ -26,11 +27,13 @@
             this.scene = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds);
             this.sceneFloor = new EwasteGameObjects.Scene(this.game, 0, 0, widthBounds, "sceneFloor");
             this.soundManager = new EwasteGameObjects.SoundManager(this.game);
-            this.floor = new Phaser.Sprite(this.game, 0, 500);
+			this.floor = new Phaser.Sprite(this.game, 0, 500);
             this.pickupManager = new EwasteGameObjects.PickupManager(this.game, this);
             this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this);
             this.player = new EwasteGameObjects.Player(
-                this.game, this.startOffset, 450, widthBounds, this.floor, this, this.soundManager);
+				this.game, this.startOffset, 450, widthBounds, this.floor, this, this.soundManager);
+			this.bin = new EwasteGameObjects.Bin(this.game, this.player, this.game.width / 2 - 100, 30);
+			this.player.addBin(this.bin);
             this.platformManager = new EwasteGameObjects.PlatformManager(this.game, this, this.player);
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, this.pickupManager, this.platformManager, this.obstacleManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
@@ -44,7 +47,8 @@
             this.game.add.existing(this.player);
             this.game.add.existing(this.platformManager);
             this.game.add.existing(this.canvas);
-            this.game.add.existing(this.floor);
+			this.game.add.existing(this.floor);
+			this.game.add.existing(this.bin);
 
             this.game.world.setBounds(0, 0, widthBounds, this.scene.height);
 

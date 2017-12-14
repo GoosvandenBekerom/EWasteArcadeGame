@@ -9,10 +9,11 @@
         //Blue = 0x515CF5
 
         constructor(game: Phaser.Game, player: Phaser.Sprite, x: number, y: number) {
-            super(game, x, y, "bin3");
+            super(game, x, y, "rgb");
             this.game = game;
-            this.player = player;
-            this.scale.setTo(0);
+			this.player = player;
+			this.fixedToCamera = true;
+			this.scale.setTo(0.66);
             this.player.tint = 0x69F551;
             this.collectWasteTypeState = WasteType.WASTE_1;
         }
@@ -21,17 +22,20 @@
             switch (this.collectWasteTypeState) {
                 case WasteType.WASTE_1: {
                     this.collectWasteTypeState = WasteType.WASTE_2;
-                    this.player.tint = 0xED6B6B;
+					this.player.tint = 0xED6B6B;
+					this.loadTexture("brg");
                     break;
                 }
                 case WasteType.WASTE_2: {
                     this.collectWasteTypeState = WasteType.WASTE_3;
-                    this.player.tint = 0x515CF5;
+					this.player.tint = 0x515CF5;
+					this.loadTexture("gbr");
                     break;
                 }
                 case WasteType.WASTE_3: {
                     this.collectWasteTypeState = WasteType.WASTE_1;
-                    this.player.tint = 0x69F551;
+					this.player.tint = 0x69F551;
+					this.loadTexture("rgb");
                     break;
                 }
             }
