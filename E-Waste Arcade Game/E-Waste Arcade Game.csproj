@@ -75,6 +75,7 @@
     <TypeScriptCompile Include="States\GameOverState.ts" />
     <TypeScriptCompile Include="States\MainState.ts" />
     <TypeScriptCompile Include="States\TitleScreenState.ts" />
+    <TypeScriptCompile Include="Utils\DynamicLevelControl.ts" />
     <TypeScriptCompile Include="Utils\StorageControl.ts" />
     <TypeScriptCompile Include="Utils\Highscore.ts" />
     <TypeScriptCompile Include="Utils\JoystickInput.ts" />
