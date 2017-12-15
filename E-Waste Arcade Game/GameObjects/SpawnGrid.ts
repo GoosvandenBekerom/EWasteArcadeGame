@@ -63,7 +63,6 @@
             this.level8 = this.game.cache.getJSON("level8");
             this.level9 = this.game.cache.getJSON("level9");
             this.level10 = this.game.cache.getJSON("level10");
-            console.log(this.level1);
         }
 
         getRandomTemplateType() {
