@@ -164,7 +164,7 @@
                 player.state.scoremanager.addToWasteScore(pickup.wasteType);
                 player.soundManager.playSound("pickupGood");
             } else {
-                player.state.scoremanager.loseLife(20);
+                player.state.scoremanager.loseLife(15);
                 player.soundManager.playSound("pickupBad");
 
             }
