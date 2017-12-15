@@ -15,8 +15,8 @@
 
         getSpawnLevel(playerScore: number): EwasteGameObjects.SpawnLevel
 		{
-			return EwasteGameObjects.SpawnLevel.Level_10;
-			/*
+			//return EwasteGameObjects.SpawnLevel.Level_10;
+			
             let newLevel = EwasteGameObjects.SpawnLevel.Level_0;
             if (this.amountOfRoundsDone % 5 == 0 && this.amountOfRoundsDone > 0)
             {  
@@ -44,7 +44,7 @@
 
             this.amountOfRoundsDone++;
             return newLevel;
-			*/
+			
         }
     }
 }
