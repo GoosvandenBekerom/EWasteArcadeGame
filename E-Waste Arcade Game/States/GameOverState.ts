@@ -23,7 +23,13 @@
 			this.game.add.existing(this.highscoreText);
 
 
-			for (let i = 1; i <= 3; i++) {
+			for (let i = 1; i <= 4; i++) {
+				if (i === 4) {
+					var text = "Jouw score is " + EWasteUtils.StorageControl.getStorage("yourScore");
+					this.game.add.existing(new EwasteGameObjects.UIText(this.game, text, 300, 400 + (i * 30), 24));
+					return;
+				}
+
 				var recycle = EWasteUtils.StorageControl.getStorage("recycle" + i);
 				var kind = EWasteUtils.StorageControl.getStorage("recycleKind" + i);
 				this.game.add.existing(new EwasteGameObjects.UIText(this.game, "Je hebt " + recycle + " gerecycled van " + kind, 300, 400 + (i * 30), 24));
