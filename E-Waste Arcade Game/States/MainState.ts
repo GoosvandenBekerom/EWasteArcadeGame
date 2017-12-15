@@ -69,7 +69,7 @@
             if (this.player.x >= this.spawnTriggerPosition) {
                 this.spawnTriggerPosition = this.player.x + this.game.width;
                 this.spawnGrid.generateNext(this.levelControl.getSpawnLevel(this.scoremanager.getTotalScore()), this.spawnTriggerPosition);
-            }
+			}
 
             // Parallax
             this.scene.position.x += this.player.speed / 200;
