@@ -4,6 +4,8 @@
         gameOverSprite: Phaser.Sprite;
         highscoreText: EwasteGameObjects.UIText;
 
+        YELLOW: Phaser.Key;
+
         create() {
             this.gameOverSprite = this.add.sprite(0, 0, "gameover", 0);
             this.gameOverSprite.scale.setTo(
@@ -25,7 +27,10 @@
 				var recycle = EWasteUtils.StorageControl.getStorage("recycle" + i);
 				var kind = EWasteUtils.StorageControl.getStorage("recycleKind" + i);
 				this.game.add.existing(new EwasteGameObjects.UIText(this.game, "Je hebt " + recycle + " gerecycled van " + kind, 300, 400 + (i * 30), 24));
-			}
+            }
+            
+            this.YELLOW = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
+            this.YELLOW.onDown.add(EWasteGameStates.TitleScreenState.prototype.startGame, this);
         }
     }
 }
