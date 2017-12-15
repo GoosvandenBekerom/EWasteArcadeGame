@@ -1,5 +1,6 @@
 ﻿{
   "level": 10,
+  "description": "Everything togheter mixed pickups",
   "templates": [
     [
       [ 0, 0, 0, 0, 0 ],

@@ -1,5 +1,6 @@
 ﻿{
   "level": 8,
+  "description": "multiple platforms mixed pickups",
   "templates": [
     [
       [ 0, 0, 0, 0, 4 ],
