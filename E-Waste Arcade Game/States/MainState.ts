@@ -66,7 +66,7 @@
         update() {
             if (this.player.x >= this.spawnTriggerPosition) {
                 this.spawnTriggerPosition = this.player.x + this.game.width;
-                this.spawnGrid.generateNext(EwasteGameObjects.SpawnLevel.Level_0, this.spawnTriggerPosition);
+                this.spawnGrid.generateNext(this.spawnGrid.getRandomTemplateType(), this.spawnTriggerPosition);
             }
 
             // Parallax
