@@ -7,20 +7,20 @@
         currentPower: number;
         timer: Phaser.Timer;
         state: EWasteGameStates.MainState;
-
-        powerBarHeight: number = -105;
+        
+        powerBarHeight = -105;
 
         constructor(game: Phaser.Game, x: number, y: number, state: EWasteGameStates.MainState) {
             this.game = game;
             this.state = state;
             // create a new bitmap data object
-            this.bmd = game.add.bitmapData(25, 105);
-
+            this.bmd = game.add.bitmapData(25, -this.powerBarHeight);
+            
             this.currentPower = this.powerBarHeight;
 
             // draw to the canvas context like normal
             this.bmd.ctx.beginPath();
-            this.bmd.ctx.rect(0, 0, 25, 105);
+            this.bmd.ctx.rect(0, 0, 25, -this.powerBarHeight);
             this.bmd.ctx.fillStyle = '#ff0000';
             this.bmd.ctx.fill();
 
@@ -40,7 +40,7 @@
 
         loserPowerOnTime()
         {
-            this.currentPower = this.currentPower + 1 * (this.state.player.speed / 100);
+            this.currentPower = this.currentPower + (this.state.player.speed / 100);
             this.powerBarSprite.height = this.currentPower;
             this.checkGameOver();
         }
@@ -59,9 +59,9 @@
             }
         }
 
-        getPower()
+        gainPower(amountOfPower: number)
         {
-            this.currentPower = this.currentPower - 10;
+            this.currentPower = this.currentPower - amountOfPower;
             if (this.currentPower < this.powerBarHeight)
             {
                 this.currentPower = this.powerBarHeight;

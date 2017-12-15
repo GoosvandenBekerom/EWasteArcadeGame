@@ -82,6 +82,15 @@
         gameOver() {
             this.soundManager.stopMusic();
             EWasteUtils.Highscore.addScore(this.scoremanager.getTotalScore());
+
+            EWasteUtils.StorageControl.setStorage("recycle1", this.scoremanager.waste1Amount);
+            EWasteUtils.StorageControl.setStorage("recycle2", this.scoremanager.waste2Amount);
+            EWasteUtils.StorageControl.setStorage("recycle3", this.scoremanager.waste3Amount);
+
+			EWasteUtils.StorageControl.setStorage("recycleKind1", "Papier");
+			EWasteUtils.StorageControl.setStorage("recycleKind2", "Elektrisch afval");
+			EWasteUtils.StorageControl.setStorage("recycleKind3", "PMD");
+
             this.game.state.start("GameOverState");
         }
     }
