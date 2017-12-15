@@ -24,12 +24,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="Graphics\battery.png" />
     <Content Include="Graphics\CityGround.png" />
     <Content Include="Graphics\firehydrant.png" />
     <Content Include="Graphics\GameOverScreen.jpg" />
     <Content Include="Graphics\Platform.png" />
     <Content Include="Graphics\Player\jump.png" />
     <Content Include="Graphics\Player\run.png" />
+    <Content Include="Graphics\police.png" />
+    <Content Include="Graphics\taxi.png" />
     <Content Include="Graphics\TitleScreen.jpg" />
     <Content Include="Graphics\waste1_1.png" />
     <Content Include="Graphics\waste1_2.png" />
@@ -79,6 +82,7 @@
     <TypeScriptCompile Include="Utils\StorageControl.ts" />
     <TypeScriptCompile Include="Utils\Highscore.ts" />
     <TypeScriptCompile Include="Utils\JoystickInput.ts" />
+    <TypeScriptCompile Include="Utils\LevelTemplate.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
@@ -88,6 +92,16 @@
     <Content Include="Sounds\Damage.ogg" />
     <Content Include="Sounds\PickupBad.ogg" />
     <Content Include="Sounds\PickupGood.ogg" />
+    <Content Include="Levels\level1.json" />
+    <Content Include="Levels\level9.json" />
+    <Content Include="Levels\level2.json" />
+    <Content Include="Levels\level3.json" />
+    <Content Include="Levels\level4.json" />
+    <Content Include="Levels\level5.json" />
+    <Content Include="Levels\level6.json" />
+    <Content Include="Levels\level7.json" />
+    <Content Include="Levels\level8.json" />
+    <Content Include="Levels\level10.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -108,7 +122,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64317</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

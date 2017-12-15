@@ -33,7 +33,6 @@
         }
 
         addToWasteScore(type: WasteType, amount: number = 1) {
-            console.log(type);
             this.ui.powerBar.getPower();
             switch (type) {
                 case WasteType.WASTE_1: {

@@ -18,7 +18,8 @@
         }
 
         spawnObstacle(x: number, y: number) {
-            var tag = "obstacle";
+
+            var tag = "obstacle_" + this.game.rnd.integerInRange(1, 2).toString();
 
             var obstacle = new EwasteGameObjects.Obstacle(this.game, x, y, tag);
 
