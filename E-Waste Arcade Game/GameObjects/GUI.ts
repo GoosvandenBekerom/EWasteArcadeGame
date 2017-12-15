@@ -26,7 +26,6 @@
             }
 
             this.powerBar.updatePosition(this.player.position.x, this.player.position.y);
-            console.log(this.powerBar.powerBarSprite.position.y);
         }
 
         updateScore(score: number)
