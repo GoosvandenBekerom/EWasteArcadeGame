@@ -20,10 +20,18 @@
         constructor(game: Phaser.Game, ui: GUI, state: EWasteGameStates.MainState) {
             this.game = game;
             this.state = state;
-            this.ui = ui
+			this.ui = ui
+
+			EWasteUtils.StorageControl.setStorage("recycle1", 0);
+			EWasteUtils.StorageControl.setStorage("recycle2", 0);
+			EWasteUtils.StorageControl.setStorage("recycle3", 0);
+
+			EWasteUtils.StorageControl.setStorage("recycleKind1", "Papier");
+			EWasteUtils.StorageControl.setStorage("recycleKind2", "Elektrisch afval");
+			EWasteUtils.StorageControl.setStorage("recycleKind3", "PMD");
         }
 
-        updateDistance(distance: number) {
+        updateDistance(distance: number) {	
             this.distanceScore = Math.floor(distance);
             //this.ui.updateScore(this.distanceScore);
         }
@@ -37,17 +45,20 @@
             switch (type) {
                 case WasteType.WASTE_1: {
                     this.waste1Amount += amount;
-                    this.waste1Score += this.waste1PickUpPoints;
+					this.waste1Score += this.waste1PickUpPoints;
+					EWasteUtils.StorageControl.setStorage("recycle1", this.waste1Amount);
                     break;
                 }
                 case WasteType.WASTE_2: {
                     this.waste2Amount += amount;
-                    this.waste2Score += this.waste2PickUpPoints;
+					this.waste2Score += this.waste2PickUpPoints;
+					EWasteUtils.StorageControl.setStorage("recycle2", this.waste2Amount);
                     break;
                 }
                 case WasteType.WASTE_3: {
                     this.waste3Amount += amount;
-                    this.waste3Score += this.waste3PickUpPoints;
+					this.waste3Score += this.waste3PickUpPoints;
+					EWasteUtils.StorageControl.setStorage("recycle3", this.waste3Amount);
                     break;
                 }
             }
