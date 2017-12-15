@@ -12,8 +12,9 @@
         platformManager: EwasteGameObjects.PlatformManager;
         scoremanager: EwasteGameObjects.ScoreManager;
         canvas: EwasteGameObjects.GUI;
-		floor: Phaser.Sprite;
-		bin: EwasteGameObjects.Bin;
+        levelControl: EWasteUtils.DynamicLevelControl;
+        floor: Phaser.Sprite;
+	bin: EwasteGameObjects.Bin;
 
         spawnTriggerPosition: number;
 
@@ -38,6 +39,7 @@
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, this.pickupManager, this.platformManager, this.obstacleManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
             this.scoremanager = new EwasteGameObjects.ScoreManager(this.game, this.canvas, this);
+            this.levelControl = new EWasteUtils.DynamicLevelControl();
 
             this.game.add.existing(this.scene);
             this.game.add.existing(this.sceneFloor);
@@ -66,7 +68,7 @@
         update() {
             if (this.player.x >= this.spawnTriggerPosition) {
                 this.spawnTriggerPosition = this.player.x + this.game.width;
-                this.spawnGrid.generateNext(this.spawnGrid.getRandomTemplateType(), this.spawnTriggerPosition);
+                this.spawnGrid.generateNext(this.levelControl.getSpawnLevel(this.scoremanager.getTotalScore()), this.spawnTriggerPosition);
             }
 
             // Parallax

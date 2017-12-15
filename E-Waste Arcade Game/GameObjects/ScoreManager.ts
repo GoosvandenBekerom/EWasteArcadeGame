@@ -62,7 +62,7 @@
                     break;
                 }
             }
-            this.ui.updateScore(this.waste1Score + this.waste2Score + this.waste3Score);
+            this.ui.updateScore(this.getTotalScore());
         }
 
         loseLife(amountOfPower: number) {
