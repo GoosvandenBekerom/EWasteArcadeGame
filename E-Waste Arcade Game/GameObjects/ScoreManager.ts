@@ -6,7 +6,7 @@
 
         private distanceScore: number;
         private wasteScore = 0;
-        private wastePickupScore = 75;
+        wastePickupScore = 75;
 
         waste1Amount = 0;
         waste2Amount = 0;
