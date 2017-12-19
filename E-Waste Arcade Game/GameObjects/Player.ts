@@ -19,7 +19,7 @@
         // move variables
         verticalMoveOffset: number;
         speed = 100;
-        speedIncrease = 0.01;
+        speedIncrease = 0.008;
         animationSpeed = 20;
         animationSpeedJumping = 5;
         jumping: boolean = false;
@@ -183,7 +183,8 @@
 
 		public addBin(bin) {
 			this.bin = bin;
-			this.joystick.YELLOW.onDown.add(Bin.prototype.changeCollectorBin, this.bin);
+            this.joystick.YELLOW.onDown.add(Bin.prototype.changeCollectorBinClockwise, this.bin);
+            this.joystick.GREEN.onDown.add(Bin.prototype.changeCollectorBinAntiClockwise, this.bin);
 		}
 
         private clampVerticleMove(move: number) {
