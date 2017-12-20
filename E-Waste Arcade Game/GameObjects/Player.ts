@@ -164,7 +164,42 @@
                 player.state.scoremanager.addToWasteScore(pickup.wasteType);
                 player.soundManager.playSound("pickupGood");
             } else {
-                player.state.scoremanager.loseLife(15);
+                switch (player.state.levelControl.spawnLevel)
+                {
+                    case EwasteGameObjects.SpawnLevel.Level_0:
+                        player.state.scoremanager.loseLife(5);
+                        break;
+                    case EwasteGameObjects.SpawnLevel.Level_1:
+                        player.state.scoremanager.loseLife(5);
+                        break;
+                    case EwasteGameObjects.SpawnLevel.Level_2:
+                        player.state.scoremanager.loseLife(5);
+                        break;
+                    case EwasteGameObjects.SpawnLevel.Level_3:
+                        player.state.scoremanager.loseLife(10);
+                        break;
+                    case EwasteGameObjects.SpawnLevel.Level_4:
+                        player.state.scoremanager.loseLife(10);
+                        break;
+                    case EwasteGameObjects.SpawnLevel.Level_5:
+                        player.state.scoremanager.loseLife(10);
+                        break;
+                    case EwasteGameObjects.SpawnLevel.Level_6:
+                        player.state.scoremanager.loseLife(15);
+                        break;
+                    case EwasteGameObjects.SpawnLevel.Level_7:
+                        player.state.scoremanager.loseLife(15);
+                        break;
+                    case EwasteGameObjects.SpawnLevel.Level_8:
+                        player.state.scoremanager.loseLife(15);
+                        break;
+                    case EwasteGameObjects.SpawnLevel.Level_9:
+                        player.state.scoremanager.loseLife(20);
+                        break;
+                    case EwasteGameObjects.SpawnLevel.Level_10:
+                        player.state.scoremanager.loseLife(20);
+                        break;
+                }
                 player.soundManager.playSound("pickupBad");
 
             }
