@@ -47,7 +47,7 @@
             this.gridRows[3] = distBetween * 4;
             this.gridRows[4] = distBetween * 5;
 
-            this.gridColumns = 5;
+            this.gridColumns = 6;
 
             this.loadLevelTemplates();
         }
@@ -65,29 +65,13 @@
             this.level10 = this.game.cache.getJSON("level10");
         }
 
-        getRandomTemplateType() {
-            switch (this.game.rnd.integerInRange(1, 7)) {
-                case 1: return SpawnLevel.Level_0;
-                case 2: return SpawnLevel.Level_1;
-                case 3: return SpawnLevel.Level_2;
-                case 4: return SpawnLevel.Level_3;
-                case 5: return SpawnLevel.Level_4;
-                case 6: return SpawnLevel.Level_5;
-                case 7: return SpawnLevel.Level_6;
-                case 8: return SpawnLevel.Level_7;
-                case 9: return SpawnLevel.Level_8;
-                case 10: return SpawnLevel.Level_9;
-                case 11: return SpawnLevel.Level_10;
-            }
-        }
-
         generateNext(templateLevel: SpawnLevel, startPosX: number) {
             let template = [
-                [0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0]
+                [0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0]
             ];
             
             switch (templateLevel) {
