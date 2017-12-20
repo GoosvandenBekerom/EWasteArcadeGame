@@ -16,10 +16,13 @@
             this.game.load.image("title", "Graphics/TitleScreen.jpg");
             this.game.load.image("scene", "Graphics/CitySkyline.png");
             this.game.load.image("sceneFloor", "Graphics/CityGround.png");
-			this.game.load.image("gameover", "Graphics/GameOverScreen.jpg");
+			this.game.load.image("gameover", "Graphics/GameOverScreen.png");
 			this.game.load.image("rgb", "Graphics/rgb.png");
 			this.game.load.image("brg", "Graphics/brg.png");
 			this.game.load.image("gbr", "Graphics/gbr.png");
+            this.game.load.image("wasteEnd1", "Graphics/waste1_final.png");
+            this.game.load.image("wasteEnd2", "Graphics/waste2_final.png");
+            this.game.load.image("wasteEnd3", "Graphics/waste3_final.png");
 
             // Pickups
             this.game.load.image("waste1_1", "Graphics/waste1_1.png");
@@ -32,8 +35,6 @@
             this.game.load.image("waste3_2", "Graphics/waste3_2.png");
             this.game.load.image("waste3_3", "Graphics/waste3_3.png");
             
-            this.game.load.image("heart", "Graphics/robothead.png");
-
             this.game.load.image("battery", "Graphics/battery.png");
 
             this.game.load.image("platform", "Graphics/Platform.png");

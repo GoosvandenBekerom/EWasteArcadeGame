@@ -6,37 +6,74 @@
 
         YELLOW: Phaser.Key;
 
+        // offset values
+        margin = 30;
+        padding = 10;
+
+        // color values
+        containerBg = 0xffffff;
+        opacity = 0.5;
+
         create() {
+            // Background
             this.gameOverSprite = this.add.sprite(0, 0, "gameover", 0);
-            this.gameOverSprite.scale.setTo(
-                this.game.width / this.gameOverSprite.width,
-                this.game.height / this.gameOverSprite.height);
 
-            this.input.onDown.add(() => {
-                this.game.state.start("TitleScreenState", true);
-            });
-
-			//Highscore
-            var tempstr = EWasteUtils.StorageControl.getStorage("highscore").replace(/,/g, "\n")
-            this.game.add.existing(new EwasteGameObjects.UIText(this.game, "1:\n2:\n3:\n4:\n5:", 0, 0, 32));
-            this.highscoreText = new EwasteGameObjects.UIText(this.game, tempstr , 50, 0, 32);
-			this.game.add.existing(this.highscoreText);
-
-
-			for (let i = 1; i <= 4; i++) {
-				if (i === 4) {
-					var text = "Jouw score is " + EWasteUtils.StorageControl.getStorage("yourScore");
-					this.game.add.existing(new EwasteGameObjects.UIText(this.game, text, 300, 400 + (i * 30), 24));
-					return;
-				}
-
-				var recycle = EWasteUtils.StorageControl.getStorage("recycle" + i);
-				var kind = EWasteUtils.StorageControl.getStorage("recycleKind" + i);
-				this.game.add.existing(new EwasteGameObjects.UIText(this.game, "Je hebt " + recycle + " gerecycled van " + kind, 300, 400 + (i * 30), 24));
-            }
-            
+            // Input
+            this.input.onDown.add(this.startTitleScreen);
             this.YELLOW = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
-            this.YELLOW.onDown.add(EWasteGameStates.TitleScreenState.prototype.startGame, this);
+            this.YELLOW.onDown.add(this.startTitleScreen);
+
+            // Score
+            let scoreContainer = this.game.add.graphics(this.margin, this.margin);
+            scoreContainer.beginFill(this.containerBg, this.opacity);
+            scoreContainer.drawRect(0, 0, 650, this.game.height - (this.margin * 2));
+            scoreContainer.endFill();
+
+            let scoreText = "Jouw score is " + EWasteUtils.StorageControl.getStorage("yourScore");
+            scoreContainer.addChild(new EwasteGameObjects.UIText(this.game, scoreText, this.padding, this.padding, 50));
+
+            // Waste Type scores
+            for (let i = 1; i <= 3; i++) {
+                var recycle = EWasteUtils.StorageControl.getStorage("recycle" + i);
+                var kind = EWasteUtils.StorageControl.getStorage("recycleKind" + i);
+
+                // image
+                let sprite = new Phaser.Sprite(this.game, this.padding, 0, "wasteEnd" + i);
+                sprite.y = (i * (sprite.height * 1.5)) + this.padding * i;
+                scoreContainer.addChild(sprite);
+
+                // text
+                let text = new EwasteGameObjects.UIText(this.game,
+                    "Aantal gerecycled: " + recycle + "\n" +
+                    "Hiermee is het mogelijk om _ te maken.",
+                    sprite.x + sprite.width + this.padding, sprite.y, 24);
+
+                text.maxWidth = scoreContainer.width - (this.padding * 3) - sprite.width;
+
+                text.align = "left";
+                text.anchor.setTo(0, 0.5);
+                text.y += sprite.height / 2;
+
+                scoreContainer.addChild(text);
+            }
+
+
+            // Highscores
+            let highScoreWidth = 285;
+            let highscoresContainer = this.game.add.graphics(this.game.width - this.margin - highScoreWidth, this.margin);
+            highscoresContainer.beginFill(this.containerBg, this.opacity);
+            highscoresContainer.drawRect(0, 0, highScoreWidth, 230);
+            highscoresContainer.endFill();
+
+            highscoresContainer.addChild(new EwasteGameObjects.UIText(this.game, "HIGHSCORES", this.padding, this.padding, 36));
+            highscoresContainer.addChild(new EwasteGameObjects.UIText(this.game, "1:\n2:\n3:\n4:\n5:", this.padding, 50 + this.padding, 32));
+            let scores = EWasteUtils.StorageControl.getStorage("highscore").replace(/,/g, "\n")
+            this.highscoreText = new EwasteGameObjects.UIText(this.game, scores, 50 + this.padding, 50 + this.padding, 32);
+            highscoresContainer.addChild(this.highscoreText);
+        }
+
+        startTitleScreen(caller) {
+            caller.game.state.start("TitleScreenState", true);
         }
     }
 }
