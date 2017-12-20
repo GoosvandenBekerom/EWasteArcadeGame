@@ -184,16 +184,16 @@
                         player.state.scoremanager.loseLife(15);
                         break;
                     case EwasteGameObjects.SpawnLevel.Level_7:
-                        player.state.scoremanager.loseLife(15);
+                        player.state.scoremanager.loseLife(25);
                         break;
                     case EwasteGameObjects.SpawnLevel.Level_8:
-                        player.state.scoremanager.loseLife(15);
+                        player.state.scoremanager.loseLife(20);
                         break;
                     case EwasteGameObjects.SpawnLevel.Level_9:
                         player.state.scoremanager.loseLife(20);
                         break;
                     case EwasteGameObjects.SpawnLevel.Level_10:
-                        player.state.scoremanager.loseLife(20);
+                        player.state.scoremanager.loseLife(25);
                         break;
                 }
                 player.soundManager.playSound("pickupBad");
