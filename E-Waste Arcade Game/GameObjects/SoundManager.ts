@@ -17,7 +17,9 @@
             this.pickupBad = this.game.add.audio("pickupBad");
             this.pickupGood = this.game.add.audio("pickupGood");
 
-            this.music.volume = 0.3;
+			this.damage.volume = 1.5;
+
+            this.music.volume = 0.5;
             this.music.loop = true;
             this.music.play();
         }

@@ -18,27 +18,56 @@
             this.collectWasteTypeState = WasteType.WASTE_1;
         }
 
-        changeCollectorBin() {
+        changeCollectorBinClockwise() {
             switch (this.collectWasteTypeState) {
                 case WasteType.WASTE_1: {
-                    this.collectWasteTypeState = WasteType.WASTE_2;
-					this.player.tint = 0xED6B6B;
-					this.loadTexture("brg");
+                    this.changeToWaste2();
                     break;
                 }
                 case WasteType.WASTE_2: {
-                    this.collectWasteTypeState = WasteType.WASTE_3;
-					this.player.tint = 0x515CF5;
-					this.loadTexture("gbr");
+                    this.changeToWaste3();
                     break;
                 }
                 case WasteType.WASTE_3: {
-                    this.collectWasteTypeState = WasteType.WASTE_1;
-					this.player.tint = 0x69F551;
-					this.loadTexture("rgb");
+                    this.changeToWaste1();
                     break;
                 }
             }
+        }
+
+        changeCollectorBinAntiClockwise() {
+            switch (this.collectWasteTypeState) {
+                case WasteType.WASTE_1: {
+                    this.changeToWaste3();
+                    break;
+                }
+                case WasteType.WASTE_2: {
+                    this.changeToWaste1();
+                    break;
+                }
+                case WasteType.WASTE_3: {
+                    this.changeToWaste2();
+                    break;
+                }
+            }
+        }
+
+        private changeToWaste1() {
+            this.collectWasteTypeState = WasteType.WASTE_1;
+            this.player.tint = 0x69F551;
+            this.loadTexture("rgb");
+        }
+
+        private changeToWaste2() {
+            this.collectWasteTypeState = WasteType.WASTE_2;
+            this.player.tint = 0xED6B6B;
+            this.loadTexture("brg");
+        }
+
+        private changeToWaste3() {
+            this.collectWasteTypeState = WasteType.WASTE_3;
+            this.player.tint = 0x515CF5;
+            this.loadTexture("gbr");
         }
     }
 }

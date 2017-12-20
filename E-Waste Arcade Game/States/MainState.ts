@@ -39,7 +39,7 @@
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, this.pickupManager, this.platformManager, this.obstacleManager);
             this.canvas = new EwasteGameObjects.GUI(this.game, this.player);
             this.scoremanager = new EwasteGameObjects.ScoreManager(this.game, this.canvas, this);
-            this.levelControl = new EWasteUtils.DynamicLevelControl();
+            this.levelControl = new EWasteUtils.DynamicLevelControl(this.scoremanager);
 
             this.game.add.existing(this.scene);
             this.game.add.existing(this.sceneFloor);
