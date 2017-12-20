@@ -19,7 +19,6 @@
         // move variables
         verticalMoveOffset: number;
         speed = 100;
-        speedIncrease = 0.008;
         animationSpeed = 20;
         animationSpeedJumping = 5;
         jumping: boolean = false;
@@ -135,9 +134,6 @@
                     this.alpha = 1;
                 }
             }
-
-            // increase speed
-            this.speed += this.speedIncrease;
 
             // move forward
             this.body.velocity.x = this.speed * (60 / this.game.time.elapsedMS);
