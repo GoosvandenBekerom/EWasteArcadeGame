@@ -184,7 +184,7 @@
                         player.state.scoremanager.loseLife(15);
                         break;
                     case EwasteGameObjects.SpawnLevel.Level_7:
-                        player.state.scoremanager.loseLife(25);
+                        player.state.scoremanager.loseLife(15);
                         break;
                     case EwasteGameObjects.SpawnLevel.Level_8:
                         player.state.scoremanager.loseLife(20);
