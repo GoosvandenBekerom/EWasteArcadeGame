@@ -60,9 +60,10 @@
 
             // Highscores
             let highScoreWidth = 285;
+            let highScoreHeight = 230;
             let highscoresContainer = this.game.add.graphics(this.game.width - this.margin - highScoreWidth, this.margin);
             highscoresContainer.beginFill(this.containerBg, this.opacity);
-            highscoresContainer.drawRect(0, 0, highScoreWidth, 230);
+            highscoresContainer.drawRect(0, 0, highScoreWidth, highScoreHeight);
             highscoresContainer.endFill();
 
             highscoresContainer.addChild(new EwasteGameObjects.UIText(this.game, "HIGHSCORES", this.padding, this.padding, 36));
@@ -70,6 +71,13 @@
             let scores = EWasteUtils.StorageControl.getStorage("highscore").replace(/,/g, "\n")
             this.highscoreText = new EwasteGameObjects.UIText(this.game, scores, 50 + this.padding, 50 + this.padding, 32);
             highscoresContainer.addChild(this.highscoreText);
+
+            // back button
+            let btnGraphics = this.game.add.graphics(
+                this.game.width - this.margin - highScoreWidth,
+                this.game.height - this.margin - highScoreHeight);
+
+            btnGraphics.addChild(new Phaser.Sprite(this.game, highScoreWidth / 4, highScoreHeight / 4, "endGame"));
         }
 
         startTitleScreen(caller) {
