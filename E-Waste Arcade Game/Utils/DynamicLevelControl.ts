@@ -17,14 +17,12 @@
 
         getSpawnLevel(playerScore: number): EwasteGameObjects.SpawnLevel
 		{
-            let newLevel = EwasteGameObjects.SpawnLevel.Level_0;
             if (this.amountOfRoundsDone % 5 == 0 && this.amountOfRoundsDone > 0)
             {  
                 this.lastLevelScore = playerScore;
                 this.amountOfRoundsDone = 0;
                 if (this.spawnLevel != EwasteGameObjects.SpawnLevel.Level_10) {
                     this.spawnLevel++;
-                    return this.spawnLevel
                 }
             }
             else
@@ -40,12 +38,10 @@
                     this.amountOfRoundsDone = 5;
                     return this.getSpawnLevel(playerScore);
                 }
-                newLevel = this.spawnLevel;
             }
 
             this.amountOfRoundsDone++;
-            return newLevel;
-			
+            return this.spawnLevel
         }
     }
 }
