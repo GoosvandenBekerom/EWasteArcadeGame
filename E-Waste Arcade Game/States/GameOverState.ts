@@ -29,8 +29,9 @@
             scoreContainer.drawRect(0, 0, 650, this.game.height - (this.margin * 2));
             scoreContainer.endFill();
 
-            let scoreText = "Jouw score is " + EWasteUtils.StorageControl.getStorage("yourScore");
-            scoreContainer.addChild(new EwasteGameObjects.UIText(this.game, scoreText, this.padding, this.padding, 50));
+            let scoreText = EWasteUtils.StorageControl.getStorage("playerName") + ", Jouw score is " +
+                EWasteUtils.StorageControl.getStorage("yourScore");
+            scoreContainer.addChild(new EwasteGameObjects.UIText(this.game, scoreText, this.padding, this.padding, 42));
 
             // Waste Type scores
             for (let i = 1; i <= 3; i++) {
@@ -77,7 +78,9 @@
                 this.game.width - this.margin - highScoreWidth,
                 this.game.height - this.margin - highScoreHeight);
 
-            btnGraphics.addChild(new Phaser.Sprite(this.game, highScoreWidth / 4, highScoreHeight / 4, "endGame"));
+            let btn = new Phaser.Sprite(this.game, highScoreWidth / 2, 0, "endGame");
+            btn.anchor.setTo(0.5, 0);
+            btnGraphics.addChild(btn);
         }
 
         startTitleScreen(caller) {

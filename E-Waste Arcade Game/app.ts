@@ -17,8 +17,9 @@
             this.game.load.image("joystickJump", "Graphics/joystickJump.png");
             this.game.load.image("buttonSwitchLeft", "Graphics/buttonSwitchLeft.png");
             this.game.load.image("buttonSwitchRight", "Graphics/buttonSwitchRight.png");
-            this.game.load.image("startGame", "Graphics/startGame.png")
-            this.game.load.image("endGame", "Graphics/endGame.png")
+            this.game.load.image("buttonButton", "Graphics/buttonButton.png");
+            this.game.load.image("startGame", "Graphics/startGame.png");
+            this.game.load.image("endGame", "Graphics/endGame.png");
             this.game.load.image("scene", "Graphics/CitySkyline.png");
             this.game.load.image("sceneFloor", "Graphics/CityGround.png");
 			this.game.load.image("gameover", "Graphics/GameOverScreen.png");
@@ -28,6 +29,8 @@
             this.game.load.image("wasteEnd1", "Graphics/waste1_final.png");
             this.game.load.image("wasteEnd2", "Graphics/waste2_final.png");
             this.game.load.image("wasteEnd3", "Graphics/waste3_final.png");
+            this.game.load.image("arrowUp", "Graphics/arrow_up.png");
+            this.game.load.image("arrowDown", "Graphics/arrow_down.png");
 
             // Pickups
             this.game.load.image("waste1_1", "Graphics/waste1_1.png");
@@ -99,6 +102,7 @@
         create() {
             this.game.state.add("TitleScreenState", EWasteGameStates.TitleScreenState, true);
             this.game.state.add("MainState", EWasteGameStates.MainState, false);
+            this.game.state.add("EnterNameState", EWasteGameStates.EnterNameState, false);
             this.game.state.add("GameOverState", EWasteGameStates.GameOverState, false);
 
             this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
