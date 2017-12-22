@@ -8,7 +8,7 @@
 		blue: Phaser.Sprite;
 
 		minScale = 0.1;
-		maxScale = -0.2;
+		maxScale = -0.1;
 		
         //Red = 0xED6B6B --- WASTETYPE 2
         //Green = 0x69F551 --- WASTETYPE 1
