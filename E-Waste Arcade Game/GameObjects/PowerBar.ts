@@ -72,9 +72,9 @@
 
         updatePosition(posx: number, posy: number) {
             this.batterySprite.position.y = posy - 130;
-            this.batterySprite.position.x = posx - 20;
+            this.batterySprite.position.x = posx - 10;
             this.powerBarSprite.position.y = posy - 13;
-            this.powerBarSprite.position.x = posx - 18;
+            this.powerBarSprite.position.x = posx - 8;
         }
     }
 }

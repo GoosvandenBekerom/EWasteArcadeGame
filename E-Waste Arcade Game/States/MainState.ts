@@ -13,8 +13,11 @@
         scoremanager: EwasteGameObjects.ScoreManager;
         canvas: EwasteGameObjects.GUI;
         levelControl: EWasteUtils.DynamicLevelControl;
-        floor: Phaser.Sprite;
-	bin: EwasteGameObjects.Bin;
+		floor: Phaser.Sprite;
+		red: Phaser.Sprite;
+		green: Phaser.Sprite;
+		blue: Phaser.Sprite;
+		bin: EwasteGameObjects.Bin;
 
         spawnTriggerPosition: number;
 
@@ -33,7 +36,10 @@
             this.obstacleManager = new EwasteGameObjects.ObstacleManager(this.game, this);
             this.player = new EwasteGameObjects.Player(
 				this.game, this.startOffset, 450, widthBounds, this.floor, this, this.soundManager);
-			this.bin = new EwasteGameObjects.Bin(this.game, this.player, this.game.width / 2 - 100, 30);
+			this.red = this.game.add.sprite(100, this.player.y - 100, 'red');
+			this.green = this.game.add.sprite(100, this.player.y - 80, 'green');
+			this.blue = this.game.add.sprite(100, this.player.y - 60, 'blue');
+			this.bin = new EwasteGameObjects.Bin(this.game, this.player, this.game.width / 2 - 100, 30, this.red, this.green, this.blue);
 			this.player.addBin(this.bin);
             this.platformManager = new EwasteGameObjects.PlatformManager(this.game, this, this.player);
             this.spawnGrid = new EwasteGameObjects.SpawnGrid(this.game, this.pickupManager, this.platformManager, this.obstacleManager);
@@ -72,7 +78,7 @@
 			}
 
             // Parallax
-            this.scene.position.x += this.player.speed / 200;
+			this.scene.position.x += this.player.speed / 200;
         }
 
         render() {

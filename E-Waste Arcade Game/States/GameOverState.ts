@@ -4,6 +4,7 @@
         gameOverSprite: Phaser.Sprite;
         highscoreText: EwasteGameObjects.UIText;
 
+        timer: Phaser.Timer;
         YELLOW: Phaser.Key;
 
         // offset values
@@ -18,10 +19,10 @@
             // Background
             this.gameOverSprite = this.add.sprite(0, 0, "gameover", 0);
 
-            // Input
-            this.input.onDown.add(this.startTitleScreen);
-            this.YELLOW = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
-            this.YELLOW.onDown.add(this.startTitleScreen);
+            // input
+            this.timer = this.game.time.create();
+            this.timer.loop(1000, this.endBtnEnabled, this);
+            this.timer.start();
 
             // Score
             let scoreContainer = this.game.add.graphics(this.margin, this.margin);
@@ -85,6 +86,14 @@
 
         startTitleScreen(caller) {
             caller.game.state.start("TitleScreenState", true);
+        }
+
+        endBtnEnabled()
+        {
+            this.input.onDown.add(this.startTitleScreen);
+            this.YELLOW = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
+            this.YELLOW.onDown.add(this.startTitleScreen);
+            this.timer.stop();
         }
     }
 }

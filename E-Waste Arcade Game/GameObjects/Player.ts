@@ -47,7 +47,7 @@
             this.soundManager = soundManager;
             this.body.collideWorldBounds = true;
             this.body.bounce.y = 0;
-            this.body.gravity.y = 500;
+            this.body.gravity.y = 1000;
 
             this.backgroundWidth = backgroundWidth;
 
@@ -141,18 +141,15 @@
             // jump
             var move = 0;
             if (this.joystick.UP.isDown && !this.jumping) {
-                this.body.velocity.y = -420;
+                this.body.velocity.y = -630;
                 this.jumpTimer = this.game.time.now + 750;
                 this.startJumping();
                 this.jumping = true;
             }
 
             if (this.joystick.DOWN.isDown && this.jumping) {
-                this.body.velocity.y = 500;
+                this.body.velocity.y = 630;
             }
-
-            // update score
-            this.state.scoremanager.updateDistance(this.x / 10);
         }
 
         pickupCollisionHandler(player, pickup) {

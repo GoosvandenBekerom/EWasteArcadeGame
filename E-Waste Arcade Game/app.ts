@@ -14,18 +14,21 @@
         preload() {
             // Graphics
             this.game.load.image("title", "Graphics/TitleScreen.png");
-            this.game.load.image("joystickJump", "Graphics/joystickJump.png");
-            this.game.load.image("buttonSwitchLeft", "Graphics/buttonSwitchLeft.png");
-            this.game.load.image("buttonSwitchRight", "Graphics/buttonSwitchRight.png");
             this.game.load.image("buttonButton", "Graphics/buttonButton.png");
             this.game.load.image("startGame", "Graphics/startGame.png");
             this.game.load.image("endGame", "Graphics/endGame.png");
+            this.game.load.image("uitleg", "Graphics/GameUitleg.png");
+            this.game.load.image("startGame", "Graphics/startGame.png")
+            this.game.load.image("endGame", "Graphics/endGame.png")
             this.game.load.image("scene", "Graphics/CitySkyline.png");
             this.game.load.image("sceneFloor", "Graphics/CityGround.png");
 			this.game.load.image("gameover", "Graphics/GameOverScreen.png");
 			this.game.load.image("rgb", "Graphics/rgb.png");
 			this.game.load.image("brg", "Graphics/brg.png");
 			this.game.load.image("gbr", "Graphics/gbr.png");
+			this.game.load.image("red", "Graphics/red.png");
+			this.game.load.image("green", "Graphics/green.png");
+			this.game.load.image("blue", "Graphics/blue.png");
             this.game.load.image("wasteEnd1", "Graphics/waste1_final.png");
             this.game.load.image("wasteEnd2", "Graphics/waste2_final.png");
             this.game.load.image("wasteEnd3", "Graphics/waste3_final.png");
