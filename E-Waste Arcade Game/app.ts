@@ -25,6 +25,9 @@
 			this.game.load.image("rgb", "Graphics/rgb.png");
 			this.game.load.image("brg", "Graphics/brg.png");
 			this.game.load.image("gbr", "Graphics/gbr.png");
+			this.game.load.image("red", "Graphics/red.png");
+			this.game.load.image("green", "Graphics/green.png");
+			this.game.load.image("blue", "Graphics/blue.png");
             this.game.load.image("wasteEnd1", "Graphics/waste1_final.png");
             this.game.load.image("wasteEnd2", "Graphics/waste2_final.png");
             this.game.load.image("wasteEnd3", "Graphics/waste3_final.png");

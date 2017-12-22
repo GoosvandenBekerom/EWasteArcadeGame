@@ -25,14 +25,17 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="Graphics\battery.png" />
+    <Content Include="Graphics\blue.png" />
     <Content Include="Graphics\ButtonUitleg.png" />
     <Content Include="Graphics\CityGround.png" />
     <Content Include="Graphics\firehydrant.png" />
     <Content Include="Graphics\GameOverScreen.jpg" />
+    <Content Include="Graphics\green.png" />
     <Content Include="Graphics\Platform.png" />
     <Content Include="Graphics\Player\jump.png" />
     <Content Include="Graphics\Player\run.png" />
     <Content Include="Graphics\police.png" />
+    <Content Include="Graphics\red.png" />
     <Content Include="Graphics\startGame.png" />
     <Content Include="Graphics\taxi.png" />
     <Content Include="Graphics\TitleScreen.png" />

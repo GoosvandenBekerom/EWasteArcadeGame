@@ -21,7 +21,7 @@
             {
                 this.bmpText.fixedToCamera = true;
                 this.game.add.existing(this.bmpText);
-                this.powerBar = new EwasteGameObjects.PowerBar(this.game, (this.player.position.x - 20), this.player.position.y - 50, this.player.state);
+				this.powerBar = new EwasteGameObjects.PowerBar(this.game, (this.player.position.x - 20), this.player.position.y - 50, this.player.state);
                 this.isDrawn = true;
             }
 
