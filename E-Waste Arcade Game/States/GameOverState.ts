@@ -3,6 +3,7 @@
         game: Phaser.Game;
         gameOverSprite: Phaser.Sprite;
         highscoreText: EwasteGameObjects.UIText;
+        tweenButton: Phaser.Tween;
 
         timer: Phaser.Timer;
         YELLOW: Phaser.Key;
@@ -82,6 +83,9 @@
             let btn = new Phaser.Sprite(this.game, highScoreWidth / 2, 0, "endGame");
             btn.anchor.setTo(0.5, 0);
             btnGraphics.addChild(btn);
+
+            this.tweenButton = this.game.add.tween(btn).to({ alpha: 0 }, 1000, "Linear", true, 0, -1);
+            this.tweenButton.yoyo(true, 1);
         }
 
         startTitleScreen(caller) {

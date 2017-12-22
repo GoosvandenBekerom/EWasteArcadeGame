@@ -3,10 +3,10 @@
         game: Phaser.Game;
         background: Phaser.Sprite;
         joystick: EWasteUtils.JoystickInput;
+        timer: Phaser.Timer;
 
         // offset values
         margin = 30;
-        padding = 10;
 
         // color values
         containerBg = 0xffffff;
@@ -38,8 +38,13 @@
                 this.game,
                 Phaser.Keyboard.UP, Phaser.Keyboard.DOWN,
                 Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT,
-                Phaser.Keyboard.Z, Phaser.Keyboard.X
+                Phaser.Keyboard.X, Phaser.Keyboard.Z
             );
+
+            // input timer
+            this.timer = this.game.time.create();
+            this.timer.loop(1500, this.endBtnEnabled, this);
+            this.timer.start();
             
             // Background
             this.background = this.add.sprite(0, 0, "gameover", 0);
@@ -50,9 +55,7 @@
             nameContainer.endFill();
 
             // Display title
-            let title = new EwasteGameObjects.UIText(this.game,"Wow, je hebt de highscores bereikt!\n", this.padding, this.padding, 46);
-            nameContainer.addChild(title);
-            let nameTitle = new EwasteGameObjects.UIText(this.game, "vul hier je naam in", this.padding, this.padding + 60, 66);
+            let nameTitle = new EwasteGameObjects.UIText(this.game, "vul hier je naam in", this.margin + 30, this.margin + 30, 66);
             nameContainer.addChild(nameTitle);
 
             // positions
@@ -181,12 +184,15 @@
                 this.arrowUp3.alpha = 0;
                 this.arrowDown3.alpha = 0;
             });
+        }
 
+        endBtnEnabled() {
             this.joystick.GREEN.onDown.add(() => {
                 let name = this.alphabet[this.current1] + this.alphabet[this.current2] + this.alphabet[this.current3];
                 EWasteUtils.StorageControl.setStorage('playerName', name);
                 this.game.state.start("GameOverState");
-            })
+            });
+            this.timer.stop();
         }
     }
 }
