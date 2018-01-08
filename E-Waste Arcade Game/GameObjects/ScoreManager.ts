@@ -24,6 +24,8 @@
 
         addToWasteScore(type: WasteType, amount: number = 1) {
             this.ui.powerBar.gainPower(amount * 5);
+            
+            this.wastePickupScore = 50 + (this.state.levelControl.spawnLevel * 5);
 
             switch (type) {
                 case WasteType.WASTE_1: {
