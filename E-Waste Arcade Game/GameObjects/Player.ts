@@ -65,8 +65,6 @@
                 Phaser.Keyboard.Z, Phaser.Keyboard.X
 			);
 
-            
-
             this.anchor.set(0.0, 1.0);
 
             this.floor = floor;
