@@ -190,6 +190,7 @@
             this.joystick.GREEN.onDown.add(() => {
                 let name = this.alphabet[this.current1] + this.alphabet[this.current2] + this.alphabet[this.current3];
                 EWasteUtils.StorageControl.setStorage('playerName', name);
+                EWasteUtils.Highscore.addScore(parseInt(EWasteUtils.StorageControl.getStorage("yourScore")), name);
                 this.game.state.start("GameOverState");
             });
             this.timer.stop();

@@ -70,9 +70,19 @@
             highscoresContainer.endFill();
 
             highscoresContainer.addChild(new EwasteGameObjects.UIText(this.game, "HIGHSCORES", this.padding, this.padding, 36));
-            highscoresContainer.addChild(new EwasteGameObjects.UIText(this.game, "1:\n2:\n3:\n4:\n5:", this.padding, 50 + this.padding, 32));
-            let scores = EWasteUtils.StorageControl.getStorage("highscore").replace(/,/g, "\n")
-            this.highscoreText = new EwasteGameObjects.UIText(this.game, scores, 50 + this.padding, 50 + this.padding, 32);
+
+            let scores = JSON.parse(EWasteUtils.StorageControl.getStorage("highscores"));
+
+            let namesString = "";
+            let scoreString = "";
+            for (let i = 0; i < scores.length; i++) {
+                namesString += scores[i].name + ":\n";
+                scoreString += scores[i].score + "\n";
+            }
+            let namesText = new EwasteGameObjects.UIText(this.game, namesString, this.padding, 50 + this.padding, 32);
+            this.highscoreText = new EwasteGameObjects.UIText(this.game, scoreString, 120 + this.padding, 50 + this.padding, 32);
+
+            highscoresContainer.addChild(namesText);
             highscoresContainer.addChild(this.highscoreText);
 
             // back button

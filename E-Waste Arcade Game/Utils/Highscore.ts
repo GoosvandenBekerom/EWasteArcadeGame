@@ -1,13 +1,13 @@
 ﻿module EWasteUtils {
     export class Highscore {
-        static addScore(score: number)
+        /*static addScoreOld(score: number, name: string)
         {
             let newScore = "";
             if (StorageControl.getStorage("highscore") != null)
             {
-                let scoreStringArray = StorageControl.getStorage("highscore").split(',')
+                let scoreStringArray = StorageControl.getStorage("highscore").split(',');
 
-                let scoreIntArray = this.getSortedScore(scoreStringArray, score);
+                let scoreIntArray = this.sortScores(scoreStringArray, score);
                 let loopAmount = scoreIntArray.length;
 
                 if (loopAmount > 5)
@@ -28,20 +28,26 @@
                 newScore = score.toString();
             }
 
-            StorageControl.setStorage("highscore", newScore,);
-        }
+            StorageControl.setStorage("highscore", newScore);
+        }*/
 
-        static getSortedScore(scoreStringArray: string[], newScore: number)
-        {
-            let scoreIntArray = new Array<number>(scoreStringArray.length + 1);
-            for (let i = 0; i < scoreIntArray.length - 1; i++) {
-                scoreIntArray[i] = parseInt(scoreStringArray[i]);
+        static addScore(score: number, name: string) {
+            let scoreArray = [];
+            let highscoreString = StorageControl.getStorage("highscores");
+            if (highscoreString != null) {
+                scoreArray = JSON.parse(highscoreString);
+                scoreArray.push(new Score(score, name));
+                
+                scoreArray.sort((a, b) => {
+                    return b.score - a.score;
+                });
+
+                if (scoreArray.length > 5) {
+                    scoreArray.pop();
+                }
             }
-            scoreIntArray[scoreIntArray.length - 1] = newScore;
-
-            scoreIntArray.sort(function(a, b) { return b - a });
-
-            return scoreIntArray;
+            StorageControl.setStorage("highscores", JSON.stringify(scoreArray));
         }
+        
     }
 }

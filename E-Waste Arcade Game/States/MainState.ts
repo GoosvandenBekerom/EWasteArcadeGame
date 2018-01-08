@@ -88,9 +88,7 @@
         gameOver() {
             this.soundManager.stopMusic();
             let score = this.scoremanager.getTotalScore()
-
-            EWasteUtils.Highscore.addScore(score);
-
+            
 			EWasteUtils.StorageControl.setStorage("yourScore", score);
             EWasteUtils.StorageControl.setStorage("recycle1", this.scoremanager.waste1Amount);
             EWasteUtils.StorageControl.setStorage("recycle2", this.scoremanager.waste2Amount);
