@@ -21,7 +21,7 @@
             // draw to the canvas context like normal
             this.bmd.ctx.beginPath();
             this.bmd.ctx.rect(0, 0, 25, -this.powerBarHeight);
-            this.bmd.ctx.fillStyle = '#ff0000';
+			this.bmd.ctx.fillStyle = '#c0af00';
             this.bmd.ctx.fill();
 
 
