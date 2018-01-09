@@ -1,5 +1,5 @@
 ﻿module EwasteGameObjects {
-    export enum PlayerState { IDLE, RUNNING, JUMPING }
+    export enum PlayerState { IDLE, RUNNING, JUMPING, DYING }
     export enum WasteType { WASTE_1, WASTE_2, WASTE_3 }
 
     export class Player extends Phaser.Sprite {
@@ -86,14 +86,14 @@
 
             //Collision
             this.game.physics.arcade.collide(this, this.floor, () => {
-                if (this.playerState == PlayerState.RUNNING) return;
+                if (this.playerState == PlayerState.RUNNING || this.playerState == PlayerState.DYING) return;
                 this.startRunning();
 
                 if (this.currentPlatform && this.currentPlatform.body) { this.currentPlatform.body.enable = true; }
             });
 
             if (this.game.physics.arcade.collide(this, this.state.platformManager, (player, platform) => {
-                if (player.playerState != PlayerState.RUNNING) {
+                if (player.playerState != PlayerState.RUNNING || this.playerState == PlayerState.DYING) {
                     player.startRunning();
                 }
 
@@ -239,6 +239,14 @@
             this.loadTexture("CHAR_JUMPING", 5);
             this.animations.add("falling");
             this.animations.play("falling", this.animationSpeedJumping, true);
+        }
+
+        public startDying(): Phaser.Animation {
+            this.playerState = PlayerState.DYING;
+            this.loadTexture("CHAR_DYING", 0);
+            let anim = this.animations.add("dying");
+            this.animations.play("dying", this.animationSpeed, false, true);
+            return anim;
         }
     }
 }

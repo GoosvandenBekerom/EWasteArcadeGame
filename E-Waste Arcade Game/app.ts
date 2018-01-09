@@ -59,6 +59,8 @@
                 "Graphics/Player/run.png", "Graphics/Player/run.json");
             this.game.load.atlasJSONArray("CHAR_JUMPING",
                 "Graphics/Player/jump.png", "Graphics/Player/jump.json");
+            this.game.load.atlasJSONArray("CHAR_DYING",
+                "Graphics/Player/die.png", "Graphics/Player/die.json");
 
             // Fonts
             this.game.load.bitmapFont('font', 'Graphics/font.png', 'Graphics/font.xml');

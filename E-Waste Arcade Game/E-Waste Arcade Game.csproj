@@ -32,6 +32,7 @@
     <Content Include="Graphics\GameOverScreen.jpg" />
     <Content Include="Graphics\green.png" />
     <Content Include="Graphics\Platform.png" />
+    <Content Include="Graphics\Player\die.png" />
     <Content Include="Graphics\Player\jump.png" />
     <Content Include="Graphics\Player\run.png" />
     <Content Include="Graphics\police.png" />
@@ -109,6 +110,7 @@
     <Content Include="Levels\level7.json" />
     <Content Include="Levels\level8.json" />
     <Content Include="Levels\level10.json" />
+    <Content Include="Graphics\Player\die.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
