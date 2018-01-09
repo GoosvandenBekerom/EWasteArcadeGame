@@ -138,7 +138,7 @@
 
             // jump
             var move = 0;
-            if (this.joystick.UP.isDown && !this.jumping) {
+            if (this.joystick.UP.isDown && !this.jumping && this.playerState != PlayerState.DYING) {
                 this.body.velocity.y = -630;
                 this.jumpTimer = this.game.time.now + 750;
                 this.startJumping();
