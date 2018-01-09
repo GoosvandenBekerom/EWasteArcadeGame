@@ -91,6 +91,7 @@
     <TypeScriptCompile Include="Utils\Highscore.ts" />
     <TypeScriptCompile Include="Utils\JoystickInput.ts" />
     <TypeScriptCompile Include="Utils\LevelTemplate.ts" />
+    <TypeScriptCompile Include="Utils\WasteInfo.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
@@ -111,6 +112,7 @@
     <Content Include="Levels\level8.json" />
     <Content Include="Levels\level10.json" />
     <Content Include="Graphics\Player\die.json" />
+    <Content Include="Utils\GameOverInfo.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

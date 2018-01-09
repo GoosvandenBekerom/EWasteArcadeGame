@@ -5,6 +5,8 @@
         highscoreText: EwasteGameObjects.UIText;
         tweenButton: Phaser.Tween;
 
+        wasteInfo: EWasteUtils.WasteInfo;
+
         timer: Phaser.Timer;
         YELLOW: Phaser.Key;
 
@@ -35,10 +37,15 @@
                 EWasteUtils.StorageControl.getStorage("yourScore");
             scoreContainer.addChild(new EwasteGameObjects.UIText(this.game, scoreText, this.padding, this.padding, 42));
 
+            this.wasteInfo = this.game.cache.getJSON("gameOverInfo");
+
             // Waste Type scores
             for (let i = 1; i <= 3; i++) {
-                var recycle = EWasteUtils.StorageControl.getStorage("recycle" + i);
-                var kind = EWasteUtils.StorageControl.getStorage("recycleKind" + i);
+                let recycle = EWasteUtils.StorageControl.getStorage("recycle" + i);
+                let kind = EWasteUtils.StorageControl.getStorage("recycleKind" + i);
+                let wasteText = this.wasteInfo.Waste1;
+                if (i == 2) wasteText = this.wasteInfo.Waste2;
+                if (i == 3) wasteText = this.wasteInfo.Waste3;
 
                 // image
                 let sprite = new Phaser.Sprite(this.game, this.padding, 0, "wasteEnd" + i);
@@ -47,8 +54,7 @@
 
                 // text
                 let text = new EwasteGameObjects.UIText(this.game,
-                    "Aantal gerecycled: " + recycle + "\n" +
-                    "Hiermee is het mogelijk om _ te maken.",
+                    "Aantal gerecycled: " + recycle + "\n" + wasteText,
                     sprite.x + sprite.width + this.padding, sprite.y, 24);
 
                 text.maxWidth = scoreContainer.width - (this.padding * 3) - sprite.width;

@@ -108,6 +108,9 @@
             this.game.load.json("level8", "Levels/level8.json");
             this.game.load.json("level9", "Levels/level9.json");
             this.game.load.json("level10", "Levels/level10.json");
+
+            // Game Over Info
+            this.game.load.json("gameOverInfo", "Utils/GameOverInfo.json");
         }
 
         create() {
