@@ -21,7 +21,7 @@
             {  
                 this.lastLevelScore = playerScore;
                 this.amountOfRoundsDone = 0;
-                if (this.spawnLevel != EwasteGameObjects.SpawnLevel.Level_10) {
+                if (this.spawnLevel != EwasteGameObjects.SpawnLevel.Level_8) {
                     this.spawnLevel++;
                 }
             }
@@ -40,8 +40,9 @@
                 }
             }
 
-			this.amountOfRoundsDone++;
-			return this.spawnLevel
+            this.amountOfRoundsDone++;
+            return EwasteGameObjects.SpawnLevel.Level_8;
+            //return this.spawnLevel;
         }
     }
 }

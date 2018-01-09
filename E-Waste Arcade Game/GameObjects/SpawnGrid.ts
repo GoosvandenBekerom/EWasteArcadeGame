@@ -110,14 +110,6 @@
                     template = this.game.rnd.pick(this.level8.templates);
                     break;
                 }
-                case SpawnLevel.Level_9: {
-                    template = this.game.rnd.pick(this.level9.templates);
-                    break;
-                }
-                case SpawnLevel.Level_10: {
-                    template = this.game.rnd.pick(this.level10.templates);
-                    break;
-                }
             }
 
             // actually generate the level
