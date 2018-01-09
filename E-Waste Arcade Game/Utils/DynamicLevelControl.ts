@@ -40,8 +40,8 @@
                 }
             }
 
-            this.amountOfRoundsDone++;
-            return this.spawnLevel
+			this.amountOfRoundsDone++;
+			return this.spawnLevel
         }
     }
 }
