@@ -9,7 +9,7 @@
             this.anchor.setTo(.5, 0);
 
             this.game.physics.enable(this, Phaser.Physics.ARCADE);
-            this.body.setSize(290, 90, 33, 60);
+            this.body.setSize(220, 90, 33, 60);
         }
     }
 }
