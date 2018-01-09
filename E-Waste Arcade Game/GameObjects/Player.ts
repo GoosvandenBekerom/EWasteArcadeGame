@@ -223,6 +223,7 @@
         }
         
         private startRunning() {
+            if (this.playerState == PlayerState.DYING) return;
             this.jumping = false;
             this.playerState = PlayerState.RUNNING;
             this.loadTexture("CHAR_RUNNING", 0);
@@ -231,6 +232,7 @@
         }
 
         private startJumping() {
+            if (this.playerState == PlayerState.DYING) return;
             this.playerState = PlayerState.JUMPING;
             this.loadTexture("CHAR_JUMPING", 0);
             this.animations.add("jumping");
@@ -238,6 +240,7 @@
         }
 
         private startFalling() {
+            if (this.playerState == PlayerState.DYING) return;
             this.playerState = PlayerState.JUMPING;
             this.loadTexture("CHAR_JUMPING", 5);
             this.animations.add("falling");
