@@ -151,6 +151,8 @@
         }
 
         pickupCollisionHandler(player, pickup) {
+            if (this.playerState == PlayerState.DYING) return;
+
             if (player.bin.collectWasteTypeState == pickup.wasteType) {
                 player.state.scoremanager.addToWasteScore(pickup.wasteType);
                 player.soundManager.playSound("pickupGood");
@@ -198,6 +200,7 @@
         }
 
         obstacleCollisionHandler(player, obstacle) {
+            if (this.playerState == PlayerState.DYING) return;
             if (!player.immune) {
                 player.soundManager.playSound("damage");
                 player.state.scoremanager.loseLife(25);
