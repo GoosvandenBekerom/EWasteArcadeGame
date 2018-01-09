@@ -87,7 +87,13 @@
                     "Sounds/PickupGood.mp3",
                     "Sounds/PickupGood.ogg",
                     "Sounds/PickupGood.wav"
-                ]);
+				]);
+			this.game.load.audio("deathSound",
+				[
+					"Sounds/DeathSound.mp3",
+					"Sounds/DeathSound.ogg",
+					"Sounds/DeathSound.wav"
+				]);
 
             // Levels
             this.game.load.json("level1", "Levels/level1.json");

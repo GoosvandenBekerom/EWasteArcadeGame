@@ -86,15 +86,20 @@
         }
 
         gameOver() {
-            this.soundManager.stopMusic();
-            let score = this.scoremanager.getTotalScore()
-            
+			//death sound
+			this.soundManager.stopMusic();
+			this.soundManager.playSound("deathSound");
+
+			//death animation
+
+
+			//highscore
+			let score = this.scoremanager.getTotalScore();
 			EWasteUtils.StorageControl.setStorage("yourScore", score);
             EWasteUtils.StorageControl.setStorage("recycle1", this.scoremanager.waste1Amount);
             EWasteUtils.StorageControl.setStorage("recycle2", this.scoremanager.waste2Amount);
             EWasteUtils.StorageControl.setStorage("recycle3", this.scoremanager.waste3Amount);
-            
             this.game.state.start("EnterNameState");
-        }
+		}
     }
 }

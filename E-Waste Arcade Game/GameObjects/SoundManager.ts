@@ -5,7 +5,8 @@
         damage: Phaser.Sound;
         landing: Phaser.Sound;
         pickupBad: Phaser.Sound;
-        pickupGood: Phaser.Sound;
+		pickupGood: Phaser.Sound;
+		deathSound: Phaser.Sound;
 
         constructor(game: Phaser.Game) {
             super(game);
@@ -15,7 +16,8 @@
             this.damage = this.game.add.audio("damage");
             this.landing = this.game.add.audio("landing");
             this.pickupBad = this.game.add.audio("pickupBad");
-            this.pickupGood = this.game.add.audio("pickupGood");
+			this.pickupGood = this.game.add.audio("pickupGood");
+			this.deathSound = this.game.add.audio("deathSound");
 
 			this.damage.volume = 1.5;
 
@@ -29,15 +31,17 @@
         }
 
         public playSound(key) {
-            if (key === "damage") {
-                this.damage.play();
-            } else if (key === "landing") {
-                this.landing.play();
-            } else if (key === "pickupBad") {
-                this.pickupBad.play();
-            } else if (key === "pickupGood") {
-                this.pickupGood.play();
-            }
+			if (key === "damage") {
+				this.damage.play();
+			} else if (key === "landing") {
+				this.landing.play();
+			} else if (key === "pickupBad") {
+				this.pickupBad.play();
+			} else if (key === "pickupGood") {
+				this.pickupGood.play();
+			} else if (key === "deathSound") {
+				this.deathSound.play();
+			}
         }
     }
 }
