@@ -28,10 +28,10 @@
             // Score
             let scoreContainer = this.game.add.graphics(this.margin, this.margin);
             scoreContainer.beginFill(this.containerBg, this.opacity);
-            scoreContainer.drawRect(0, 0, 650, this.game.height - (this.margin * 2));
+            scoreContainer.drawRect(0, 0, 630, this.game.height - (this.margin * 2));
             scoreContainer.endFill();
 
-            let scoreText = EWasteUtils.StorageControl.getStorage("playerName") + ", Jouw score is " +
+            let scoreText = EWasteUtils.StorageControl.getStorage("playerName") + ",\nJouw score is " +
                 EWasteUtils.StorageControl.getStorage("yourScore");
             scoreContainer.addChild(new EwasteGameObjects.UIText(this.game, scoreText, this.padding, this.padding, 42));
 
@@ -62,7 +62,7 @@
 
 
             // Highscores
-            let highScoreWidth = 285;
+            let highScoreWidth = 305;
             let highScoreHeight = 230;
             let highscoresContainer = this.game.add.graphics(this.game.width - this.margin - highScoreWidth, this.margin);
             highscoresContainer.beginFill(this.containerBg, this.opacity);
@@ -80,7 +80,7 @@
                 scoreString += scores[i].score + "\n";
             }
             let namesText = new EwasteGameObjects.UIText(this.game, namesString, this.padding, 50 + this.padding, 32);
-            this.highscoreText = new EwasteGameObjects.UIText(this.game, scoreString, 120 + this.padding, 50 + this.padding, 32);
+            this.highscoreText = new EwasteGameObjects.UIText(this.game, scoreString, 175 + this.padding, 50 + this.padding, 32);
 
             highscoresContainer.addChild(namesText);
             highscoresContainer.addChild(this.highscoreText);
