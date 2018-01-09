@@ -53,7 +53,7 @@
 
         private checkGameOver()
         {
-            if (this.currentPower >= 0)
+            if (this.currentPower >= 0 && this.state.player.playerState != PlayerState.DYING)
             {
                 this.state.gameOver();
             }

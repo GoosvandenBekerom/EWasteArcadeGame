@@ -93,7 +93,7 @@
             });
 
             if (this.game.physics.arcade.collide(this, this.state.platformManager, (player, platform) => {
-                if (player.playerState != PlayerState.RUNNING || this.playerState == PlayerState.DYING) {
+                if (player.playerState != PlayerState.RUNNING || this.playerState != PlayerState.DYING) {
                     player.startRunning();
                 }
 
