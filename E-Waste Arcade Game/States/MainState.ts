@@ -94,7 +94,6 @@
             let dieAnimation = this.player.startDying();
             dieAnimation.onComplete.add(
                 () => {
-                    console.log('bitch');
                     //highscore
                     let score = this.scoremanager.getTotalScore();
                     EWasteUtils.StorageControl.setStorage("yourScore", score);
