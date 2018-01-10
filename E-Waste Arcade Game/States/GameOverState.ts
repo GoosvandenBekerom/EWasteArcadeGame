@@ -7,6 +7,8 @@
 
         wasteInfo: EWasteUtils.WasteInfo;
 
+        scoreText: string
+
         timer: Phaser.Timer;
         YELLOW: Phaser.Key;
 
@@ -33,10 +35,16 @@
             scoreContainer.drawRect(0, 0, 630, this.game.height - (this.margin * 2));
             scoreContainer.endFill();
 
-            let scoreText = EWasteUtils.StorageControl.getStorage("playerName") + ",\nJouw score is " +
-                EWasteUtils.StorageControl.getStorage("yourScore");
-            scoreContainer.addChild(new EwasteGameObjects.UIText(this.game, scoreText, this.padding, this.padding, 42));
+            let playerName = EWasteUtils.StorageControl.getStorage("playerName");
+            if (playerName == "noHighscore")
+            {
+                this.scoreText = "Jouw score is " + EWasteUtils.StorageControl.getStorage("yourScore") + ",\nHelaas geen highscore";
+            }
+            else {
+                this.scoreText = "Nieuwe highscore! " + playerName + ",\nJouw score is " + EWasteUtils.StorageControl.getStorage("yourScore");
+            }
 
+            scoreContainer.addChild(new EwasteGameObjects.UIText(this.game, this.scoreText, this.padding, this.padding, 42));
             this.wasteInfo = this.game.cache.getJSON("gameOverInfo");
 
             // Waste Type scores
@@ -49,7 +57,7 @@
 
                 // image
                 let sprite = new Phaser.Sprite(this.game, this.padding, 0, "wasteEnd" + i);
-                sprite.y = (i * (sprite.height * 1.5)) + this.padding * i;
+                sprite.y = (i * (sprite.height * 1.65)) + this.padding * i;
                 scoreContainer.addChild(sprite);
 
                 // text
@@ -78,18 +86,19 @@
             highscoresContainer.addChild(new EwasteGameObjects.UIText(this.game, "HIGHSCORES", this.padding, this.padding, 36));
 
             let scores = JSON.parse(EWasteUtils.StorageControl.getStorage("highscores"));
+            if (scores) {
+                let namesString = "";
+                let scoreString = "";
+                for (let i = 0; i < scores.length; i++) {
+                    namesString += scores[i].name + ":\n";
+                    scoreString += scores[i].score + "\n";
+                }
+                let namesText = new EwasteGameObjects.UIText(this.game, namesString, this.padding, 50 + this.padding, 32);
+                this.highscoreText = new EwasteGameObjects.UIText(this.game, scoreString, 175 + this.padding, 50 + this.padding, 32);
 
-            let namesString = "";
-            let scoreString = "";
-            for (let i = 0; i < scores.length; i++) {
-                namesString += scores[i].name + ":\n";
-                scoreString += scores[i].score + "\n";
+                highscoresContainer.addChild(namesText);
+                highscoresContainer.addChild(this.highscoreText);
             }
-            let namesText = new EwasteGameObjects.UIText(this.game, namesString, this.padding, 50 + this.padding, 32);
-            this.highscoreText = new EwasteGameObjects.UIText(this.game, scoreString, 175 + this.padding, 50 + this.padding, 32);
-
-            highscoresContainer.addChild(namesText);
-            highscoresContainer.addChild(this.highscoreText);
 
             // back button
             let btnGraphics = this.game.add.graphics(
