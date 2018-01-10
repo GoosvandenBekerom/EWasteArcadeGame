@@ -41,8 +41,8 @@
             }
 
             this.amountOfRoundsDone++;
-            //return EwasteGameObjects.SpawnLevel.Level_8;
-            return this.spawnLevel;
+            return EwasteGameObjects.SpawnLevel.Level_8;
+            //return this.spawnLevel;
         }
     }
 }
