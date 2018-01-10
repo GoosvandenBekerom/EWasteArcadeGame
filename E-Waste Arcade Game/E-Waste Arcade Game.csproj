@@ -50,6 +50,8 @@
     <Content Include="Graphics\waste3_2.png" />
     <Content Include="Graphics\waste3_3.png" />
     <Content Include="index.html" />
+    <Content Include="Lib\floatingText.js" />
+    <Content Include="Lib\floatingText.min.js" />
     <Content Include="Lib\phaser.js" />
     <Content Include="Sounds\BackgroundLoop.mp3" />
     <Content Include="Sounds\BackgroundLoop.wav" />

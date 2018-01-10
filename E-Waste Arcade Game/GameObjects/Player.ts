@@ -1,4 +1,6 @@
 ﻿module EwasteGameObjects {
+    declare var FloatingText: any;
+
     export enum PlayerState { IDLE, RUNNING, JUMPING, DYING }
     export enum WasteType { WASTE_1, WASTE_2, WASTE_3 }
 
@@ -153,9 +155,26 @@
         pickupCollisionHandler(player, pickup) {
             if (this.playerState == PlayerState.DYING) return;
 
+            let popupText = "";
+            let textColor = "#000000";
+            let effect = "up";
+
             if (player.bin.collectWasteTypeState == pickup.wasteType) {
                 player.state.scoremanager.addToWasteScore(pickup.wasteType);
                 player.soundManager.playSound("pickupGood");
+                switch (pickup.wasteType) {
+                    case WasteType.WASTE_1:
+                        textColor = "#22b14c";
+                        break;
+                    case WasteType.WASTE_2:
+                        textColor = "#ed1c24";
+                        break;
+                    case WasteType.WASTE_3:
+                        textColor = "#3f48cc";
+                        break;
+                }
+                popupText = "+1";
+                effect = "up";
             } else {
                 switch (player.state.levelControl.spawnLevel)
                 {
@@ -194,9 +213,26 @@
                         break;
                 }
                 player.soundManager.playSound("pickupBad");
-
+                textColor = "#e3ba2d";
+                popupText = "Ow!";
+                effect = "smoke";
             }
             pickup.kill();
+
+            new FloatingText(player.state, {
+                text: popupText,
+                animation: "up",
+                textOptions: {
+                    fontSize: 42,
+                    fill: textColor,
+                    stroke: "#ffffff",
+                    strokeThickness: 3,
+                    font: "Lucida Console"
+                },
+                x: player.x + player.width / 2,
+                y: player.y - 120,
+                timeToLive: 200
+            });
         }
 
         obstacleCollisionHandler(player, obstacle) {
@@ -207,6 +243,20 @@
                 player.immune = true;
                 player.startTimeImmunity = player.game.time.time;
                 player.tweenImmune = player.game.add.tween(player).to({ alpha: 0 }, 100, "Linear", true, 0, -1);
+                new FloatingText(player.state, {
+                    text: "Auch!",
+                    animation: "smoke",
+                    textOptions: {
+                        fontSize: 48,
+                        fill: "#e3ba2d",
+                        stroke: "#ffffff",
+                        strokeThickness: 3,
+                        font: "Lucida Console"
+                    },
+                    x: player.x + player.width / 2,
+                    y: player.y - 120,
+                    timeToLive: 200
+                });
             }
 		}
 
