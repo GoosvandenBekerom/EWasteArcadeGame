@@ -48,6 +48,7 @@
         losePower(amountOfPower: number)
         {
             this.currentPower = this.currentPower + amountOfPower;
+            if (this.currentPower > 0) { this.currentPower = 0; }
             this.game.add.tween(this.powerBarSprite).to({ height: this.currentPower }, amountOfPower * 10 , Phaser.Easing.Linear.None, true);
         }
 
