@@ -64,9 +64,9 @@
         generateNext(templateLevel: SpawnLevel, startPosX: number) {
 			let template = [
 				[0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 4, 4],
-				[0, 0, 1, 0, 0, 0],
-				[1, 0, 0, 0, 0, 1],
+				[0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0],
 				[0, 0, 0, 0, 0, 0]
 			];
 
