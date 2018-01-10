@@ -1,5 +1,5 @@
 ﻿module EwasteGameObjects {
-    export enum SpawnLevel { Level_0, Level_1, Level_2, Level_3, Level_4, Level_5, Level_6, Level_7, Level_8, Level_9, Level_10 }
+    export enum SpawnLevel { Level_0, Level_1, Level_2, Level_3, Level_4, Level_5, Level_6, Level_7, Level_8 }
 
     export class TemplateValues {
         public static readonly NONE = 0;
@@ -26,8 +26,6 @@
         level6: EWasteUtils.LevelTemplate;
         level7: EWasteUtils.LevelTemplate;
         level8: EWasteUtils.LevelTemplate;
-        level9: EWasteUtils.LevelTemplate;
-        level10: EWasteUtils.LevelTemplate;
 
         gridRows: Array<number>; // y-positions for spawns
         gridColumns: number; // amount of columns per screen/level
@@ -61,18 +59,17 @@
             this.level6 = this.game.cache.getJSON("level6");
             this.level7 = this.game.cache.getJSON("level7");
             this.level8 = this.game.cache.getJSON("level8");
-            this.level9 = this.game.cache.getJSON("level9");
-            this.level10 = this.game.cache.getJSON("level10");
         }
 
         generateNext(templateLevel: SpawnLevel, startPosX: number) {
-            let template = [
-                [0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0]
-            ];
+			let template = [
+				[0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0]
+			];
+
             
             switch (templateLevel) {
                 case SpawnLevel.Level_0: {
@@ -112,6 +109,7 @@
                 }
             }
 
+			
             // actually generate the level
             let distBetweenSpawns = this.game.width / this.gridColumns;
 

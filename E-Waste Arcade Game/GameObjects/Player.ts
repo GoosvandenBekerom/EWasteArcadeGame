@@ -205,12 +205,6 @@
                     case EwasteGameObjects.SpawnLevel.Level_8:
                         player.state.scoremanager.loseLife(20);
                         break;
-                    case EwasteGameObjects.SpawnLevel.Level_9:
-                        player.state.scoremanager.loseLife(20);
-                        break;
-                    case EwasteGameObjects.SpawnLevel.Level_10:
-                        player.state.scoremanager.loseLife(25);
-                        break;
                 }
                 player.soundManager.playSound("pickupBad");
                 textColor = "#e3ba2d";

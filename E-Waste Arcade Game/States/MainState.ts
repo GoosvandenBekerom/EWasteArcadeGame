@@ -100,7 +100,23 @@
                     EWasteUtils.StorageControl.setStorage("recycle1", this.scoremanager.waste1Amount);
                     EWasteUtils.StorageControl.setStorage("recycle2", this.scoremanager.waste2Amount);
                     EWasteUtils.StorageControl.setStorage("recycle3", this.scoremanager.waste3Amount);
-                    this.game.state.start("EnterNameState");
+                    let highscores = JSON.parse(EWasteUtils.StorageControl.getStorage("highscores"));
+                    if (highscores != null && highscores.length == 5 && highscores[4].score != null) {
+                        if (highscores[highscores.length - 1].score >= score) {
+                            EWasteUtils.StorageControl.setStorage('playerName', "noHighscore");
+                            this.game.state.start("GameOverState");
+                            return;
+                        }
+                    }
+                    if (score > 0)
+                    {
+                        this.game.state.start("EnterNameState");
+                    }
+                    else
+                    {
+                        EWasteUtils.StorageControl.setStorage('playerName', "noHighscore");
+                        this.game.state.start("GameOverState");
+                    }             
                 }, this.player
             );
 		}
