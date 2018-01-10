@@ -14,7 +14,7 @@
 
         // characters
         alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-            'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+            'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '_'];
 
         current1: number;
         current2: number;
@@ -261,6 +261,7 @@
         endBtnEnabled() {
             this.joystick.GREEN.onDown.add(() => {
                 let name = this.alphabet[this.current1] + this.alphabet[this.current2] + this.alphabet[this.current3] + this.alphabet[this.current4] + this.alphabet[this.current5];
+                name = name.replace('_', ' ').trim();
                 EWasteUtils.StorageControl.setStorage('playerName', name);
                 EWasteUtils.Highscore.addScore(parseInt(EWasteUtils.StorageControl.getStorage("yourScore")), name);
                 this.game.state.start("GameOverState");
