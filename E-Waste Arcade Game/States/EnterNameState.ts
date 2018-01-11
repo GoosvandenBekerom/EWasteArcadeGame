@@ -4,6 +4,7 @@
         background: Phaser.Sprite;
         joystick: EWasteUtils.JoystickInput;
         timer: Phaser.Timer;
+        returnTimer: Phaser.Timer;
 
         // offset values
         margin = 30;
@@ -53,6 +54,9 @@
             this.timer = this.game.time.create();
             this.timer.loop(1500, this.endBtnEnabled, this);
             this.timer.start();
+
+            this.returnTimer = this.game.time.create();
+            this.resetReturnTimer();
             
             // Background
             this.background = this.add.sprite(0, 0, "gameover", 0);
@@ -130,6 +134,7 @@
 
             // event handlers
             this.joystick.UP.onDown.add(() => {
+                this.resetReturnTimer();
                 if (this.activeArrow == 1) {
                     this.current1++;
                     if (this.current1 == this.alphabet.length) this.current1 = 0;
@@ -159,6 +164,7 @@
             });
 
             this.joystick.DOWN.onDown.add(() => {
+                this.resetReturnTimer();
                 if (this.activeArrow == 1) {
                     this.current1--;
                     if (this.current1 < 0) this.current1 = this.alphabet.length - 1;
@@ -189,6 +195,7 @@
 
             this.joystick.RIGHT.onDown.add(() => {
                 if (this.activeArrow == 5) return;
+                this.resetReturnTimer();
 
                 this.activeArrow++;
 
@@ -224,6 +231,7 @@
 
             this.joystick.LEFT.onDown.add(() => {
                 if (this.activeArrow == 1) return;
+                this.resetReturnTimer();
 
                 this.activeArrow--;
 
@@ -267,6 +275,12 @@
                 this.game.state.start("GameOverState");
             });
             this.timer.stop();
+        }
+
+        private resetReturnTimer() {
+            this.returnTimer.stop(true);
+            this.returnTimer.add(15000, () => { this.game.state.start("TitleScreenState"); });
+            this.returnTimer.start();
         }
     }
 }

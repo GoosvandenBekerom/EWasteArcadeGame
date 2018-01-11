@@ -4,6 +4,7 @@
         gameOverSprite: Phaser.Sprite;
         highscoreText: EwasteGameObjects.UIText;
         tweenButton: Phaser.Tween;
+        returnTimer: Phaser.Timer;
 
         wasteInfo: EWasteUtils.WasteInfo;
 
@@ -28,6 +29,10 @@
             this.timer = this.game.time.create();
             this.timer.loop(1000, this.endBtnEnabled, this);
             this.timer.start();
+
+            this.returnTimer = this.game.time.create();
+            this.returnTimer.add(15000, () => { this.game.state.start("TitleScreenState"); })
+            this.returnTimer.start();
 
             // Score
             let scoreContainer = this.game.add.graphics(this.margin, this.margin);
