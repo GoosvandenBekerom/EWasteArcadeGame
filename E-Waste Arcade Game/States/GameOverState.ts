@@ -31,7 +31,7 @@
             this.timer.start();
 
             this.returnTimer = this.game.time.create();
-            this.returnTimer.add(30000, () => { this.game.state.start("TitleScreenState"); })
+            this.returnTimer.add(30000, this.closeGame);
             this.returnTimer.start();
 
             // Score
@@ -126,12 +126,11 @@
 
         closeGame(caller) {
             //caller.game.state.start("TitleScreenState", true);
-			window.history.back();
+            window.location.host = "127.0.0.1";
         }
 
         endBtnEnabled()
         {
-            this.input.onDown.add(this.closeGame);
             this.YELLOW = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
             this.YELLOW.onDown.add(this.closeGame);
             this.timer.stop();
