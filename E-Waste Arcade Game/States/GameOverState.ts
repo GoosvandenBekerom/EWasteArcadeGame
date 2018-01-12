@@ -66,7 +66,7 @@
                 scoreContainer.addChild(sprite);
 
                 // text
-                let scoreText = new EwasteGameObjects.UIText(this.game, "999", sprite.x + sprite.width, sprite.y + (this.padding * 2), 40, "font")
+                let scoreText = new EwasteGameObjects.UIText(this.game, recycle, sprite.x + sprite.width, sprite.y + (this.padding * 2), 40, "font")
                 let text = new EwasteGameObjects.UIText(this.game, wasteText, sprite.x + sprite.width + scoreText.width + (this.padding), 
                 sprite.y, 24, "font2");
 
