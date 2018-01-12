@@ -117,15 +117,16 @@
             this.tweenButton.yoyo(true, 1);
         }
 
-        startTitleScreen(caller) {
-            caller.game.state.start("TitleScreenState", true);
+        closeGame(caller) {
+            //caller.game.state.start("TitleScreenState", true);
+			window.history.back();
         }
 
         endBtnEnabled()
         {
-            this.input.onDown.add(this.startTitleScreen);
+            this.input.onDown.add(this.closeGame);
             this.YELLOW = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
-            this.YELLOW.onDown.add(this.startTitleScreen);
+            this.YELLOW.onDown.add(this.closeGame);
             this.timer.stop();
         }
     }
