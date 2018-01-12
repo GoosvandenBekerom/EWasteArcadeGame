@@ -31,7 +31,7 @@
             this.timer.start();
 
             this.returnTimer = this.game.time.create();
-            this.returnTimer.add(15000, () => { this.game.state.start("TitleScreenState"); })
+            this.returnTimer.add(30000, () => { this.game.state.start("TitleScreenState"); })
             this.returnTimer.start();
 
             // Score
@@ -70,11 +70,12 @@
                 scoreContainer.addChild(sprite);
 
                 // text
-                let scoreText = new EwasteGameObjects.UIText(this.game, recycle, sprite.x + sprite.width, sprite.y + (this.padding * 2), 40)
-                let text = new EwasteGameObjects.UIText(this.game, wasteText, sprite.x + sprite.width + scoreText.width + (this.padding),
+                let scoreText = new EwasteGameObjects.UIText(this.game, recycle, sprite.x + sprite.width + this.padding,
+                    sprite.y + (this.padding * 2), 40)
+                let text = new EwasteGameObjects.UIText(this.game, wasteText, sprite.x + sprite.width + scoreText.width + this.padding * 3,
                     sprite.y, 24, "left", "font2");
 
-                text.maxWidth = scoreContainer.width - (this.padding * 10) - sprite.width;
+                text.maxWidth = scoreContainer.width - (this.padding * 12) - sprite.width;
                 
                 text.anchor.setTo(0, 0.5);
                 text.y += sprite.height / 2;
