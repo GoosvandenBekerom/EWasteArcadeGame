@@ -35,9 +35,10 @@
             this.returnTimer.start();
 
             // Score
+            let scoreContainerWidth = 630;
             let scoreContainer = this.game.add.graphics(this.margin, this.margin);
             scoreContainer.beginFill(this.containerBg, this.opacity);
-            scoreContainer.drawRect(0, 0, 630, this.game.height - (this.margin * 2));
+            scoreContainer.drawRect(0, 0, scoreContainerWidth, this.game.height - (this.margin * 2));
             scoreContainer.endFill();
 
             let playerName = EWasteUtils.StorageControl.getStorage("playerName");
@@ -49,7 +50,10 @@
                 this.scoreText = "Nieuwe highscore!\nJouw score is " + EWasteUtils.StorageControl.getStorage("yourScore");
             }
 
-            scoreContainer.addChild(new EwasteGameObjects.UIText(this.game, this.scoreText, this.padding, this.padding, 42));
+            scoreContainer.addChild(
+                new EwasteGameObjects.UIText(this.game, this.scoreText, this.padding, this.padding, 42, 'center', 'font',
+                    scoreContainerWidth - this.padding * 2)
+            );
             this.wasteInfo = this.game.cache.getJSON("gameOverInfo");
 
             // Waste Type scores
@@ -66,13 +70,12 @@
                 scoreContainer.addChild(sprite);
 
                 // text
-                let scoreText = new EwasteGameObjects.UIText(this.game, recycle, sprite.x + sprite.width, sprite.y + (this.padding * 2), 40, "font")
-                let text = new EwasteGameObjects.UIText(this.game, wasteText, sprite.x + sprite.width + scoreText.width + (this.padding), 
-                sprite.y, 24, "font2");
+                let scoreText = new EwasteGameObjects.UIText(this.game, recycle, sprite.x + sprite.width, sprite.y + (this.padding * 2), 40)
+                let text = new EwasteGameObjects.UIText(this.game, wasteText, sprite.x + sprite.width + scoreText.width + (this.padding),
+                    sprite.y, 24, "left", "font2");
 
                 text.maxWidth = scoreContainer.width - (this.padding * 10) - sprite.width;
-
-                text.align = "left";
+                
                 text.anchor.setTo(0, 0.5);
                 text.y += sprite.height / 2;
 
@@ -89,7 +92,10 @@
             highscoresContainer.drawRect(0, 0, highScoreWidth, highScoreHeight);
             highscoresContainer.endFill();
 
-            highscoresContainer.addChild(new EwasteGameObjects.UIText(this.game, "HIGHSCORES", this.padding + 35, this.padding, 36));
+            highscoresContainer.addChild(
+                new EwasteGameObjects.UIText(this.game, "HIGHSCORES", this.padding, this.padding, 36, 'center', 'font',
+                    highScoreWidth - this.padding * 2)
+            );
 
             let scores = JSON.parse(EWasteUtils.StorageControl.getStorage("highscores"));
             if (scores) {
