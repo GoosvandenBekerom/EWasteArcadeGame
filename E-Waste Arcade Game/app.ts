@@ -64,6 +64,7 @@
 
             // Fonts
             this.game.load.bitmapFont('font', 'Graphics/font.png', 'Graphics/font.xml');
+            this.game.load.bitmapFont('font2', 'Graphics/font2.png', 'Graphics/font2.xml');
 
             // Audio
             this.game.load.audio("BackgoundLoop",

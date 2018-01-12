@@ -46,7 +46,7 @@
                 this.scoreText = "Jouw score is " + EWasteUtils.StorageControl.getStorage("yourScore") + ",\nHelaas geen highscore";
             }
             else {
-                this.scoreText = "Nieuwe highscore! " + playerName + ",\nJouw score is " + EWasteUtils.StorageControl.getStorage("yourScore");
+                this.scoreText = "Nieuwe highscore!\nJouw score is " + EWasteUtils.StorageControl.getStorage("yourScore");
             }
 
             scoreContainer.addChild(new EwasteGameObjects.UIText(this.game, this.scoreText, this.padding, this.padding, 42));
@@ -66,9 +66,8 @@
                 scoreContainer.addChild(sprite);
 
                 // text
-                let text = new EwasteGameObjects.UIText(this.game,
-                    "Aantal gerecycled: " + recycle + "\n" + wasteText,
-                    sprite.x + sprite.width + this.padding, sprite.y, 24);
+                let text = new EwasteGameObjects.UIText(this.game, recycle + "\n" + wasteText,
+                    sprite.x + sprite.width + this.padding, sprite.y, 24, "font2");
 
                 text.maxWidth = scoreContainer.width - (this.padding * 3) - sprite.width;
 
