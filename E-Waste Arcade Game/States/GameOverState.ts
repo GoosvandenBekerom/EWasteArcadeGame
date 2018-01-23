@@ -125,8 +125,8 @@
         }
 
         closeGame(caller) {
-            //caller.game.state.start("TitleScreenState", true);
-            window.location.host = "127.0.0.1";
+            caller.game.state.start("TitleScreenState", true);
+            //window.location.host = "127.0.0.1";
         }
 
         endBtnEnabled()
